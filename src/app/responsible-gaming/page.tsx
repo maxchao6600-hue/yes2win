@@ -65,8 +65,19 @@ export default function ResponsibleGamingPage() {
 
           <h2>Seek help when it stops being recreational</h2>
           <p>
-            If gambling no longer feels fun — or if you feel compelled to continue despite harm — seek support from trusted
-            people and professional resources available in your region. Early help is better than waiting.
+            If gambling no longer feels fun — or if you feel compelled to continue despite harm — pause play, talk to
+            someone you trust and seek professional support available in your region. Early help is better than waiting.
+          </p>
+          <p>
+            International starting points include{" "}
+            <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer">
+              BeGambleAware
+            </a>{" "}
+            and{" "}
+            <a href="https://www.gamblingtherapy.org/" target="_blank" rel="noopener noreferrer">
+              Gambling Therapy
+            </a>
+            . Local resources may also apply where you live.
           </p>
 
           <h2>What this partner website can and cannot do</h2>

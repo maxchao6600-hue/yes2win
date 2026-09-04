@@ -189,3 +189,14 @@ a {
   padding-left: 1.25rem;
   list-style: disc;
 }
+
+.sr-only:focus {
+  position: fixed;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}

@@ -16,7 +16,7 @@ export function Accordion({
   items: AccordionItem[];
   className?: string;
 }) {
-  const [openId, setOpenId] = useState<string | null>(items[0]?.id ?? null);
+  const [openId, setOpenId] = useState<string | null>(null);
   const baseId = useId();
 
   return (

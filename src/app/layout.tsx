@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: absoluteUrl("/images/og/og-default.png"),
+        url: absoluteUrl("/opengraph-image"),
         width: 1200,
         height: 630,
         alt: siteConfig.identity,
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "YES2WIN Official Partner | Online Gaming & Entertainment",
     description: siteConfig.description,
-    images: [absoluteUrl("/images/og/og-default.png")],
+    images: [absoluteUrl("/opengraph-image")],
   },
   robots: {
     index: true,
@@ -90,11 +90,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${outfit.variable} ${manrope.variable} h-full`}>
-      <body className="min-h-full bg-surface font-sans text-ink antialiased">
+      <body className="flex min-h-full flex-col bg-surface font-sans text-ink antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-brand-800 focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         <OrganizationJsonLd />
         <WebSiteJsonLd />
         <Header />
-        <main className="flex-1 pb-20 sm:pb-0">{children}</main>
+        <main id="main-content" className="flex-1 pb-20 sm:pb-0">
+          {children}
+        </main>
         <Footer />
         <MobileStickyCta />
       </body>

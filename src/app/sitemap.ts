@@ -1,12 +1,16 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
+import { gameCategories } from "@/config/content/games";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url.replace(/\/$/, "");
-  const routes = [
+  const lastModified = new Date();
+
+  const core = [
     "/",
     "/about/",
     "/games/",
+    "/register-guide/",
     "/promotions/",
     "/vip/",
     "/payment/",
@@ -19,12 +23,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy/",
   ];
 
-  const lastModified = new Date();
+  const categories = gameCategories.map((category) => category.path);
 
-  return routes.map((route) => ({
+  return [...core, ...categories].map((route) => ({
     url: `${base}${route === "/" ? "/" : route}`,
     lastModified,
     changeFrequency: route === "/" ? "weekly" : "monthly",
-    priority: route === "/" ? 1 : route === "/games/" || route === "/promotions/" ? 0.9 : 0.7,
+    priority:
+      route === "/"
+        ? 1
+        : route.startsWith("/games") || route === "/promotions/" || route === "/partner/"
+          ? 0.9
+          : 0.7,
   }));
 }

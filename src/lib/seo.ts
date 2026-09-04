@@ -17,6 +17,7 @@ type BuildMetadataInput = {
   description: string;
   path?: string;
   noIndex?: boolean;
+  ogImage?: string;
 };
 
 export function buildMetadata({
@@ -24,8 +25,10 @@ export function buildMetadata({
   description,
   path = "/",
   noIndex = false,
+  ogImage = "/opengraph-image",
 }: BuildMetadataInput): Metadata {
   const url = absoluteUrl(path);
+  const imageUrl = absoluteUrl(ogImage);
   const fullTitle = title.includes(siteConfig.name)
     ? title
     : `${title} | ${siteConfig.name}`;
@@ -45,7 +48,7 @@ export function buildMetadata({
       locale: "en_US",
       images: [
         {
-          url: absoluteUrl("/images/og/og-default.png"),
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: `${siteConfig.identity} — ${siteConfig.tagline}`,
@@ -56,7 +59,7 @@ export function buildMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [absoluteUrl("/images/og/og-default.png")],
+      images: [imageUrl],
     },
     robots: noIndex
       ? { index: false, follow: false }

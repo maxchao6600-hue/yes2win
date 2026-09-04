@@ -8,8 +8,8 @@ export function Footer() {
   return (
     <footer className="border-t border-brand-900/20 bg-brand-950 text-brand-50">
       <div className="container-page py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_repeat(3,1fr)]">
-          <div>
+        <div className="grid gap-10 lg:grid-cols-[1.4fr_repeat(5,1fr)]">
+          <div className="lg:pr-4">
             <Link href="/" className="inline-flex items-center gap-3">
               <Image
                 src={siteConfig.logo.src}
@@ -23,35 +23,42 @@ export function Footer() {
               {siteConfig.identity}
             </p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-brand-100/80">
-              Your gateway to the YES2WIN ecosystem — built for clarity, trust and a modern partner experience.
+              An official partner information and access gateway connected to the YES2WIN ecosystem.
             </p>
             <p className="mt-4 text-sm text-brand-200">{siteConfig.tagline}</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <CtaLink cta="register" size="sm">
-                Register Now
-              </CtaLink>
-              <CtaLink cta="login" variant="outline" size="sm">
-                Login
-              </CtaLink>
-            </div>
           </div>
 
           <FooterColumn title="Explore" items={footerNav.explore} />
-          <FooterColumn title="Games" items={[...footerNav.games]} />
+          <FooterColumn
+            title="Access"
+            items={[
+              { label: "Register", href: siteConfig.registerUrl, external: true },
+              { label: "Login", href: siteConfig.loginUrl, external: true },
+              ...footerNav.access,
+            ]}
+          />
           <FooterColumn title="Support" items={footerNav.support} />
-        </div>
-
-        <div className="mt-10 grid gap-8 border-t border-white/10 pt-10 md:grid-cols-3">
-          <FooterColumn title="Promotions" items={footerNav.promotions} />
           <FooterColumn title="Partner" items={footerNav.partner} />
           <FooterColumn title="Legal" items={footerNav.legal} />
         </div>
 
-        <div className="mt-10 space-y-3 border-t border-white/10 pt-8 text-sm text-brand-100/70">
+        <div className="mt-10 flex flex-wrap gap-3 border-t border-white/10 pt-8">
+          <CtaLink cta="register" size="sm">
+            Register Now
+          </CtaLink>
+          <CtaLink cta="login" variant="outline" size="sm">
+            Login
+          </CtaLink>
+          <CtaLink cta="partner" variant="outline" size="sm">
+            Become a Partner
+          </CtaLink>
+        </div>
+
+        <div className="mt-8 space-y-3 text-sm text-brand-100/70">
           <p>{siteConfig.disclaimer}</p>
           <p>
-            Entertainment involves risk. Please play responsibly and only if it is legal for you to do so in your
-            jurisdiction. 18+
+            18+. Play responsibly. Entertainment involves risk — only participate if it is legal for you in your
+            jurisdiction. Read our <Link href="/responsible-gaming/" className="underline hover:text-white">Responsible Gaming</Link> guidance.
           </p>
           <p className="text-brand-200/80">
             © {new Date().getFullYear()} {siteConfig.identity}. All rights reserved.
@@ -67,7 +74,7 @@ function FooterColumn({
   items,
 }: {
   title: string;
-  items: ReadonlyArray<{ label: string; href: string }>;
+  items: ReadonlyArray<{ label: string; href: string; external?: boolean }>;
 }) {
   return (
     <div>
@@ -75,9 +82,20 @@ function FooterColumn({
       <ul className="mt-4 space-y-2.5">
         {items.map((item) => (
           <li key={`${title}-${item.href}-${item.label}`}>
-            <Link href={item.href} className="text-sm text-brand-50/85 transition hover:text-white">
-              {item.label}
-            </Link>
+            {item.external ? (
+              <a
+                href={item.href}
+                target="_blank"
+                rel="nofollow sponsored noopener noreferrer"
+                className="text-sm text-brand-50/85 transition hover:text-white"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link href={item.href} className="text-sm text-brand-50/85 transition hover:text-white">
+                {item.label}
+              </Link>
+            )}
           </li>
         ))}
       </ul>

@@ -21,8 +21,8 @@ export function Hero() {
             YES2WIN — Your Gateway to the Winning Ecosystem
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-brand-50/90 sm:text-lg">
-            Discover the YES2WIN ecosystem through an official partner platform built for a smooth, secure and modern
-            user experience.
+            Explore YES2WIN games, offers and member pathways through an official partner site built for a modern,
+            confident first impression.
           </p>
           <p className="mt-4 text-sm font-medium uppercase tracking-[0.18em] text-brand-200">
             {siteConfig.tagline}
@@ -56,9 +56,9 @@ export function Hero() {
 
             <div className="mt-6 grid gap-3">
               {[
-                { label: "Slots", meta: "Category ready" },
+                { label: "Slots", meta: "Spin & discover" },
                 { label: "Live Casino", meta: "Real-time tables" },
-                { label: "Sports", meta: "Event markets" },
+                { label: "Sports", meta: "Follow the action" },
               ].map((item, index) => (
                 <div
                   key={item.label}
@@ -75,8 +75,8 @@ export function Hero() {
             </div>
 
             <div className="mt-5 rounded-2xl bg-gradient-to-r from-brand-500 to-brand-700 p-4">
-              <p className="text-xs uppercase tracking-[0.16em] text-white/80">Ecosystem access</p>
-              <p className="mt-1 text-lg font-semibold">Secure · Mobile-ready · Partner-connected</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-white/80">Ready when you are</p>
+              <p className="mt-1 text-lg font-semibold">Register · Login · Explore</p>
             </div>
           </div>
         </div>

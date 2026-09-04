@@ -4,15 +4,88 @@ import { PageHero } from "@/components/page/PageHero";
 import { FinalCta } from "@/components/page/FinalCta";
 import { Container, Section } from "@/components/ui/Container";
 import { Accordion } from "@/components/ui/Accordion";
+import { CtaLink } from "@/components/ui/CtaLink";
 import { BreadcrumbJsonLd, FaqJsonLd, WebPageJsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "YES2WIN FAQ | Registration, Games & Payments",
   description:
-    "Find answers about YES2WIN registration, login, games, promotions, payments, mobile access, partner pathways, security and responsible gaming.",
+    "Answers about YES2WIN registration, login, games, promotions, payments, mobile access, partner pathways and responsible gaming.",
   path: "/faq/",
 });
+
+const relatedLinks: Record<string, Array<{ label: string; href: string }>> = {
+  general: [
+    { label: "About this site", href: "/about/" },
+    { label: "Responsible gaming", href: "/responsible-gaming/" },
+  ],
+  account: [
+    { label: "Contact", href: "/contact/" },
+  ],
+  registration: [],
+  login: [],
+  games: [
+    { label: "Games overview", href: "/games/" },
+    { label: "Slots", href: "/games/slots/" },
+    { label: "Live casino", href: "/games/live-casino/" },
+  ],
+  slots: [
+    { label: "Slots guide", href: "/games/slots/" },
+    { label: "Promotions", href: "/promotions/" },
+  ],
+  "live-casino": [
+    { label: "Live casino guide", href: "/games/live-casino/" },
+    { label: "Mobile", href: "/mobile/" },
+  ],
+  sports: [
+    { label: "Sports guide", href: "/games/sports/" },
+    { label: "Mobile", href: "/mobile/" },
+  ],
+  fishing: [
+    { label: "Fishing guide", href: "/games/fishing/" },
+    { label: "Games overview", href: "/games/" },
+  ],
+  lottery: [
+    { label: "Lottery guide", href: "/games/lottery/" },
+    { label: "Games overview", href: "/games/" },
+  ],
+  promotions: [
+    { label: "Promotions hub", href: "/promotions/" },
+    { label: "Terms", href: "/terms/" },
+  ],
+  vip: [
+    { label: "VIP overview", href: "/vip/" },
+    { label: "Promotions", href: "/promotions/" },
+  ],
+  payments: [
+    { label: "Payment guide", href: "/payment/" },
+    { label: "Contact", href: "/contact/" },
+  ],
+  deposit: [
+    { label: "Payment guide", href: "/payment/" },
+    { label: "Promotions", href: "/promotions/" },
+  ],
+  withdrawal: [
+    { label: "Payment guide", href: "/payment/" },
+    { label: "Contact", href: "/contact/" },
+  ],
+  mobile: [
+    { label: "Mobile page", href: "/mobile/" },
+    { label: "Games", href: "/games/" },
+  ],
+  partner: [
+    { label: "Partner programme", href: "/partner/" },
+    { label: "Contact", href: "/contact/" },
+  ],
+  security: [
+    { label: "Privacy policy", href: "/privacy/" },
+  ],
+  "responsible-gaming": [
+    { label: "Responsible gaming page", href: "/responsible-gaming/" },
+    { label: "Contact", href: "/contact/" },
+  ],
+};
 
 export default function FaqPage() {
   return (
@@ -31,12 +104,22 @@ export default function FaqPage() {
       <FaqJsonLd items={allFaqItems} />
       <PageHero
         eyebrow="FAQ"
-        title="YES2WIN frequently asked questions"
-        description="Concise answers covering account access, categories, promotions, payments, mobile, partner topics and responsible gaming."
+        title="Frequently asked questions"
+        description="Concise answers on account access, categories, promotions, payments, mobile, partner topics and responsible play."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "FAQ" },
         ]}
+        actions={
+          <>
+            <CtaLink cta="register" size="sm">
+              Register Now
+            </CtaLink>
+            <CtaLink cta="login" variant="secondary" size="sm">
+              Login
+            </CtaLink>
+          </>
+        }
       />
 
       <Section tone="white">
@@ -58,15 +141,17 @@ export default function FaqPage() {
               <div key={category.id} id={category.id} className="scroll-mt-28">
                 <h2 className="mb-4 text-2xl font-bold text-ink">{category.title}</h2>
                 <Accordion items={category.items} />
+                {relatedLinks[category.id]?.length ? (
+                  <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold text-brand-700">
+                    {relatedLinks[category.id].map((link) => (
+                      <Link key={link.href + link.label} href={link.href}>
+                        {link.label} →
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
               </div>
             ))}
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-4 text-sm font-semibold text-brand-800">
-            <Link href="/payment/">Payment guide</Link>
-            <Link href="/games/">Games overview</Link>
-            <Link href="/partner/">Partner page</Link>
-            <Link href="/contact/">Contact</Link>
           </div>
         </Container>
       </Section>

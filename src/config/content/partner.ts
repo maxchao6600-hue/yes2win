@@ -1,27 +1,38 @@
 export const partnerContent = {
-  headline: "Build with the YES2WIN Ecosystem",
+  headline: "Build with the YES2WIN ecosystem",
   intro:
-    "Partner with an entertainment brand built around a clear idea: YES is the Choice. WIN is the Result. This page outlines how the partner journey works — without income promises or invented commission rates.",
+    "Share YES2WIN with audiences who want multi-category entertainment — slots, live casino, sports, fishing and lottery — through a clear partner pathway.",
+  whoFor: [
+    {
+      title: "Content creators & publishers",
+      description: "Introduce YES2WIN categories with brand-safe messaging and responsible promotion habits.",
+    },
+    {
+      title: "Community builders",
+      description: "Help audiences understand registration, games and support pathways without hype-driven claims.",
+    },
+    {
+      title: "Growth-focused partners",
+      description: "Follow a structured journey from access to referral sharing and progress tracking.",
+    },
+  ],
   whyPartner: [
     {
-      title: "Recognised ecosystem",
+      title: "Recognised entertainment brand",
       description:
-        "Connect audiences to a multi-category entertainment platform spanning slots, live casino, sports, fishing and lottery.",
+        "Connect people to a multi-category platform spanning slots, live casino, sports, fishing and lottery.",
     },
     {
-      title: "Clear partner pathway",
-      description:
-        "A structured journey from registration to referral sharing and progress tracking keeps onboarding understandable.",
+      title: "Clear onboarding path",
+      description: "A simple journey from registration to referral tools keeps first steps understandable.",
     },
     {
-      title: "Marketing-ready positioning",
-      description:
-        "Use clear brand messaging and category storytelling rather than cluttered, hard-to-trust promotional noise.",
+      title: "Brand-safe messaging",
+      description: "Use approved positioning and category storytelling instead of noisy, hard-to-trust claims.",
     },
     {
       title: "Support-oriented growth",
-      description:
-        "Partner support channels help you focus on sustainable sharing and audience education.",
+      description: "Partner support channels help you focus on sustainable sharing and audience education.",
     },
   ],
   journey: [
@@ -32,41 +43,45 @@ export const partnerContent = {
     },
     {
       step: "02",
-      title: "Get your partner access",
-      description: "Complete onboarding so your partner tools and referral identity can be activated.",
+      title: "Complete partner access",
+      description: "Finish onboarding so referral identity and partner tools can be activated.",
     },
     {
       step: "03",
       title: "Share your referral",
-      description: "Introduce YES2WIN to audiences using compliant, transparent messaging.",
+      description: "Introduce YES2WIN using transparent, compliant messaging.",
     },
     {
       step: "04",
-      title: "Build your network",
-      description: "Grow relationships by focusing on trust, clarity and long-term engagement.",
+      title: "Build your audience",
+      description: "Grow relationships with trust, clarity and long-term engagement.",
     },
     {
       step: "05",
-      title: "Track your progress",
+      title: "Track progress",
       description: "Monitor activity through official partner tools once they are available to your account.",
     },
   ],
   resources: [
     {
       title: "Brand messaging",
-      description: "Use approved positioning such as Official YES2WIN Partner and the YES2WIN tagline.",
+      description: "Use Official YES2WIN Partner positioning and the tagline: YES is the Choice. WIN is the Result.",
     },
     {
-      title: "Category storytelling",
+      title: "Category content",
       description: "Explain slots, live casino, sports, fishing and lottery in plain language.",
     },
     {
-      title: "Responsible promotion",
-      description: "Always include responsible gaming context and avoid guaranteed-outcome claims.",
+      title: "Marketing materials",
+      description: "Lean on public partner-site pages for education while following platform promotion rules.",
+    },
+    {
+      title: "Referral support",
+      description: "Use official partner tools for sharing links and tracking once access is granted.",
     },
   ],
-  termsPlaceholder:
-    "Partner commercial terms, commission structures and payout rules will be provided through official partner documentation. This website intentionally leaves rate tables configurable rather than inventing figures.",
+  commercialNote:
+    "Partner commercial terms, commission structures and payout rules are provided through official partner documentation after access is granted. This website does not publish invented rates or income guarantees.",
   faqs: [
     {
       question: "Is partner income guaranteed?",
@@ -74,8 +89,7 @@ export const partnerContent = {
     },
     {
       question: "Where do I find live partner terms?",
-      answer:
-        "Official partner terms are provided after access is granted through the partner platform.",
+      answer: "Official partner terms are provided after access is granted through the partner platform.",
     },
     {
       question: "Can I use this website’s materials?",

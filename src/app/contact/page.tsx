@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { PageHero } from "@/components/page/PageHero";
 import { FinalCta } from "@/components/page/FinalCta";
@@ -10,7 +11,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Contact YES2WIN Official Partner",
   description:
-    "Contact channels for customer support, partner support and general enquiries related to the YES2WIN Official Partner website.",
+    "Get help with YES2WIN account access, payments, partner support and general questions through this official partner website.",
   path: "/contact/",
 });
 
@@ -25,7 +26,7 @@ export default function ContactPage() {
     <>
       <WebPageJsonLd
         name="Contact YES2WIN Official Partner"
-        description="Configurable contact channels for the partner website."
+        description="Support pathways for the YES2WIN Official Partner website."
         path="/contact/"
       />
       <BreadcrumbJsonLd
@@ -36,8 +37,8 @@ export default function ContactPage() {
       />
       <PageHero
         eyebrow="Contact"
-        title="Contact YES2WIN Official Partner"
-        description="Reach the right support pathway. Contact details are configuration-driven so this site never invents phone numbers, emails or messaging handles."
+        title="How can we help?"
+        description="Choose the pathway that matches your question — account access, payments, partner support or general site guidance."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Contact" },
@@ -51,49 +52,66 @@ export default function ContactPage() {
               <Card key={channel.label}>
                 <h2 className="text-xl font-bold text-ink">{channel.label}</h2>
                 <p className="mt-3 text-sm leading-relaxed text-ink-muted">{channel.description}</p>
-                <div className="mt-5 rounded-xl border border-dashed border-brand-300 bg-brand-50/70 p-4 text-sm">
+                <div className="mt-5 rounded-xl border border-brand-200 bg-brand-50/70 p-4 text-sm">
                   {channel.value ? (
                     <a href={channel.value} className="font-semibold text-brand-800 break-all">
-                      {channel.value.replace(/^mailto:/, "")}
+                      {channel.value.replace(/^mailto:/i, "").replace(/^https?:\/\//i, "")}
                     </a>
                   ) : (
-                    <p className="text-ink-muted">
-                      <span className="font-semibold text-ink">Not configured yet.</span>
-                      <br />
-                      {channel.placeholder}
-                    </p>
+                    <p className="leading-relaxed text-ink-muted">{channel.fallback}</p>
                   )}
                 </div>
               </Card>
             ))}
           </div>
 
-          <div className="mt-10 grid gap-4 rounded-3xl border border-line bg-brand-50/50 p-6 md:grid-cols-2">
-            <div>
-              <h2 className="text-lg font-bold text-ink">Need platform access help?</h2>
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <Card>
+              <h2 className="text-lg font-bold text-ink">Account access</h2>
               <p className="mt-2 text-sm text-ink-muted">
-                For registration or login issues, start with the official platform flows and recovery tools.
+                Create an account or sign in to manage your profile, security and platform tools.
               </p>
-              <div className="mt-4 flex flex-wrap gap-3">
+              <div className="mt-4 flex flex-wrap gap-2">
                 <CtaLink cta="register" size="sm">
-                  Register Now
+                  Register
                 </CtaLink>
                 <CtaLink cta="login" variant="secondary" size="sm">
                   Login
                 </CtaLink>
               </div>
-            </div>
-            <div>
-              <h2 className="text-lg font-bold text-ink">Looking for answers first?</h2>
+            </Card>
+            <Card>
+              <h2 className="text-lg font-bold text-ink">Payment help</h2>
               <p className="mt-2 text-sm text-ink-muted">
-                Many common questions are covered in the FAQ, including payments, games and partner topics.
+                Review deposit and withdrawal categories before using the live cashier.
               </p>
-              <div className="mt-4">
-                <CtaLink href="/faq/" variant="secondary" size="sm">
-                  Visit FAQ
+              <Link href="/payment/" className="mt-4 inline-flex text-sm font-semibold text-brand-700">
+                Payment guide →
+              </Link>
+            </Card>
+            <Card>
+              <h2 className="text-lg font-bold text-ink">Partner pathway</h2>
+              <p className="mt-2 text-sm text-ink-muted">
+                Learn the partner journey, then open the official partner access flow when ready.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Link href="/partner/" className="text-sm font-semibold text-brand-700">
+                  Partner page →
+                </Link>
+                <CtaLink cta="partner" size="sm" variant="secondary">
+                  Partner access
                 </CtaLink>
               </div>
-            </div>
+            </Card>
+            <Card>
+              <h2 className="text-lg font-bold text-ink">Quick answers</h2>
+              <p className="mt-2 text-sm text-ink-muted">
+                Many common questions are already covered across registration, games and payments.
+              </p>
+              <Link href="/faq/" className="mt-4 inline-flex text-sm font-semibold text-brand-700">
+                Browse FAQ →
+              </Link>
+            </Card>
           </div>
         </Container>
       </Section>

@@ -9,9 +9,9 @@ import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "YES2WIN Promotions | Latest Offers & Rewards",
+  title: "YES2WIN Promotions | Offers & Rewards",
   description:
-    "Explore YES2WIN promotion types including welcome offers, deposit campaigns, weekly promotions, rebates and VIP benefits. Verify live terms on the official platform.",
+    "Understand YES2WIN promotion types — welcome offers, deposit campaigns, weekly promotions, rebates and VIP benefits — then check live terms on the platform.",
   path: "/promotions/",
 });
 
@@ -20,7 +20,7 @@ export default function PromotionsPage() {
     <>
       <WebPageJsonLd
         name="YES2WIN Promotions"
-        description="Explore YES2WIN promotion types and rewards structure."
+        description="Promotion types available across the YES2WIN experience."
         path="/promotions/"
       />
       <BreadcrumbJsonLd
@@ -31,8 +31,8 @@ export default function PromotionsPage() {
       />
       <PageHero
         eyebrow="Promotions"
-        title="YES2WIN promotions hub"
-        description="A structured overview of promotion types. Exact percentages, amounts and wagering requirements are intentionally left configurable so live platform terms remain the source of truth."
+        title="Offers explained clearly"
+        description="Learn how each promotion type works before you opt in. Live percentages, amounts and wagering always come from the official platform — not from invented figures here."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Promotions" },
@@ -64,10 +64,13 @@ export default function PromotionsPage() {
                 <p className="mt-3 text-sm leading-relaxed text-ink-muted">{promo.description}</p>
                 <div className="mt-5 space-y-3 rounded-xl bg-brand-50/80 p-4 text-sm text-ink-muted">
                   <p>
-                    <span className="font-semibold text-ink">Eligibility:</span> {promo.eligibility}
+                    <span className="font-semibold text-ink">Who it is for:</span> {promo.whoFor}
                   </p>
                   <p>
-                    <span className="font-semibold text-ink">Terms:</span> {promo.termsNote}
+                    <span className="font-semibold text-ink">How to check eligibility:</span> {promo.howToCheck}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-ink">Where to find terms:</span> {promo.whereTerms}
                   </p>
                 </div>
                 <div className="mt-5 flex flex-wrap gap-3">
@@ -75,7 +78,10 @@ export default function PromotionsPage() {
                     Register Now
                   </CtaLink>
                   <Link href="/terms/" className="text-sm font-semibold text-brand-700">
-                    Terms overview →
+                    Site terms →
+                  </Link>
+                  <Link href="/faq/#promotions" className="text-sm font-semibold text-brand-700">
+                    Promotions FAQ →
                   </Link>
                 </div>
               </Card>
@@ -83,9 +89,10 @@ export default function PromotionsPage() {
           </div>
 
           <div className="mt-10 flex flex-wrap gap-4 text-sm font-semibold text-brand-800">
+            <Link href="/games/">Browse games</Link>
             <Link href="/vip/">VIP benefits</Link>
             <Link href="/faq/#promotions">Promotions FAQ</Link>
-            <Link href="/games/">Browse games</Link>
+            <Link href="/terms/">Terms overview</Link>
           </div>
         </Container>
       </Section>

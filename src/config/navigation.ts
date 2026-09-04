@@ -18,36 +18,34 @@ export const primaryNav: NavItem[] = [
 
 export const footerNav = {
   explore: [
-    { label: "About the partner site", href: "/about/" },
-    { label: "Games overview", href: "/games/" },
-    { label: "Mobile experience", href: "/mobile/" },
-    { label: "Contact", href: "/contact/" },
+    { label: "About", href: "/about/" },
+    { label: "Games", href: "/games/" },
+    { label: "Promotions", href: "/promotions/" },
+    { label: "VIP", href: "/vip/" },
   ],
-  games: [
-    { label: "All games", href: "/games/" },
-    { label: "Slots", href: "/games/#slots" },
-    { label: "Live casino", href: "/games/#live-casino" },
-    { label: "Sports", href: "/games/#sports" },
-    { label: "Fishing", href: "/games/#fishing" },
-    { label: "Lottery", href: "/games/#lottery" },
-  ],
-  promotions: [
-    { label: "Promotions hub", href: "/promotions/" },
-    { label: "VIP experience", href: "/vip/" },
-    { label: "Payment guide", href: "/payment/" },
+  access: [
+    { label: "Mobile", href: "/mobile/" },
+    { label: "Payment", href: "/payment/" },
   ],
   support: [
     { label: "FAQ", href: "/faq/" },
-    { label: "Contact support", href: "/contact/" },
-    { label: "Responsible gaming", href: "/responsible-gaming/" },
+    { label: "Contact", href: "/contact/" },
+    { label: "Responsible Gaming", href: "/responsible-gaming/" },
   ],
   partner: [
-    { label: "Partner ecosystem", href: "/partner/" },
+    { label: "Partner programme", href: "/partner/" },
     { label: "Partner FAQ", href: "/faq/#partner" },
   ],
   legal: [
     { label: "Terms of use", href: "/terms/" },
     { label: "Privacy policy", href: "/privacy/" },
-    { label: "Responsible gaming", href: "/responsible-gaming/" },
+  ],
+  games: [
+    { label: "All games", href: "/games/" },
+    { label: "Slots", href: "/games/slots/" },
+    { label: "Live casino", href: "/games/live-casino/" },
+    { label: "Sports", href: "/games/sports/" },
+    { label: "Fishing", href: "/games/fishing/" },
+    { label: "Lottery", href: "/games/lottery/" },
   ],
 } as const;

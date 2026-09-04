@@ -7,17 +7,17 @@ const reasons = [
   {
     title: "Clear partner positioning",
     description:
-      "This site distinguishes YES2WIN from the official partner experience — helping visitors understand where they are and how to proceed.",
+      "You always know you are on YES2WIN Official Partner — an information and access gateway, not a noisy template.",
   },
   {
-    title: "Category-first navigation",
+    title: "Category-first discovery",
     description:
-      "Slots, live casino, sports, fishing and lottery are organised for fast discovery without noisy casino-template clutter.",
+      "Slots, live casino, sports, fishing and lottery are organised for fast browsing without clutter.",
   },
   {
-    title: "Conversion without pressure",
+    title: "Straightforward next steps",
     description:
-      "Register and Login CTAs stay central and consistent, while content remains informative and cautious about unverified claims.",
+      "Register and Login stay consistent sitewide, while copy stays factual about offers and payments.",
   },
 ];
 
@@ -27,9 +27,9 @@ export function WhyPartner() {
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <SectionHeading
-            eyebrow="Why this portal"
-            title="A calmer, clearer way into YES2WIN"
-            description="Built as an official partner gateway — premium, modern and focused on trustworthy guidance rather than hype."
+            eyebrow="Why this site"
+            title="A cleaner way into YES2WIN"
+            description="Premium green branding, useful guides and direct access CTAs — without hype or invented claims."
           />
           <div className="space-y-4">
             {reasons.map((reason, index) => (
@@ -46,10 +46,10 @@ export function WhyPartner() {
             ))}
             <div className="flex flex-wrap gap-3 pt-2">
               <CtaLink href="/about/" variant="secondary">
-                Learn more
+                About us
               </CtaLink>
               <Link href="/partner/" className="inline-flex items-center text-sm font-semibold text-brand-800">
-                Discover partner pathways →
+                Partner programme →
               </Link>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { PageHero } from "@/components/page/PageHero";
 import { Container, Section } from "@/components/ui/Container";
@@ -7,11 +8,17 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Privacy Policy | YES2WIN Official Partner",
   description:
-    "Privacy policy for the YES2WIN Official Partner website describing how informational site data may be handled and how platform privacy terms apply separately.",
+    "Privacy policy for the YES2WIN Official Partner website, explaining how this information site handles data separately from the YES2WIN platform.",
   path: "/privacy/",
 });
 
 export default function PrivacyPage() {
+  const operatorLine = siteConfig.legal.entityName
+    ? `This website is operated by ${siteConfig.legal.entityName}${
+        siteConfig.legal.jurisdiction ? ` in ${siteConfig.legal.jurisdiction}` : ""
+      }.`
+    : "This website is operated as YES2WIN Official Partner. Operator details may be updated when formally published.";
+
   return (
     <>
       <WebPageJsonLd
@@ -28,7 +35,7 @@ export default function PrivacyPage() {
       <PageHero
         eyebrow="Legal"
         title="Privacy policy"
-        description={`Last updated: ${siteConfig.legal.lastUpdated}. This policy explains privacy practices for this partner website.`}
+        description={`Last updated: ${siteConfig.legal.lastUpdated}. This policy explains how the partner website handles information.`}
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Privacy" },
@@ -39,39 +46,38 @@ export default function PrivacyPage() {
         <Container narrow className="prose-legal">
           <h2>1. Scope</h2>
           <p>
-            This policy covers the informational partner website. Account data collected on the official YES2WIN platform
-            after registration or login is governed by that platform’s privacy disclosures.
+            This policy covers the YES2WIN Official Partner information website. Account data collected on the official
+            YES2WIN platform after registration or login is governed by that platform’s own privacy disclosures.
           </p>
 
-          <h2>2. Controller placeholder</h2>
+          <h2>2. Who operates this website</h2>
           <p>
-            Website operator placeholder: {siteConfig.legal.entityName}. Jurisdiction placeholder:{" "}
-            {siteConfig.legal.jurisdiction}. Update these values through environment configuration before public launch.
+            {operatorLine} YES2WIN platform privacy practices remain separate from this partner website.
           </p>
 
           <h2>3. Information we may process</h2>
           <ul>
-            <li>Basic technical logs such as IP address, browser type and requested pages.</li>
-            <li>Optional analytics events if an analytics provider is later configured.</li>
-            <li>Messages you voluntarily send through configured contact channels.</li>
+            <li>Basic technical logs such as IP address, browser type and requested pages</li>
+            <li>Aggregate analytics if an analytics provider is enabled</li>
+            <li>Messages you voluntarily send through published contact channels</li>
           </ul>
 
           <h2>4. How we use information</h2>
           <p>
-            Information is used to operate, secure and improve the website experience, respond to enquiries and understand
-            aggregate traffic patterns.
+            Information is used to operate and secure the website, improve the experience, respond to enquiries and
+            understand aggregate traffic patterns.
           </p>
 
           <h2>5. Cookies and similar technologies</h2>
           <p>
-            Essential cookies may be required for site functionality. Any non-essential analytics or marketing cookies
-            should only be enabled with an appropriate consent mechanism.
+            Essential cookies may be required for site functionality. Non-essential analytics or marketing cookies should
+            only be enabled with an appropriate consent mechanism when introduced.
           </p>
 
           <h2>6. Sharing</h2>
           <p>
-            We do not sell personal information. Service providers may process limited technical data to host or secure the
-            website. External platform destinations have independent privacy practices.
+            We do not sell personal information. Hosting and security providers may process limited technical data to keep
+            the website running. External platform destinations have independent privacy practices.
           </p>
 
           <h2>7. Retention</h2>
@@ -82,8 +88,8 @@ export default function PrivacyPage() {
 
           <h2>8. Your choices</h2>
           <p>
-            Depending on your jurisdiction, you may have rights to access, correct or delete personal information. Contact
-            us through the Contact page once channels are configured.
+            Depending on your jurisdiction, you may have rights to access, correct or delete personal information. Use the{" "}
+            <Link href="/contact/">Contact</Link> page for website-related requests.
           </p>
 
           <h2>9. Children</h2>
