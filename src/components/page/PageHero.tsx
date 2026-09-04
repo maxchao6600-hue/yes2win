@@ -14,6 +14,7 @@ export function PageHero({
   tone = "green",
   image,
   imageAlt = "YES2WIN page visual",
+  crumbsLabel,
 }: {
   eyebrow?: string;
   title: string;
@@ -23,6 +24,7 @@ export function PageHero({
   tone?: "green" | "dark";
   image?: string;
   imageAlt?: string;
+  crumbsLabel?: string;
 }) {
   return (
     <div
@@ -53,6 +55,7 @@ export function PageHero({
       <Container className="relative">
         <Breadcrumbs
           items={crumbs}
+          label={crumbsLabel}
           className={
             image || tone === "dark"
               ? "[&_a]:text-brand-100 [&_span]:text-brand-50"

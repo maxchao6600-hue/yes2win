@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { accountFeatures } from "@/config/content/account";
 import { PageHero } from "@/components/page/PageHero";
 import { FinalCta } from "@/components/page/FinalCta";
 import { Container, Section } from "@/components/ui/Container";
@@ -9,66 +8,51 @@ import { Accordion } from "@/components/ui/Accordion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/JsonLd";
+import { getAccountFeatures, getDictionary, getGuidesCopy } from "@/i18n/get-content";
+import { getLocale } from "@/i18n/locale";
+import { localizePath } from "@/i18n/paths";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({
-  title: "YES2WIN Account Guide | Profile, Records & Security",
-  description:
-    "Learn how YES2WIN account tools typically work — profile, security, transaction history, betting records, promotion history, verification and referral options.",
-  path: "/account-guide/",
-  ogImage: "/images/og/og-home.png",
-});
+export async function generateMetadata() {
+  const locale = await getLocale();
+  return buildMetadata({
+    pageId: "account-guide",
+    path: "/account-guide/",
+    locale,
+    ogImage: "/images/og/og-home.png",
+  });
+}
 
-const faqs = [
-  {
-    id: "ag1",
-    question: "Where do account tools live?",
-    answer:
-      "Profile, records, verification and cashier tools are managed on the official YES2WIN platform after login. This guide explains what to look for before you open those screens.",
-  },
-  {
-    id: "ag2",
-    question: "Can I change account details on this partner website?",
-    answer:
-      "No. This site is an information and access gateway. Use the official platform for profile updates, security changes and payment actions.",
-  },
-  {
-    id: "ag3",
-    question: "What if a menu item is missing from my account?",
-    answer:
-      "Available tools can vary by region, verification status and platform updates. If something expected is missing, check again after login or use official support pathways.",
-  },
-];
+export default async function AccountGuidePage() {
+  const locale = await getLocale();
+  const ui = getDictionary(locale);
+  const copy = getGuidesCopy(locale).accountGuide;
+  const accountFeatures = getAccountFeatures(locale);
+  const homePath = localizePath("/", locale);
+  const guidePath = localizePath("/account-guide/", locale);
 
-export default function AccountGuidePage() {
   return (
     <>
-      <WebPageJsonLd
-        name="YES2WIN Account Guide"
-        description="Orientation for YES2WIN account features after login."
-        path="/account-guide/"
-      />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={guidePath} />
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", path: "/" },
-          { name: "Account Guide", path: "/account-guide/" },
+          { name: ui.breadcrumb.home, path: homePath },
+          { name: copy.crumb, path: guidePath },
         ]}
       />
       <PageHero
         image="/images/brand/yes2win-account-access.webp"
-        imageAlt="YES2WIN account artwork"
-        eyebrow="Account Guide"
-        title="Understand your YES2WIN account"
-        description="A practical map of the tools members usually look for after login — without recreating the live account dashboard on this partner site."
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Account Guide" },
-        ]}
+        imageAlt={copy.heroImageAlt}
+        eyebrow={copy.eyebrow}
+        title={copy.title}
+        description={copy.description}
+        crumbsLabel={ui.breadcrumb.label}
+        crumbs={[{ label: ui.breadcrumb.home, href: homePath }, { label: copy.crumb }]}
         actions={
           <>
-            <CtaLink cta="login">Login</CtaLink>
-            <CtaLink href="/register-guide/" variant="secondary">
-              Registration guide
+            <CtaLink cta="login">{copy.primaryCta}</CtaLink>
+            <CtaLink href={localizePath("/register-guide/", locale)} variant="secondary">
+              {copy.secondaryCta}
             </CtaLink>
           </>
         }
@@ -79,7 +63,7 @@ export default function AccountGuidePage() {
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line">
             <Image
               src="/images/brand/yes2win-account-access.webp"
-              alt="YES2WIN account access overview"
+              alt={copy.afterLogin.imageAlt}
               fill
               sizes="(max-width:1024px) 100vw, 45vw"
               className="object-cover"
@@ -87,15 +71,14 @@ export default function AccountGuidePage() {
           </div>
           <div>
             <SectionHeading
-              eyebrow="After login"
-              title="What the account area is for"
-              description="Once you sign in on the official platform, you can typically move between profile settings, payment tools, activity records and promotion history."
+              eyebrow={copy.afterLogin.eyebrow}
+              title={copy.afterLogin.title}
+              description={copy.afterLogin.description}
             />
             <ul className="mt-6 space-y-3 text-sm text-ink-muted">
-              <li>• Keep personal details accurate for support and verification.</li>
-              <li>• Review deposits, withdrawals and play history when needed.</li>
-              <li>• Check promotion participation against the live offer terms.</li>
-              <li>• Complete verification prompts only through official flows.</li>
+              {copy.afterLogin.bullets.map((bullet) => (
+                <li key={bullet}>• {bullet}</li>
+              ))}
             </ul>
           </div>
         </Container>
@@ -103,7 +86,7 @@ export default function AccountGuidePage() {
 
       <Section tone="green">
         <Container>
-          <SectionHeading title="Account feature map" description="Common YES2WIN account areas explained in plain language." />
+          <SectionHeading title={copy.featureMap.title} description={copy.featureMap.description} />
           <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {accountFeatures.map((feature) => (
               <Card key={feature.id}>
@@ -119,24 +102,12 @@ export default function AccountGuidePage() {
       <Section>
         <Container>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            <Card>
-              <h2 className="text-xl font-bold text-ink">Profile & security</h2>
-              <p className="mt-3 text-sm text-ink-muted">
-                Update contact details carefully and protect login with a unique password. Payment PIN setup may appear when cashier access requires it.
-              </p>
-            </Card>
-            <Card>
-              <h2 className="text-xl font-bold text-ink">Records & reports</h2>
-              <p className="mt-3 text-sm text-ink-muted">
-                Transaction, betting and win/loss views help you understand recent activity. Use them for orientation, not as financial advice.
-              </p>
-            </Card>
-            <Card>
-              <h2 className="text-xl font-bold text-ink">Promotions & referral</h2>
-              <p className="mt-3 text-sm text-ink-muted">
-                Promotion history shows what you have engaged with. Referral tools, when enabled, should use official sharing links only.
-              </p>
-            </Card>
+            {copy.cards.map((card) => (
+              <Card key={card.title}>
+                <h2 className="text-xl font-bold text-ink">{card.title}</h2>
+                <p className="mt-3 text-sm text-ink-muted">{card.body}</p>
+              </Card>
+            ))}
           </div>
         </Container>
       </Section>
@@ -144,19 +115,20 @@ export default function AccountGuidePage() {
       <Section tone="white">
         <Container className="grid gap-8 lg:grid-cols-2">
           <div>
-            <SectionHeading eyebrow="FAQ" title="Account questions" />
+            <SectionHeading eyebrow={copy.faqSection.eyebrow} title={copy.faqSection.title} />
             <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold text-brand-800">
-              <Link href="/payment/">Payment guide</Link>
-              <Link href="/faq/#account">Account FAQ</Link>
-              <Link href="/contact/">Contact</Link>
-              <Link href="/responsible-gaming/">Responsible gaming</Link>
+              {copy.faqSection.links.map((link) => (
+                <Link key={link.href} href={localizePath(link.href, locale)}>
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
-          <Accordion items={faqs} />
+          <Accordion items={copy.faqs} />
         </Container>
       </Section>
 
-      <FinalCta title="Open your YES2WIN account" description="Log in on the official platform to manage profile, records and cashier tools." />
+      <FinalCta locale={locale} title={copy.finalCta.title} description={copy.finalCta.description} />
     </>
   );
 }

@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { allFaqItems } from "@/config/content/faq";
 import { Container, Section } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Accordion } from "@/components/ui/Accordion";
 import { CtaLink } from "@/components/ui/CtaLink";
+import { getLocale } from "@/i18n/locale";
+import { getFaqCategories, getHomeCopy } from "@/i18n/get-content";
+import { localizePath } from "@/i18n/paths";
 
 const previewIds = [
   "what-is-yes2win",
@@ -18,9 +20,13 @@ const previewIds = [
   "play-responsibly",
 ];
 
-export function FAQPreview() {
+export async function FAQPreview() {
+  const locale = await getLocale();
+  const copy = getHomeCopy(locale).faq;
+  const faqItems = getFaqCategories(locale).flatMap((category) => category.items);
+
   const preview = previewIds
-    .map((id) => allFaqItems.find((item) => item.id === id))
+    .map((id) => faqItems.find((item) => item.id === id))
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
 
   return (
@@ -29,16 +35,19 @@ export function FAQPreview() {
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <SectionHeading
-              eyebrow="FAQ"
-              title="Answers before you dive in"
-              description="Useful questions about YES2WIN, registration, games, promotions, payments, mobile access and partner pathways."
+              eyebrow={copy.eyebrow}
+              title={copy.title}
+              description={copy.description}
             />
             <div className="mt-6 flex flex-wrap gap-3">
-              <CtaLink href="/faq/" variant="secondary">
-                Browse all FAQs
+              <CtaLink href={localizePath("/faq/", locale)} variant="secondary">
+                {copy.primaryCta}
               </CtaLink>
-              <Link href="/contact/" className="inline-flex items-center text-sm font-semibold text-brand-800">
-                Contact support →
+              <Link
+                href={localizePath("/contact/", locale)}
+                className="inline-flex items-center text-sm font-semibold text-brand-800"
+              >
+                {copy.secondaryLink} →
               </Link>
             </div>
           </div>

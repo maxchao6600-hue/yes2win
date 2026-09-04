@@ -1,24 +1,30 @@
-import { gameProviders } from "@/config/content/providers";
 import { Container, Section } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
+import { getLocale } from "@/i18n/locale";
+import { getHomeCopy, getProviders } from "@/i18n/get-content";
+import { localizePath } from "@/i18n/paths";
 
-export function ProvidersPreview() {
+export async function ProvidersPreview() {
+  const locale = await getLocale();
+  const copy = getHomeCopy(locale).providers;
+  const providers = getProviders(locale);
+
   return (
     <Section>
       <Container>
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow="Studios"
-            title="Game providers powering YES2WIN"
-            description="YES2WIN publicly references studios such as Evolution Gaming, Pragmatic Play, SA Gaming, CMD368 and Playtech. Live title availability still depends on the platform lobby."
+            eyebrow={copy.eyebrow}
+            title={copy.title}
+            description={copy.description}
           />
-          <CtaLink href="/games/#providers" variant="secondary">
-            Browse games hub
+          <CtaLink href={`${localizePath("/games/", locale)}#providers`} variant="secondary">
+            {copy.cta}
           </CtaLink>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
-          {gameProviders.map((provider) => (
+          {providers.map((provider) => (
             <article
               key={provider.id}
               className="rounded-3xl border border-line bg-white p-5 shadow-[0_18px_50px_-34px_rgba(6,78,59,0.45)]"

@@ -1,23 +1,30 @@
 import Image from "next/image";
-import { accountFeatures } from "@/config/content/account";
+import { media } from "@/config/media";
 import { Container, Section } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
+import { getLocale } from "@/i18n/locale";
+import { getAccountFeatures, getHomeCopy } from "@/i18n/get-content";
+import { localizePath } from "@/i18n/paths";
 
-export function AccountFeatures() {
+export async function AccountFeatures() {
+  const locale = await getLocale();
+  const copy = getHomeCopy(locale).account;
+  const features = getAccountFeatures(locale);
+
   return (
     <Section>
       <Container>
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <SectionHeading
-            eyebrow="Account"
-            title="What you can manage after login"
-            description="YES2WIN account tools typically cover profile, security, records, promotions and verification. Exact menus can vary by account status."
+            eyebrow={copy.eyebrow}
+            title={copy.title}
+            description={copy.description}
           />
           <div className="relative hidden aspect-[21/9] overflow-hidden rounded-[1.5rem] border border-line lg:block">
             <Image
-              src="/images/brand/yes2win-account-access.webp"
-              alt="YES2WIN account features visual"
+              src={media.accountAccess}
+              alt={copy.imageAlt}
               fill
               sizes="50vw"
               className="object-cover"
@@ -25,7 +32,7 @@ export function AccountFeatures() {
           </div>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {accountFeatures.map((feature) => (
+          {features.map((feature) => (
             <article
               key={feature.id}
               className="rounded-2xl border border-line bg-white p-5 shadow-[0_12px_40px_-28px_rgba(6,78,59,0.4)]"
@@ -37,11 +44,11 @@ export function AccountFeatures() {
           ))}
         </div>
         <div className="mt-8 flex flex-wrap gap-3">
-          <CtaLink href="/account-guide/" variant="secondary">
-            Full account guide
+          <CtaLink href={localizePath("/account-guide/", locale)} variant="secondary">
+            {copy.primaryCta}
           </CtaLink>
           <CtaLink cta="login" variant="outline">
-            Login
+            {copy.secondaryCta}
           </CtaLink>
         </div>
       </Container>

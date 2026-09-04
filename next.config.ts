@@ -10,12 +10,38 @@ const nextConfig: NextConfig = {
       {
         source: "/en",
         destination: "/",
-        permanent: false,
+        permanent: true,
       },
       {
         source: "/en/:path*",
         destination: "/:path*",
-        permanent: false,
+        permanent: true,
+      },
+      {
+        source: "/zh",
+        destination: "/zh-cn/",
+        permanent: true,
+      },
+      {
+        source: "/zh/:path*",
+        destination: "/zh-cn/:path*",
+        permanent: true,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/zh-cn",
+        destination: "/",
+      },
+      {
+        source: "/zh-cn/",
+        destination: "/",
+      },
+      {
+        source: "/zh-cn/:path*",
+        destination: "/:path*",
       },
     ];
   },

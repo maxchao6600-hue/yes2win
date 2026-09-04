@@ -4,14 +4,20 @@ import { media } from "@/config/media";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
+import { getLocale } from "@/i18n/locale";
+import { getDictionary, getHomeCopy } from "@/i18n/get-content";
 
-export function Hero() {
+export async function Hero() {
+  const locale = await getLocale();
+  const copy = getHomeCopy(locale).hero;
+  const ui = getDictionary(locale);
+
   return (
     <section className="relative overflow-hidden pb-16 pt-28 text-white sm:pt-32 lg:min-h-[92vh] lg:pb-24">
       <div className="absolute inset-0">
         <Image
           src={media.homeHero}
-          alt="YES2WIN premium gaming atmosphere"
+          alt={copy.imageAlt}
           fill
           priority
           fetchPriority="high"
@@ -27,43 +33,38 @@ export function Hero() {
           <div className="mb-5 flex items-center gap-3">
             <Image
               src={siteConfig.logo.src}
-              alt={siteConfig.logo.alt}
+              alt={ui.brand.logoAlt}
               width={150}
               height={45}
               className="h-10 w-auto brightness-0 invert"
               priority
             />
-            <Badge tone="light">Official YES2WIN Partner</Badge>
+            <Badge tone="light">{copy.badge}</Badge>
           </div>
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            YES2WIN — Your Gateway to the Winning Ecosystem
+            {copy.title}
           </h1>
           <p className="mt-6 text-base leading-relaxed text-brand-50/92 sm:text-lg">
-            Explore YES2WIN games, offers and member pathways through an official partner site built for a modern,
-            confident first impression.
+            {copy.description}
           </p>
           <p className="mt-4 text-sm font-medium uppercase tracking-[0.18em] text-brand-200">
-            {siteConfig.tagline}
+            {ui.brand.tagline}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <CtaLink cta="register" size="lg">
-              Register Now
+              {copy.registerCta}
             </CtaLink>
             <CtaLink cta="login" variant="outline" size="lg">
-              Login
+              {copy.loginCta}
             </CtaLink>
           </div>
         </div>
 
         <div className="fade-up delay-2 relative mx-auto hidden w-full max-w-md lg:block lg:max-w-none">
           <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/10 p-5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.55)] backdrop-blur-md">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-100">Partner Portal</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-100">{copy.panel.label}</p>
             <div className="mt-5 grid gap-3">
-              {[
-                { label: "Slots", meta: "Spin & discover" },
-                { label: "Live Casino", meta: "Real-time tables" },
-                { label: "Sports", meta: "Follow the action" },
-              ].map((item) => (
+              {copy.panel.items.map((item) => (
                 <div
                   key={item.label}
                   className="flex items-center justify-between rounded-2xl border border-white/10 bg-brand-950/45 px-4 py-3"
@@ -77,8 +78,8 @@ export function Hero() {
               ))}
             </div>
             <div className="mt-5 rounded-2xl bg-gradient-to-r from-brand-500 to-brand-700 p-4">
-              <p className="text-xs uppercase tracking-[0.16em] text-white/80">Ready when you are</p>
-              <p className="mt-1 text-lg font-semibold">Register · Login · Explore</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-white/80">{copy.panel.readyLabel}</p>
+              <p className="mt-1 text-lg font-semibold">{copy.panel.readyValue}</p>
             </div>
           </div>
         </div>

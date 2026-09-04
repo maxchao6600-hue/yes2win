@@ -60,12 +60,43 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+body.locale-zh {
+  font-family:
+    var(--font-manrope),
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    "Noto Sans SC",
+    "Source Han Sans SC",
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  line-height: 1.7;
+}
+
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   letter-spacing: -0.02em;
+}
+
+body.locale-zh h1,
+body.locale-zh h2,
+body.locale-zh h3,
+body.locale-zh h4 {
+  font-family:
+    var(--font-outfit),
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    "Noto Sans SC",
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  letter-spacing: 0;
+  line-height: 1.35;
 }
 
 a {

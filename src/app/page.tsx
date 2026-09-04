@@ -18,23 +18,28 @@ import { ResponsiblePreview } from "@/components/home/ResponsiblePreview";
 import { FinalCta } from "@/components/page/FinalCta";
 import { WebPageJsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
+import { getSiteCopy } from "@/i18n/get-content";
+import { getLocale } from "@/i18n/locale";
+import { localizePath } from "@/i18n/paths";
+import type { Metadata } from "next";
 
-export const metadata = buildMetadata({
-  title: "YES2WIN Official Partner | Online Gaming & Entertainment",
-  description:
-    "YES2WIN Official Partner — explore games, promotions, VIP, payments, mobile access and partner pathways, then register or log in through the official platform.",
-  path: "/",
-  ogImage: "/images/og/og-home.png",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  return buildMetadata({
+    pageId: "home",
+    path: "/",
+    locale,
+    ogImage: "/images/og/og-home.png",
+  });
+}
 
-export default function HomePage() {
+export default async function HomePage() {
+  const locale = await getLocale();
+  const site = getSiteCopy(locale);
+
   return (
     <>
-      <WebPageJsonLd
-        name="YES2WIN Official Partner"
-        description="Official partner information and access gateway for the YES2WIN ecosystem."
-        path="/"
-      />
+      <WebPageJsonLd name={site.identity} description={site.description} path={localizePath("/", locale)} />
       <Hero />
       <TrustStrip />
       <FeaturedGames />

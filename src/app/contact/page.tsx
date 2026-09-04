@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
 import { PageHero } from "@/components/page/PageHero";
 import { FinalCta } from "@/components/page/FinalCta";
 import { Container, Section } from "@/components/ui/Container";
@@ -7,14 +6,15 @@ import { Card } from "@/components/ui/Card";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/JsonLd";
+import { getDictionary, getHubsCopy, getSiteCopy } from "@/i18n/get-content";
+import { getLocale } from "@/i18n/locale";
+import { localizePath } from "@/i18n/paths";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({
-  title: "Contact YES2WIN Official Partner",
-  description:
-    "Get help with YES2WIN account access, payments, registration, login, partner support and general questions through this official partner website.",
-  path: "/contact/",
-});
+export async function generateMetadata() {
+  const locale = await getLocale();
+  return buildMetadata({ pageId: "contact", path: "/contact/", locale });
+}
 
 function ContactValue({
   value,
@@ -36,39 +36,38 @@ function ContactValue({
   return <p className="leading-relaxed text-ink-muted">{fallback}</p>;
 }
 
-export default function ContactPage() {
-  const { customerSupport, partnerSupport, generalEnquiries } = siteConfig.contact;
+export default async function ContactPage() {
+  const locale = await getLocale();
+  const ui = getDictionary(locale);
+  const copy = getHubsCopy(locale).contact;
+  const { customerSupport, partnerSupport, generalEnquiries } = getSiteCopy(locale).contact;
+  const homePath = localizePath("/", locale);
+  const contactPath = localizePath("/contact/", locale);
 
   return (
     <>
-      <WebPageJsonLd
-        name="Contact YES2WIN Official Partner"
-        description="Support pathways for the YES2WIN Official Partner website."
-        path="/contact/"
-      />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={contactPath} />
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", path: "/" },
-          { name: "Contact", path: "/contact/" },
+          { name: ui.breadcrumb.home, path: homePath },
+          { name: copy.crumb, path: contactPath },
         ]}
       />
 
       {/* 1. Hero */}
       <PageHero
         image="/images/brand/yes2win-contact-support.webp"
-        imageAlt="YES2WIN support artwork"
-        eyebrow="Contact"
-        title="How can we help?"
-        description="Choose the pathway that matches your question — customer support, account help, payments, registration, login, partner support or general site guidance."
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Contact" },
-        ]}
+        imageAlt={copy.heroImageAlt}
+        eyebrow={copy.eyebrow}
+        title={copy.title}
+        description={copy.description}
+        crumbsLabel={ui.breadcrumb.label}
+        crumbs={[{ label: ui.breadcrumb.home, href: homePath }, { label: copy.crumb }]}
         actions={
           <>
-            <CtaLink cta="register">Access YES2WIN</CtaLink>
-            <CtaLink href="/faq/" variant="secondary">
-              Browse FAQ
+            <CtaLink cta="register">{copy.primaryCta}</CtaLink>
+            <CtaLink href={localizePath("/faq/", locale)} variant="secondary">
+              {copy.secondaryCta}
             </CtaLink>
           </>
         }
@@ -78,8 +77,8 @@ export default function ContactPage() {
       <Section tone="white">
         <Container>
           <SectionHeading
-            eyebrow="Customer support"
-            title="Day-to-day platform help"
+            eyebrow={copy.customerSupport.eyebrow}
+            title={copy.customerSupport.title}
             description={customerSupport.description}
           />
           <Card className="mt-8 max-w-3xl">
@@ -87,16 +86,13 @@ export default function ContactPage() {
             <div className="mt-5 rounded-xl border border-brand-200 bg-brand-50/70 p-4 text-sm">
               <ContactValue value={customerSupport.value} fallback={customerSupport.fallback} />
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-ink-muted">
-              For account-specific games, deposits, withdrawals and platform tools, continue through Register or Login
-              so support can be reached inside the official YES2WIN environment when available.
-            </p>
+            <p className="mt-4 text-sm leading-relaxed text-ink-muted">{copy.customerSupport.note}</p>
             <div className="mt-5 flex flex-wrap gap-3">
               <CtaLink cta="register" size="sm">
-                Register
+                {copy.customerSupport.registerCta}
               </CtaLink>
               <CtaLink cta="login" variant="secondary" size="sm">
-                Login
+                {copy.customerSupport.loginCta}
               </CtaLink>
             </div>
           </Card>
@@ -107,29 +103,17 @@ export default function ContactPage() {
       <Section>
         <Container>
           <SectionHeading
-            eyebrow="Account help"
-            title="Profile, security and member tools"
-            description="Account settings and security options are managed on the official YES2WIN platform after you sign in."
+            eyebrow={copy.accountHelp.eyebrow}
+            title={copy.accountHelp.title}
+            description={copy.accountHelp.description}
           />
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            <Card>
-              <h2 className="text-lg font-bold text-ink">Profile updates</h2>
-              <p className="mt-2 text-sm text-ink-muted">
-                Change personal details and review account information inside the live platform account area.
-              </p>
-            </Card>
-            <Card>
-              <h2 className="text-lg font-bold text-ink">Security & recovery</h2>
-              <p className="mt-2 text-sm text-ink-muted">
-                Use the official login recovery tools if you cannot sign in, then continue with platform support if needed.
-              </p>
-            </Card>
-            <Card>
-              <h2 className="text-lg font-bold text-ink">Verification prompts</h2>
-              <p className="mt-2 text-sm text-ink-muted">
-                Identity or payment checks appear inside the official platform when required for withdrawals or account review.
-              </p>
-            </Card>
+            {copy.accountHelp.cards.map((card) => (
+              <Card key={card.title}>
+                <h2 className="text-lg font-bold text-ink">{card.title}</h2>
+                <p className="mt-2 text-sm text-ink-muted">{card.body}</p>
+              </Card>
+            ))}
           </div>
         </Container>
       </Section>
@@ -138,31 +122,23 @@ export default function ContactPage() {
       <Section tone="green">
         <Container>
           <SectionHeading
-            eyebrow="Payment help"
-            title="Deposits, withdrawals and cashier questions"
-            description="Review payment categories here, then confirm live methods, limits and verification steps in the cashier after login."
+            eyebrow={copy.paymentHelp.eyebrow}
+            title={copy.paymentHelp.title}
+            description={copy.paymentHelp.description}
           />
           <div className="mt-8 grid gap-5 md:grid-cols-2">
-            <Card>
-              <h2 className="text-xl font-bold text-ink">Before you deposit</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                Understand common categories such as bank transfer, e-wallet, online banking and cryptocurrency on the
-                Payment page. Exact options depend on region and account status.
-              </p>
-              <Link href="/payment/" className="mt-4 inline-flex text-sm font-semibold text-brand-700">
-                Payment guide →
-              </Link>
-            </Card>
-            <Card>
-              <h2 className="text-xl font-bold text-ink">Withdrawal readiness</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                Withdrawals may require verification. Follow only the official platform prompts and avoid sharing
-                sensitive details outside those flows.
-              </p>
-              <Link href="/faq/#payments" className="mt-4 inline-flex text-sm font-semibold text-brand-700">
-                Payments FAQ →
-              </Link>
-            </Card>
+            {copy.paymentHelp.cards.map((card) => (
+              <Card key={card.title}>
+                <h2 className="text-xl font-bold text-ink">{card.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-muted">{card.body}</p>
+                <Link
+                  href={localizePath(card.href, locale)}
+                  className="mt-4 inline-flex text-sm font-semibold text-brand-700"
+                >
+                  {card.linkLabel} →
+                </Link>
+              </Card>
+            ))}
           </div>
         </Container>
       </Section>
@@ -172,33 +148,30 @@ export default function ContactPage() {
         <Container className="grid gap-8 lg:grid-cols-2 lg:items-start">
           <div>
             <SectionHeading
-              eyebrow="Registration help"
-              title="Create your YES2WIN account"
-              description="Use Register to open the official signup flow. This partner site explains the journey and does not recreate the live form locally."
+              eyebrow={copy.registrationHelp.eyebrow}
+              title={copy.registrationHelp.title}
+              description={copy.registrationHelp.description}
             />
             <div className="mt-6 flex flex-wrap gap-3">
-              <CtaLink cta="register">Register Now</CtaLink>
-              <CtaLink href="/register-guide/" variant="secondary">
-                Register guide
+              <CtaLink cta="register">{copy.registrationHelp.primaryCta}</CtaLink>
+              <CtaLink href={localizePath("/register-guide/", locale)} variant="secondary">
+                {copy.registrationHelp.secondaryCta}
               </CtaLink>
             </div>
           </div>
           <div className="grid gap-4">
             <Card>
-              <h2 className="text-lg font-bold text-ink">What you may need</h2>
-              <p className="mt-2 text-sm text-ink-muted">
-                Accurate account details and any verification steps shown during signup. Field labels can change as the
-                platform updates.
-              </p>
+              <h2 className="text-lg font-bold text-ink">{copy.registrationHelp.needCard.title}</h2>
+              <p className="mt-2 text-sm text-ink-muted">{copy.registrationHelp.needCard.body}</p>
             </Card>
             <Card>
-              <h2 className="text-lg font-bold text-ink">Stuck during signup?</h2>
-              <p className="mt-2 text-sm text-ink-muted">
-                Review the Register Guide and Registration FAQ, then continue through the official form or platform
-                support channels.
-              </p>
-              <Link href="/faq/#registration" className="mt-4 inline-flex text-sm font-semibold text-brand-700">
-                Registration FAQ →
+              <h2 className="text-lg font-bold text-ink">{copy.registrationHelp.stuckCard.title}</h2>
+              <p className="mt-2 text-sm text-ink-muted">{copy.registrationHelp.stuckCard.body}</p>
+              <Link
+                href={localizePath(copy.registrationHelp.stuckCard.href, locale)}
+                className="mt-4 inline-flex text-sm font-semibold text-brand-700"
+              >
+                {copy.registrationHelp.stuckCard.linkLabel} →
               </Link>
             </Card>
           </div>
@@ -209,38 +182,38 @@ export default function ContactPage() {
       <Section>
         <Container>
           <SectionHeading
-            eyebrow="Login help"
-            title="Sign in and recover access"
-            description="Login opens the official YES2WIN sign-in destination. Password recovery and security checks live there — not as a fake local login on this partner page."
+            eyebrow={copy.loginHelp.eyebrow}
+            title={copy.loginHelp.title}
+            description={copy.loginHelp.description}
           />
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             <Card>
-              <h2 className="text-lg font-bold text-ink">Open Login</h2>
-              <p className="mt-2 text-sm text-ink-muted">
-                Continue into the official login page when you already have an account.
-              </p>
+              <h2 className="text-lg font-bold text-ink">{copy.loginHelp.openCard.title}</h2>
+              <p className="mt-2 text-sm text-ink-muted">{copy.loginHelp.openCard.body}</p>
               <div className="mt-4">
                 <CtaLink cta="login" size="sm">
-                  Login
+                  {copy.loginHelp.openCard.cta}
                 </CtaLink>
               </div>
             </Card>
             <Card>
-              <h2 className="text-lg font-bold text-ink">Cannot sign in?</h2>
-              <p className="mt-2 text-sm text-ink-muted">
-                Confirm your username and password, check your connection, then use the platform recovery option.
-              </p>
-              <Link href="/faq/#login" className="mt-4 inline-flex text-sm font-semibold text-brand-700">
-                Login FAQ →
+              <h2 className="text-lg font-bold text-ink">{copy.loginHelp.recoveryCard.title}</h2>
+              <p className="mt-2 text-sm text-ink-muted">{copy.loginHelp.recoveryCard.body}</p>
+              <Link
+                href={localizePath(copy.loginHelp.recoveryCard.href, locale)}
+                className="mt-4 inline-flex text-sm font-semibold text-brand-700"
+              >
+                {copy.loginHelp.recoveryCard.linkLabel} →
               </Link>
             </Card>
             <Card>
-              <h2 className="text-lg font-bold text-ink">Mobile login</h2>
-              <p className="mt-2 text-sm text-ink-muted">
-                The same Access YES2WIN / Login pathway works from phone browsers. See the Mobile page for device tips.
-              </p>
-              <Link href="/mobile/" className="mt-4 inline-flex text-sm font-semibold text-brand-700">
-                Mobile guide →
+              <h2 className="text-lg font-bold text-ink">{copy.loginHelp.mobileCard.title}</h2>
+              <p className="mt-2 text-sm text-ink-muted">{copy.loginHelp.mobileCard.body}</p>
+              <Link
+                href={localizePath(copy.loginHelp.mobileCard.href, locale)}
+                className="mt-4 inline-flex text-sm font-semibold text-brand-700"
+              >
+                {copy.loginHelp.mobileCard.linkLabel} →
               </Link>
             </Card>
           </div>
@@ -251,8 +224,8 @@ export default function ContactPage() {
       <Section tone="green">
         <Container>
           <SectionHeading
-            eyebrow="Partner support"
-            title="Onboarding, referrals and partner resources"
+            eyebrow={copy.partnerSupport.eyebrow}
+            title={copy.partnerSupport.title}
             description={partnerSupport.description}
           />
           <div className="mt-8 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
@@ -261,37 +234,31 @@ export default function ContactPage() {
               <div className="mt-5 rounded-xl border border-brand-200 bg-brand-50/70 p-4 text-sm">
                 <ContactValue value={partnerSupport.value} fallback={partnerSupport.fallback} />
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-ink-muted">
-                Review the Partner page first for journey steps, resources and FAQ answers, then open partner access
-                when you are ready to continue onboarding.
-              </p>
+              <p className="mt-4 text-sm leading-relaxed text-ink-muted">{copy.partnerSupport.note}</p>
               <div className="mt-5 flex flex-wrap gap-3">
-                <CtaLink href="/partner/" variant="secondary" size="sm">
-                  Partner page
+                <CtaLink href={localizePath("/partner/", locale)} variant="secondary" size="sm">
+                  {copy.partnerSupport.partnerPageCta}
                 </CtaLink>
                 <CtaLink cta="partner" size="sm">
-                  Partner access
+                  {copy.partnerSupport.partnerAccessCta}
                 </CtaLink>
               </div>
             </Card>
             <Card>
-              <h2 className="text-xl font-bold text-ink">What partner support covers</h2>
+              <h2 className="text-xl font-bold text-ink">{copy.partnerSupport.coverageTitle}</h2>
               <ul className="mt-4 space-y-3 text-sm text-ink-muted">
-                <li className="flex gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-500" />
-                  <span>Partner access and onboarding questions</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-500" />
-                  <span>Referral sharing and resource guidance</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-500" />
-                  <span>Where to find live partner terms after access is granted</span>
-                </li>
+                {copy.partnerSupport.coverageItems.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-500" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
-              <Link href="/faq/#partner" className="mt-5 inline-flex text-sm font-semibold text-brand-700">
-                Partner FAQ →
+              <Link
+                href={localizePath(copy.partnerSupport.faqHref, locale)}
+                className="mt-5 inline-flex text-sm font-semibold text-brand-700"
+              >
+                {copy.partnerSupport.faqLinkLabel} →
               </Link>
             </Card>
           </div>
@@ -302,8 +269,8 @@ export default function ContactPage() {
       <Section tone="white">
         <Container>
           <SectionHeading
-            eyebrow="General enquiries"
-            title="Questions about this partner website"
+            eyebrow={copy.generalEnquiries.eyebrow}
+            title={copy.generalEnquiries.title}
             description={generalEnquiries.description}
           />
           <Card className="mt-8 max-w-3xl">
@@ -312,9 +279,11 @@ export default function ContactPage() {
               <ContactValue value={generalEnquiries.value} fallback={generalEnquiries.fallback} />
             </div>
             <div className="mt-5 flex flex-wrap gap-4 text-sm font-semibold text-brand-800">
-              <Link href="/about/">About this site</Link>
-              <Link href="/faq/">FAQ hub</Link>
-              <Link href="/responsible-gaming/">Responsible gaming</Link>
+              {copy.generalEnquiries.links.map((link) => (
+                <Link key={link.href} href={localizePath(link.href, locale)}>
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </Card>
         </Container>
@@ -324,25 +293,18 @@ export default function ContactPage() {
       <Section>
         <Container>
           <SectionHeading
-            eyebrow="FAQ links"
-            title="Start with answers already published"
-            description="Many common questions are covered across registration, login, payments, games, mobile and partner topics."
+            eyebrow={copy.faqLinks.eyebrow}
+            title={copy.faqLinks.title}
+            description={copy.faqLinks.description}
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {[
-              ["/faq/#registration", "Registration FAQ"],
-              ["/faq/#login", "Login FAQ"],
-              ["/faq/#payments", "Payments FAQ"],
-              ["/faq/#mobile", "Mobile FAQ"],
-              ["/faq/#partner", "Partner FAQ"],
-              ["/faq/", "Full FAQ hub"],
-            ].map(([href, label]) => (
+            {copy.faqLinks.links.map((link) => (
               <Link
-                key={href}
-                href={href}
+                key={link.href}
+                href={localizePath(link.href, locale)}
                 className="rounded-2xl border border-line bg-white px-4 py-4 text-sm font-semibold text-brand-800 transition hover:border-brand-300"
               >
-                {label} →
+                {link.label} →
               </Link>
             ))}
           </div>
@@ -352,38 +314,17 @@ export default function ContactPage() {
       {/* 10. Quick Links */}
       <Section tone="green">
         <Container>
-          <SectionHeading
-            eyebrow="Quick links"
-            title="Useful next steps across the partner site"
-          />
+          <SectionHeading eyebrow={copy.quickLinks.eyebrow} title={copy.quickLinks.title} />
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {[
-              {
-                title: "Games",
-                body: "Browse slots, live casino, sports, fishing and lottery guides.",
-                href: "/games/",
-              },
-              {
-                title: "Promotions",
-                body: "Understand offer types before confirming live terms.",
-                href: "/promotions/",
-              },
-              {
-                title: "VIP",
-                body: "Learn how recognition and premium service are framed.",
-                href: "/vip/",
-              },
-              {
-                title: "Mobile",
-                body: "Phone-friendly access tips via Access YES2WIN / Login.",
-                href: "/mobile/",
-              },
-            ].map((item) => (
+            {copy.quickLinks.items.map((item) => (
               <Card key={item.title}>
                 <h2 className="text-lg font-bold text-ink">{item.title}</h2>
                 <p className="mt-2 text-sm text-ink-muted">{item.body}</p>
-                <Link href={item.href} className="mt-4 inline-flex text-sm font-semibold text-brand-700">
-                  Open {item.title} →
+                <Link
+                  href={localizePath(item.href, locale)}
+                  className="mt-4 inline-flex text-sm font-semibold text-brand-700"
+                >
+                  {copy.quickLinks.openLabelTemplate.replace("{title}", item.title)} →
                 </Link>
               </Card>
             ))}
@@ -391,10 +332,7 @@ export default function ContactPage() {
         </Container>
       </Section>
 
-      <FinalCta
-        title="Need to continue into YES2WIN?"
-        description="Register or log in through the official platform links connected to this partner gateway."
-      />
+      <FinalCta locale={locale} title={copy.finalCta.title} description={copy.finalCta.description} />
     </>
   );
 }

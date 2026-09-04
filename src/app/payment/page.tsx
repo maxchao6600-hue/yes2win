@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { paymentDisclaimer, paymentMethods } from "@/config/content/payments";
+import type { PaymentMethod } from "@/config/content/payments";
 import { PageHero } from "@/components/page/PageHero";
 import { FinalCta } from "@/components/page/FinalCta";
 import { Container, Section } from "@/components/ui/Container";
@@ -9,99 +9,44 @@ import { Accordion } from "@/components/ui/Accordion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/JsonLd";
+import type { Locale } from "@/i18n/config";
+import {
+  getDictionary,
+  getHubsCopy,
+  getPaymentDisclaimer,
+  getPaymentMethods,
+} from "@/i18n/get-content";
+import { getLocale } from "@/i18n/locale";
+import { localizePath } from "@/i18n/paths";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({
-  title: "YES2WIN Payment Methods | Deposit & Withdrawal Guide",
-  description:
-    "YES2WIN payment overview covering bank transfer, e-wallet, DuitNow, TNG, GrabPay, online banking, bank cards and crypto — verify live details in the official cashier.",
-  path: "/payment/",
-  ogImage: "/images/og/og-payment.png",
-});
+export async function generateMetadata() {
+  const locale = await getLocale();
+  return buildMetadata({
+    pageId: "payment",
+    path: "/payment/",
+    locale,
+    ogImage: "/images/og/og-payment.png",
+  });
+}
 
-const visualMethods = [
-  { id: "bank", label: "Bank Transfer", src: "/images/payment/bank.webp" },
-  { id: "ewallet", label: "E-Wallet", src: "/images/payment/ewallet.webp" },
-  { id: "duitnow", label: "DuitNow", src: "/images/payment/duitnow.webp" },
-  { id: "tng", label: "Touch n Go", src: "/images/payment/tng.webp" },
-  { id: "online", label: "Online Banking", src: "/images/payment/online.webp" },
-  { id: "crypto", label: "Crypto", src: "/images/payment/crypto.webp" },
-  { id: "cards", label: "Bank Cards", src: "/images/payment/cards.webp" },
-  { id: "grab", label: "GrabPay", src: "/images/payment/grab.webp" },
-];
-
-const methodById = Object.fromEntries(paymentMethods.map((method) => [method.id, method]));
-
-const depositGuide = [
-  "Sign in through this partner gateway and open the official cashier.",
-  "Choose an available deposit method shown for your account and region.",
-  "Follow the on-screen steps for that channel — bank, e-wallet, card or crypto.",
-  "Confirm the transaction status in your account records after submission.",
-];
-
-const withdrawalGuide = [
-  "Open withdrawals from your account once funds are available to request.",
-  "Select a supported payout method displayed in the live cashier.",
-  "Complete any verification or payment-detail checks requested by the platform.",
-  "Track the request in transaction history and respond to follow-up prompts if asked.",
-];
-
-const commonIssues = [
-  {
-    title: "Method not visible",
-    body: "Availability depends on region, account status and live cashier configuration. If a channel is missing, it is usually unsupported for your account at that time.",
-  },
-  {
-    title: "Pending transaction",
-    body: "Some methods need bank or network confirmation. Review your transaction records and wait for the platform status update before submitting duplicates.",
-  },
-  {
-    title: "Verification required",
-    body: "Identity or payment verification may be requested before certain withdrawals. Use only official upload flows inside your account.",
-  },
-  {
-    title: "Incorrect payment details",
-    body: "Double-check account names, wallet addresses and bank references before confirming. Mismatched details can delay processing.",
-  },
-];
-
-const paymentFaqs = [
-  {
-    id: "pay-1",
-    question: "Which payment methods can I use?",
-    answer:
-      "YES2WIN references Bank Transfer, E-Wallet options (including TNG, DuitNow and GrabPay where supported), Online Banking, Bank Cards and Cryptocurrency. Exact availability depends on region, account status and the live cashier.",
-  },
-  {
-    id: "pay-2",
-    question: "Are fees and limits listed here?",
-    answer:
-      "No. Exact fees, minimums, maximums and processing times change and must be confirmed in your cashier after login. This partner page does not invent those figures.",
-  },
-  {
-    id: "pay-3",
-    question: "Which cryptocurrencies are mentioned?",
-    answer:
-      "YES2WIN references supported coins such as BTC, ETH and USDT where crypto payments are enabled. Networks, confirmation requirements and availability are shown at checkout on the platform.",
-  },
-  {
-    id: "pay-4",
-    question: "Do I need verification for withdrawals?",
-    answer:
-      "Many platforms require identity or payment verification before larger withdrawals. Follow the prompts shown in your account and use official document upload tools only.",
-  },
-];
+type MethodCopy = ReturnType<typeof getHubsCopy>["payment"]["methodDetail"];
 
 function MethodDetail({
-  methodId,
+  method,
+  copy,
+  locale,
+  registerLabel,
   tone = "white",
   reverse = false,
 }: {
-  methodId: string;
+  method?: PaymentMethod;
+  copy: MethodCopy;
+  locale: Locale;
+  registerLabel: string;
   tone?: "white" | "green" | "default";
   reverse?: boolean;
 }) {
-  const method = methodById[methodId];
   if (!method) return null;
 
   return (
@@ -113,27 +58,23 @@ function MethodDetail({
           }`}
         >
           <div>
-            <SectionHeading
-              eyebrow={method.category}
-              title={method.name}
-              description={method.description}
-            />
+            <SectionHeading eyebrow={method.category} title={method.name} description={method.description} />
             <p className="mt-5 rounded-2xl border border-line bg-white/90 p-4 text-sm leading-relaxed text-ink-muted">
               {method.notes}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <CtaLink cta="register" size="sm">
-                Register Now
+                {registerLabel}
               </CtaLink>
-              <CtaLink href="/faq/#payments" variant="secondary" size="sm">
-                Payments FAQ
+              <CtaLink href={localizePath("/faq/#payments", locale)} variant="secondary" size="sm">
+                {copy.faqCta}
               </CtaLink>
             </div>
           </div>
           <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-[0_30px_80px_-40px_rgba(2,44,34,0.45)]">
             <Image
               src={method.image}
-              alt={`${method.name} payment icon`}
+              alt={`${method.name} ${copy.iconAltSuffix}`}
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
               className="object-cover"
@@ -145,35 +86,46 @@ function MethodDetail({
   );
 }
 
-export default function PaymentPage() {
+export default async function PaymentPage() {
+  const locale = await getLocale();
+  const ui = getDictionary(locale);
+  const copy = getHubsCopy(locale).payment;
+  const paymentMethods = getPaymentMethods(locale);
+  const paymentDisclaimer = getPaymentDisclaimer(locale);
+  const methodById = Object.fromEntries(paymentMethods.map((method) => [method.id, method])) as Record<
+    string,
+    PaymentMethod | undefined
+  >;
+  const homePath = localizePath("/", locale);
+  const paymentPath = localizePath("/payment/", locale);
+  const detailProps = {
+    copy: copy.methodDetail,
+    locale,
+    registerLabel: copy.methodDetail.registerCta,
+  };
+
   return (
     <>
-      <WebPageJsonLd
-        name="YES2WIN Payment Methods"
-        description="Payment method categories for YES2WIN."
-        path="/payment/"
-      />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={paymentPath} />
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", path: "/" },
-          { name: "Payment", path: "/payment/" },
+          { name: ui.breadcrumb.home, path: homePath },
+          { name: copy.crumb, path: paymentPath },
         ]}
       />
       <PageHero
         image="/images/brand/yes2win-promotion-deposit.webp"
-        imageAlt="YES2WIN payment artwork"
-        eyebrow="Payment"
-        title="Deposit and withdrawal overview"
-        description="A clear guide to payment categories associated with YES2WIN — bank transfer, e-wallets, online banking, bank cards and crypto. Availability depends on region, account status and the live platform cashier."
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Payment" },
-        ]}
+        imageAlt={copy.heroImageAlt}
+        eyebrow={copy.eyebrow}
+        title={copy.title}
+        description={copy.description}
+        crumbsLabel={ui.breadcrumb.label}
+        crumbs={[{ label: ui.breadcrumb.home, href: homePath }, { label: copy.crumb }]}
         actions={
           <>
-            <CtaLink cta="register">Register Now</CtaLink>
-            <CtaLink href="/faq/#payments" variant="secondary">
-              Payments FAQ
+            <CtaLink cta="register">{copy.primaryCta}</CtaLink>
+            <CtaLink href={localizePath("/faq/#payments", locale)} variant="secondary">
+              {copy.secondaryCta}
             </CtaLink>
           </>
         }
@@ -182,29 +134,12 @@ export default function PaymentPage() {
       <Section tone="white">
         <Container>
           <SectionHeading
-            eyebrow="Overview"
-            title="How YES2WIN payments are organised"
-            description="This partner page explains verified method categories so you know what to look for in the cashier. Fees, limits and processing times are confirmed only on the official platform."
+            eyebrow={copy.overview.eyebrow}
+            title={copy.overview.title}
+            description={copy.overview.description}
           />
           <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {[
-              {
-                title: "Verified categories",
-                body: "Bank Transfer, E-Wallet (TNG, DuitNow, GrabPay), Online Banking, Bank Cards and Crypto are referenced for YES2WIN where supported.",
-              },
-              {
-                title: "Live cashier decides",
-                body: "The methods you see after login reflect your region and account status — not every icon on this page will appear for every member.",
-              },
-              {
-                title: "No invented figures",
-                body: "This site does not publish fixed fees, deposit limits, withdrawal caps or guaranteed processing times.",
-              },
-              {
-                title: "Records stay in-account",
-                body: "Transaction history, verification prompts and payout status live inside the official platform tools.",
-              },
-            ].map((item) => (
+            {copy.overview.cards.map((item) => (
               <Card key={item.title}>
                 <h2 className="text-xl font-bold text-ink">{item.title}</h2>
                 <p className="mt-3 text-sm leading-relaxed text-ink-muted">{item.body}</p>
@@ -220,20 +155,20 @@ export default function PaymentPage() {
       <Section tone="green">
         <Container>
           <SectionHeading
-            eyebrow="Method visuals"
-            title="Payment channels at a glance"
-            description="Visual icons for commonly referenced YES2WIN payment pathways. Use them as orientation — then confirm what is enabled in your cashier."
+            eyebrow={copy.visuals.eyebrow}
+            title={copy.visuals.title}
+            description={copy.visuals.description}
           />
           <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {visualMethods.map((method) => (
+            {copy.visuals.methods.map((method) => (
               <div
                 key={method.id}
                 className="overflow-hidden rounded-2xl border border-line bg-white shadow-[0_12px_40px_-28px_rgba(6,78,59,0.4)]"
               >
                 <div className="relative aspect-square">
                   <Image
-                    src={method.src}
-                    alt={`${method.label} icon`}
+                    src={`/images/payment/${method.id}.webp`}
+                    alt={`${method.label} ${copy.visuals.iconAltSuffix}`}
                     fill
                     sizes="(max-width:768px) 50vw, 20vw"
                     className="object-cover"
@@ -246,15 +181,15 @@ export default function PaymentPage() {
         </Container>
       </Section>
 
-      <MethodDetail methodId="bank-transfer" tone="white" />
-      <MethodDetail methodId="e-wallet" tone="green" reverse />
+      <MethodDetail {...detailProps} method={methodById["bank-transfer"]} tone="white" />
+      <MethodDetail {...detailProps} method={methodById["e-wallet"]} tone="green" reverse />
 
       <Section id="ewallet-brands">
         <Container>
           <SectionHeading
-            eyebrow="E-Wallet brands"
-            title="DuitNow, Touch n Go and GrabPay"
-            description="YES2WIN references DuitNow, TNG and GrabPay among e-wallet style options. Whether each brand appears depends on market support and your account."
+            eyebrow={copy.ewalletBrands.eyebrow}
+            title={copy.ewalletBrands.title}
+            description={copy.ewalletBrands.description}
           />
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {(["duitnow", "tng", "grabpay"] as const).map((id) => {
@@ -268,7 +203,7 @@ export default function PaymentPage() {
                   <div className="relative aspect-[16/10]">
                     <Image
                       src={method.image}
-                      alt={`${method.name} icon`}
+                      alt={`${method.name} ${copy.ewalletBrands.iconAltSuffix}`}
                       fill
                       sizes="(max-width:768px) 100vw, 33vw"
                       className="object-cover"
@@ -289,32 +224,25 @@ export default function PaymentPage() {
         </Container>
       </Section>
 
-      <MethodDetail methodId="online-banking" tone="white" />
-      <MethodDetail methodId="bank-cards" tone="green" reverse />
-      <MethodDetail methodId="crypto" tone="white" />
+      <MethodDetail {...detailProps} method={methodById["online-banking"]} tone="white" />
+      <MethodDetail {...detailProps} method={methodById["bank-cards"]} tone="green" reverse />
+      <MethodDetail {...detailProps} method={methodById.crypto} tone="white" />
 
       <Section tone="green">
         <Container>
           <SectionHeading
-            eyebrow="Currency support"
-            title="What this page can say about currencies"
-            description="Currency and crypto asset support is determined by the live platform. This partner site does not invent exchange rates, network fees or settlement times."
+            eyebrow={copy.currency.eyebrow}
+            title={copy.currency.title}
+            description={copy.currency.description}
           />
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             <Card>
-              <h3 className="text-xl font-bold text-ink">Local banking & e-wallets</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                Bank transfer, online banking, cards and e-wallet brands appear according to regional cashier
-                configuration. Supported banks and wallets are listed inside your account when eligible.
-              </p>
+              <h3 className="text-xl font-bold text-ink">{copy.currency.local.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">{copy.currency.local.body}</p>
             </Card>
             <Card>
-              <h3 className="text-xl font-bold text-ink">Crypto coins referenced</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                Where cryptocurrency is enabled, YES2WIN references supported coins such as BTC, ETH and USDT. Confirm
-                networks, wallet requirements and confirmation steps at checkout — fees and limits are not published as
-                fixed figures here.
-              </p>
+              <h3 className="text-xl font-bold text-ink">{copy.currency.crypto.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">{copy.currency.crypto.body}</p>
             </Card>
           </div>
         </Container>
@@ -324,19 +252,14 @@ export default function PaymentPage() {
         <Container className="grid gap-8 lg:grid-cols-2">
           <div>
             <SectionHeading
-              eyebrow="Deposits"
-              title="Deposit guide"
-              description="A practical outline for funding your account through the official cashier."
+              eyebrow={copy.deposits.eyebrow}
+              title={copy.deposits.title}
+              description={copy.deposits.description}
             />
             <div className="mt-6 space-y-3">
-              {depositGuide.map((item, index) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-line bg-white px-4 py-4 text-sm text-ink-muted"
-                >
-                  <span className="font-semibold text-brand-700">
-                    {String(index + 1).padStart(2, "0")}.
-                  </span>{" "}
+              {copy.deposits.steps.map((item, index) => (
+                <div key={item} className="rounded-2xl border border-line bg-white px-4 py-4 text-sm text-ink-muted">
+                  <span className="font-semibold text-brand-700">{String(index + 1).padStart(2, "0")}.</span>{" "}
                   {item}
                 </div>
               ))}
@@ -344,19 +267,14 @@ export default function PaymentPage() {
           </div>
           <div>
             <SectionHeading
-              eyebrow="Withdrawals"
-              title="Withdrawal guide"
-              description="Request payouts through supported methods and complete any checks the platform asks for."
+              eyebrow={copy.withdrawals.eyebrow}
+              title={copy.withdrawals.title}
+              description={copy.withdrawals.description}
             />
             <div className="mt-6 space-y-3">
-              {withdrawalGuide.map((item, index) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-line bg-white px-4 py-4 text-sm text-ink-muted"
-                >
-                  <span className="font-semibold text-brand-700">
-                    {String(index + 1).padStart(2, "0")}.
-                  </span>{" "}
+              {copy.withdrawals.steps.map((item, index) => (
+                <div key={item} className="rounded-2xl border border-line bg-white px-4 py-4 text-sm text-ink-muted">
+                  <span className="font-semibold text-brand-700">{String(index + 1).padStart(2, "0")}.</span>{" "}
                   {item}
                 </div>
               ))}
@@ -368,27 +286,12 @@ export default function PaymentPage() {
       <Section tone="white">
         <Container>
           <div className="grid gap-5 md:grid-cols-3">
-            <Card>
-              <h2 className="text-xl font-bold text-ink">Verification</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                Identity or payment verification may be required before certain withdrawals. Follow official platform
-                prompts and avoid sharing documents through unofficial channels.
-              </p>
-            </Card>
-            <Card>
-              <h2 className="text-xl font-bold text-ink">Transaction records</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                Deposits, withdrawals and status updates are recorded in your account history. Use those records when
-                checking progress or contacting support.
-              </p>
-            </Card>
-            <Card className="border-brand-300 bg-brand-50/70">
-              <h2 className="text-xl font-bold text-ink">Fees & limits</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                Fees, minimums, maximums and processing times are not published as fixed figures on this partner site
-                because they vary. Confirm them in the live cashier.
-              </p>
-            </Card>
+            {copy.safety.map((item, index) => (
+              <Card key={item.title} className={index === copy.safety.length - 1 ? "border-brand-300 bg-brand-50/70" : undefined}>
+                <h2 className="text-xl font-bold text-ink">{item.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-muted">{item.body}</p>
+              </Card>
+            ))}
           </div>
         </Container>
       </Section>
@@ -396,12 +299,12 @@ export default function PaymentPage() {
       <Section tone="green">
         <Container>
           <SectionHeading
-            eyebrow="Common issues"
-            title="What to check when something looks wrong"
-            description="Most payment questions start with availability, pending status or verification — not with inventing new fee tables."
+            eyebrow={copy.issues.eyebrow}
+            title={copy.issues.title}
+            description={copy.issues.description}
           />
           <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {commonIssues.map((item) => (
+            {copy.issues.items.map((item) => (
               <Card key={item.title}>
                 <h3 className="text-xl font-bold text-ink">{item.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-muted">{item.body}</p>
@@ -414,21 +317,12 @@ export default function PaymentPage() {
       <Section>
         <Container className="grid gap-8 lg:grid-cols-2">
           <div>
-            <SectionHeading
-              eyebrow="FAQ"
-              title="Payment questions"
-              description="Need more detail? Continue to the full FAQ or contact pathways."
-            />
+            <SectionHeading eyebrow={copy.faq.eyebrow} title={copy.faq.title} description={copy.faq.description} />
             <div className="mt-6 flex flex-wrap gap-3">
-              {[
-                { label: "Full payments FAQ", href: "/faq/#payments" },
-                { label: "Related promotions", href: "/promotions/" },
-                { label: "Browse games", href: "/games/" },
-                { label: "Contact support", href: "/contact/" },
-              ].map((link) => (
+              {copy.faq.links.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={localizePath(link.href, locale)}
                   className="rounded-full border border-line bg-white px-4 py-2 text-sm font-semibold text-brand-800 hover:border-brand-300"
                 >
                   {link.label}
@@ -436,14 +330,11 @@ export default function PaymentPage() {
               ))}
             </div>
           </div>
-          <Accordion items={paymentFaqs} />
+          <Accordion items={copy.faq.items} />
         </Container>
       </Section>
 
-      <FinalCta
-        title="Ready to use YES2WIN payments?"
-        description="Register or log in to open the official cashier and confirm the methods available for your account."
-      />
+      <FinalCta locale={locale} title={copy.finalCta.title} description={copy.finalCta.description} />
     </>
   );
 }

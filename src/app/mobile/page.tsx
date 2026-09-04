@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { gameCategories } from "@/config/content/games";
 import { media } from "@/config/media";
 import { PageHero } from "@/components/page/PageHero";
 import { FinalCta } from "@/components/page/FinalCta";
@@ -10,62 +9,36 @@ import { CtaLink } from "@/components/ui/CtaLink";
 import { Accordion } from "@/components/ui/Accordion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/JsonLd";
+import { getDictionary, getGameCategories, getHubsCopy } from "@/i18n/get-content";
+import { getLocale } from "@/i18n/locale";
+import { localizePath } from "@/i18n/paths";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({
-  title: "YES2WIN Mobile | Gaming Experience on Mobile",
-  description:
-    "Access YES2WIN on mobile browsers — responsive navigation, games, promotions, payments and partner pathways on your phone via Access YES2WIN / Login.",
-  path: "/mobile/",
-  ogImage: "/images/og/og-mobile.png",
-});
+export async function generateMetadata() {
+  const locale = await getLocale();
+  return buildMetadata({
+    pageId: "mobile",
+    path: "/mobile/",
+    locale,
+    ogImage: "/images/og/og-mobile.png",
+  });
+}
 
-const mobileFaqs = [
-  {
-    id: "mobile-1",
-    question: "Do I need to download an app from this site?",
-    answer:
-      "No. This partner website focuses on browser access and routes you through Access YES2WIN / Login. It does not publish App Store or Google Play badges or unverified download buttons.",
-  },
-  {
-    id: "mobile-2",
-    question: "Does YES2WIN discuss mobile apps publicly?",
-    answer:
-      "YES2WIN publicly discusses mobile apps and browser access. On this partner site, the practical next step remains Access YES2WIN or Login so you continue into the official platform environment.",
-  },
-  {
-    id: "mobile-3",
-    question: "What can I do on mobile after login?",
-    answer:
-      "Once you continue into the official platform, you can browse games, review promotions, open the cashier and manage account access using your mobile browser when those features are enabled for your account.",
-  },
-  {
-    id: "mobile-4",
-    question: "Why might live tables feel slower on mobile data?",
-    answer:
-      "Live dealer streams are more connection-sensitive than static pages. A stable network and an up-to-date browser usually provide the smoothest experience.",
-  },
-];
+export default async function MobilePage() {
+  const locale = await getLocale();
+  const ui = getDictionary(locale);
+  const copy = getHubsCopy(locale).mobile;
+  const categories = getGameCategories(locale);
+  const homePath = localizePath("/", locale);
+  const mobilePath = localizePath("/mobile/", locale);
 
-const navigationTips = [
-  "Use the sticky Register and Login actions when you are ready to continue into the official platform.",
-  "Start with Games, Promotions, Payment or FAQ if you want context before signup.",
-  "Keep one browser tab for this partner guide and another for the live platform if you are comparing pathways.",
-  "Switch to a stronger network before opening live-streamed or animation-heavy categories.",
-];
-
-export default function MobilePage() {
   return (
     <>
-      <WebPageJsonLd
-        name="YES2WIN Mobile"
-        description="Mobile experience guidance for YES2WIN through this official partner gateway."
-        path="/mobile/"
-      />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={mobilePath} />
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", path: "/" },
-          { name: "Mobile", path: "/mobile/" },
+          { name: ui.breadcrumb.home, path: homePath },
+          { name: copy.crumb, path: mobilePath },
         ]}
       />
 
@@ -73,19 +46,17 @@ export default function MobilePage() {
       <PageHero
         tone="dark"
         image="/images/brand/yes2win-mobile-device.webp"
-        imageAlt="YES2WIN mobile artwork"
-        eyebrow="Mobile"
-        title="YES2WIN, built for mobile"
-        description="Browse categories, manage access and move into the YES2WIN platform from your phone — with responsive layouts and clear touch targets. Continue through Access YES2WIN / Login rather than unverified store downloads."
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Mobile" },
-        ]}
+        imageAlt={copy.heroImageAlt}
+        eyebrow={copy.eyebrow}
+        title={copy.title}
+        description={copy.description}
+        crumbsLabel={ui.breadcrumb.label}
+        crumbs={[{ label: ui.breadcrumb.home, href: homePath }, { label: copy.crumb }]}
         actions={
           <>
-            <CtaLink cta="register">Access YES2WIN</CtaLink>
+            <CtaLink cta="register">{copy.primaryCta}</CtaLink>
             <CtaLink cta="login" variant="outline">
-              Login
+              {copy.secondaryCta}
             </CtaLink>
           </>
         }
@@ -99,7 +70,7 @@ export default function MobilePage() {
             <div className="relative aspect-[9/16] overflow-hidden rounded-[2.2rem] border border-brand-900/15 shadow-2xl">
               <Image
                 src="/images/brand/yes2win-mobile-device.webp"
-                alt="YES2WIN mobile browser experience"
+                alt={copy.browser.imageAlt}
                 fill
                 sizes="(max-width: 1024px) 80vw, 320px"
                 className="object-cover"
@@ -109,29 +80,12 @@ export default function MobilePage() {
           </div>
           <div>
             <SectionHeading
-              eyebrow="Mobile browser"
-              title="A clear default path on your phone"
-              description="Use a modern mobile browser to open this partner site and continue into the official YES2WIN platform. YES2WIN publicly discusses mobile apps and browser access, but this partner site does not invent store badges or fake download buttons."
+              eyebrow={copy.browser.eyebrow}
+              title={copy.browser.title}
+              description={copy.browser.description}
             />
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {[
-                {
-                  title: "Responsive layouts",
-                  body: "Menus, cards and CTAs adapt for common phone widths so you can move between Games, Promotions, VIP and Partner without pinch-zooming.",
-                },
-                {
-                  title: "Official access CTAs",
-                  body: "Access YES2WIN and Login route into the configured platform destinations instead of unofficial APK or store shortcuts.",
-                },
-                {
-                  title: "Readable guides",
-                  body: "Category pages and offer explanations stay readable on small screens before you enter the live lobby.",
-                },
-                {
-                  title: "Touch-friendly actions",
-                  body: "Primary buttons stay large enough for thumb use when you are ready to register, log in or open partner access.",
-                },
-              ].map((item) => (
+              {copy.browser.cards.map((item) => (
                 <Card key={item.title}>
                   <h2 className="text-lg font-bold text-ink">{item.title}</h2>
                   <p className="mt-2 text-sm leading-relaxed text-ink-muted">{item.body}</p>
@@ -146,45 +100,25 @@ export default function MobilePage() {
       <Section tone="green">
         <Container>
           <SectionHeading
-            eyebrow="Devices"
-            title="Android and iOS browser access"
-            description="Phone and tablet browsers can open the same partner guidance, registration flow and account entry points."
+            eyebrow={copy.devices.eyebrow}
+            title={copy.devices.title}
+            description={copy.devices.description}
           />
           <div className="mt-8 grid gap-5 md:grid-cols-2">
-            <Card>
-              <h2 className="text-2xl font-bold text-ink">Android</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                Android users can move from this partner site into the official YES2WIN platform through Access YES2WIN
-                / Login without relying on unverified third-party downloads published here.
-              </p>
-              <ul className="mt-4 space-y-2 text-sm text-ink-muted">
-                <li className="flex gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-500" />
-                  <span>Open the partner pages in a current Chrome or system browser.</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-500" />
-                  <span>Continue into Register or Login when you are ready for the live platform.</span>
-                </li>
-              </ul>
-            </Card>
-            <Card>
-              <h2 className="text-2xl font-bold text-ink">iOS</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                iPhone and iPad browsers can access the same partner guidance, registration flow and account entry
-                points. This page does not claim App Store availability or publish store badges.
-              </p>
-              <ul className="mt-4 space-y-2 text-sm text-ink-muted">
-                <li className="flex gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-500" />
-                  <span>Use Safari or another up-to-date browser for the clearest layouts.</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-500" />
-                  <span>Keep a stable connection before opening live-streamed categories.</span>
-                </li>
-              </ul>
-            </Card>
+            {[copy.devices.android, copy.devices.ios].map((device) => (
+              <Card key={device.title}>
+                <h2 className="text-2xl font-bold text-ink">{device.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-muted">{device.body}</p>
+                <ul className="mt-4 space-y-2 text-sm text-ink-muted">
+                  {device.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-500" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
           </div>
         </Container>
       </Section>
@@ -193,12 +127,12 @@ export default function MobilePage() {
       <Section>
         <Container>
           <SectionHeading
-            eyebrow="Mobile games"
-            title="Categories that travel well on a phone"
-            description="Slots, live casino, sports, fishing and lottery can all be explored from mobile once you continue into the official lobby."
+            eyebrow={copy.games.eyebrow}
+            title={copy.games.title}
+            description={copy.games.description}
           />
           <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
-            {gameCategories.map((category) => (
+            {categories.map((category) => (
               <Link
                 key={category.id}
                 href={category.href}
@@ -206,7 +140,7 @@ export default function MobilePage() {
               >
                 <Image
                   src={media.categories[category.id as keyof typeof media.categories]}
-                  alt={`${category.shortName} mobile category artwork`}
+                  alt={`${category.shortName} ${copy.games.imageAltSuffix}`}
                   fill
                   sizes="(max-width:640px) 100vw, (max-width:1280px) 50vw, 20vw"
                   className="object-cover transition duration-500 group-hover:scale-[1.04]"
@@ -232,7 +166,7 @@ export default function MobilePage() {
             <div className="relative aspect-[16/10]">
               <Image
                 src={media.promotions.welcome}
-                alt="YES2WIN mobile promotions artwork"
+                alt={copy.promotionsCard.imageAlt}
                 fill
                 sizes="(max-width:1024px) 100vw, 50vw"
                 className="object-cover"
@@ -240,16 +174,16 @@ export default function MobilePage() {
             </div>
             <div className="p-6">
               <SectionHeading
-                eyebrow="Promotions"
-                title="Review offers on a smaller screen"
-                description="Promotion categories stay readable on mobile so you can understand offer types before confirming live terms inside the platform."
+                eyebrow={copy.promotionsCard.eyebrow}
+                title={copy.promotionsCard.title}
+                description={copy.promotionsCard.description}
               />
               <div className="mt-6 flex flex-wrap gap-3">
-                <CtaLink href="/promotions/" variant="secondary" size="sm">
-                  Promotions hub
+                <CtaLink href={localizePath("/promotions/", locale)} variant="secondary" size="sm">
+                  {copy.promotionsCard.primaryCta}
                 </CtaLink>
                 <CtaLink cta="register" size="sm">
-                  Access YES2WIN
+                  {copy.promotionsCard.secondaryCta}
                 </CtaLink>
               </div>
             </div>
@@ -258,7 +192,7 @@ export default function MobilePage() {
             <div className="relative aspect-[16/10]">
               <Image
                 src={media.accountAccess}
-                alt="YES2WIN mobile account access artwork"
+                alt={copy.accountCard.imageAlt}
                 fill
                 sizes="(max-width:1024px) 100vw, 50vw"
                 className="object-cover"
@@ -266,19 +200,19 @@ export default function MobilePage() {
             </div>
             <div className="p-6">
               <SectionHeading
-                eyebrow="Account access"
-                title="Register and login from your phone"
-                description="Account creation, sign-in, security prompts and profile tools continue inside the official platform environment after you tap Access YES2WIN or Login."
+                eyebrow={copy.accountCard.eyebrow}
+                title={copy.accountCard.title}
+                description={copy.accountCard.description}
               />
               <div className="mt-6 flex flex-wrap gap-3">
                 <CtaLink cta="register" size="sm">
-                  Register
+                  {copy.accountCard.registerCta}
                 </CtaLink>
                 <CtaLink cta="login" variant="secondary" size="sm">
-                  Login
+                  {copy.accountCard.loginCta}
                 </CtaLink>
-                <CtaLink href="/register-guide/" variant="secondary" size="sm">
-                  Register guide
+                <CtaLink href={localizePath("/register-guide/", locale)} variant="secondary" size="sm">
+                  {copy.accountCard.guideCta}
                 </CtaLink>
               </div>
             </div>
@@ -291,21 +225,12 @@ export default function MobilePage() {
         <Container className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <SectionHeading
-              eyebrow="Payments"
-              title="Cashier pathways on mobile"
-              description="Deposit and withdrawal categories can be reviewed here, then completed in the live cashier after login when those methods are available to your account."
+              eyebrow={copy.payments.eyebrow}
+              title={copy.payments.title}
+              description={copy.payments.description}
             />
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {[
-                {
-                  title: "Category education first",
-                  body: "Bank transfer, e-wallet, online banking and crypto are explained as categories — not fixed fees or limits.",
-                },
-                {
-                  title: "Live cashier after login",
-                  body: "Exact options, verification prompts and processing details appear inside the official platform.",
-                },
-              ].map((item) => (
+              {copy.payments.cards.map((item) => (
                 <Card key={item.title}>
                   <h3 className="text-lg font-bold text-ink">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-muted">{item.body}</p>
@@ -313,15 +238,15 @@ export default function MobilePage() {
               ))}
             </div>
             <div className="mt-6">
-              <CtaLink href="/payment/" variant="secondary" size="sm">
-                Payment guide
+              <CtaLink href={localizePath("/payment/", locale)} variant="secondary" size="sm">
+                {copy.payments.cta}
               </CtaLink>
             </div>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line bg-white shadow-[0_30px_80px_-40px_rgba(6,78,59,0.45)]">
             <Image
               src={media.promotions.deposit}
-              alt="YES2WIN mobile cashier pathway visual"
+              alt={copy.payments.imageAlt}
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
               className="object-cover"
@@ -333,13 +258,9 @@ export default function MobilePage() {
       {/* 7. Navigation tips */}
       <Section>
         <Container>
-          <SectionHeading
-            eyebrow="Navigation tips"
-            title="Move through YES2WIN more comfortably on mobile"
-            description="Small habits that keep browsing, signup and live play easier on a phone."
-          />
+          <SectionHeading eyebrow={copy.tips.eyebrow} title={copy.tips.title} description={copy.tips.description} />
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {navigationTips.map((item) => (
+            {copy.tips.items.map((item) => (
               <div key={item} className="rounded-2xl border border-line bg-white px-4 py-4 text-sm text-ink-muted">
                 {item}
               </div>
@@ -354,7 +275,7 @@ export default function MobilePage() {
           <div className="relative aspect-[3/4] max-w-md overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-40px_rgba(6,78,59,0.45)] lg:mx-auto">
             <Image
               src="/images/brand/yes2win-mobile-device.webp"
-              alt="YES2WIN mobile phone visual"
+              alt={copy.howToAccess.imageAlt}
               fill
               sizes="(max-width: 1024px) 90vw, 360px"
               className="object-cover"
@@ -362,17 +283,12 @@ export default function MobilePage() {
           </div>
           <div>
             <SectionHeading
-              eyebrow="How to access"
-              title="From this partner site to the live platform"
-              description="Mobile is not a reduced YES2WIN experience. It is the day-to-day path for browsing categories, checking promotions, handling payments and moving between account tools."
+              eyebrow={copy.howToAccess.eyebrow}
+              title={copy.howToAccess.title}
+              description={copy.howToAccess.description}
             />
             <ol className="mt-6 space-y-4">
-              {[
-                "Open this Mobile page or any partner guide on your phone browser.",
-                "Review games, promotions, payments or FAQ content as needed.",
-                "Tap Access YES2WIN or Login to continue into the official platform.",
-                "Complete account, cashier or lobby actions inside that live environment.",
-              ].map((step, index) => (
+              {copy.howToAccess.steps.map((step, index) => (
                 <li key={step} className="flex gap-4 rounded-2xl border border-line bg-brand-50/50 px-4 py-4">
                   <span className="text-xs font-semibold tracking-[0.16em] text-brand-600">
                     {String(index + 1).padStart(2, "0")}
@@ -382,9 +298,9 @@ export default function MobilePage() {
               ))}
             </ol>
             <div className="mt-6 flex flex-wrap gap-3">
-              <CtaLink cta="register">Access YES2WIN</CtaLink>
-              <CtaLink href="/games/" variant="secondary">
-                Explore Games
+              <CtaLink cta="register">{copy.howToAccess.primaryCta}</CtaLink>
+              <CtaLink href={localizePath("/games/", locale)} variant="secondary">
+                {copy.howToAccess.secondaryCta}
               </CtaLink>
             </div>
           </div>
@@ -394,25 +310,19 @@ export default function MobilePage() {
       {/* 9. FAQ */}
       <Section>
         <Container className="grid gap-8 lg:grid-cols-2">
-          <SectionHeading
-            eyebrow="FAQ"
-            title="Mobile questions"
-            description="Short answers about browser-based access, public app discussion and how this partner site routes you into YES2WIN."
-          />
-          <Accordion items={mobileFaqs} />
+          <SectionHeading eyebrow={copy.faq.eyebrow} title={copy.faq.title} description={copy.faq.description} />
+          <Accordion items={copy.faq.items} />
           <div className="lg:col-span-2 flex flex-wrap gap-4 text-sm font-semibold text-brand-800">
-            <Link href="/faq/#mobile">Full mobile FAQ</Link>
-            <Link href="/games/">Explore games</Link>
-            <Link href="/partner/">Partner page</Link>
-            <Link href="/contact/">Contact</Link>
+            {copy.faq.links.map((link) => (
+              <Link key={link.href} href={localizePath(link.href, locale)}>
+                {link.label}
+              </Link>
+            ))}
           </div>
         </Container>
       </Section>
 
-      <FinalCta
-        title="Access YES2WIN on your device"
-        description="Open the official platform experience from your mobile browser through Access YES2WIN or Login."
-      />
+      <FinalCta locale={locale} title={copy.finalCta.title} description={copy.finalCta.description} />
     </>
   );
 }

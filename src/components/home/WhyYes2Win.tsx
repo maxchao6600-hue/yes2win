@@ -3,60 +3,43 @@ import { media } from "@/config/media";
 import { Container, Section } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
+import { getLocale } from "@/i18n/locale";
+import { getHomeCopy } from "@/i18n/get-content";
+import { localizePath } from "@/i18n/paths";
 
-const items = [
-  {
-    title: "Multi-category play",
-    description: "Slots, live casino, sports, fishing and lottery under one YES2WIN brand.",
-    image: media.categories.slots,
-    href: "/games/",
-  },
-  {
-    title: "Mobile experience",
-    description: "Browse and access the platform from phones without losing clarity.",
-    image: media.mobileDevice,
-    href: "/mobile/",
-  },
-  {
-    title: "Payment options",
-    description: "Bank transfer, e-wallet, DuitNow, online banking and crypto categories where available.",
-    image: media.promotions.deposit,
-    href: "/payment/",
-  },
-  {
-    title: "Promotions & VIP",
-    description: "Offer types and VIP recognition explained before you check live terms.",
-    image: media.vipHero,
-    href: "/vip/",
-  },
-  {
-    title: "Partner pathways",
-    description: "A structured way for partners to share YES2WIN with their audiences.",
-    image: media.partnerEcosystem,
-    href: "/partner/",
-  },
-  {
-    title: "Support orientation",
-    description: "FAQ, contact pathways and responsible gaming guidance in one place.",
-    image: media.contactSupport,
-    href: "/faq/",
-  },
+/** Artwork and destinations stay locale-independent and align with `copy.why.items`. */
+const visuals = [
+  { image: media.categories.slots, href: "/games/" },
+  { image: media.mobileDevice, href: "/mobile/" },
+  { image: media.promotions.deposit, href: "/payment/" },
+  { image: media.vipHero, href: "/vip/" },
+  { image: media.partnerEcosystem, href: "/partner/" },
+  { image: media.contactSupport, href: "/faq/" },
 ];
 
-export function WhyYes2Win() {
+export async function WhyYes2Win() {
+  const locale = await getLocale();
+  const copy = getHomeCopy(locale).why;
+
+  const items = copy.items.map((item, index) => ({
+    ...item,
+    image: visuals[index]?.image ?? media.aboutEcosystem,
+    href: localizePath(visuals[index]?.href ?? "/", locale),
+  }));
+
   return (
     <Section tone="white">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
           <SectionHeading
-            eyebrow="Why YES2WIN"
-            title="Everything you need before you enter"
-            description="Useful orientation across games, payments, offers, VIP, mobile and partner topics — then direct CTAs into the official platform."
+            eyebrow={copy.eyebrow}
+            title={copy.title}
+            description={copy.description}
           />
           <div className="relative hidden aspect-[21/9] overflow-hidden rounded-[1.5rem] lg:block">
             <Image
               src={media.aboutEcosystem}
-              alt="Why choose YES2WIN visual"
+              alt={copy.imageAlt}
               fill
               sizes="50vw"
               className="object-cover"
@@ -72,7 +55,7 @@ export function WhyYes2Win() {
             >
               <Image
                 src={item.image}
-                alt={`${item.title} visual`}
+                alt={`${item.title} ${copy.imageAltSuffix}`}
                 fill
                 sizes="(max-width:640px) 100vw, (max-width:1280px) 50vw, 33vw"
                 className="object-cover transition duration-500 group-hover:scale-[1.03]"
@@ -86,8 +69,8 @@ export function WhyYes2Win() {
           ))}
         </div>
         <div className="mt-8">
-          <CtaLink href="/about/" variant="secondary">
-            About this partner site
+          <CtaLink href={localizePath("/about/", locale)} variant="secondary">
+            {copy.cta}
           </CtaLink>
         </div>
       </Container>

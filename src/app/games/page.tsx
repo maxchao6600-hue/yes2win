@@ -1,8 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { gameCategories } from "@/config/content/games";
-import { gameProviders } from "@/config/content/providers";
-import { promotions } from "@/config/content/promotions";
 import { PageHero } from "@/components/page/PageHero";
 import { FinalCta } from "@/components/page/FinalCta";
 import { Container, Section } from "@/components/ui/Container";
@@ -11,15 +8,26 @@ import { Accordion } from "@/components/ui/Accordion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/JsonLd";
+import {
+  getDictionary,
+  getGameCategories,
+  getHubsCopy,
+  getPromotions,
+  getProviders,
+} from "@/i18n/get-content";
+import { getLocale } from "@/i18n/locale";
+import { localizePath } from "@/i18n/paths";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({
-  title: "YES2WIN Games | Slots, Live Casino, Sports, Fishing & Lottery",
-  description:
-    "Explore the YES2WIN games hub — slots, live casino, sports, fishing, lottery, verified studios and mobile access through this official partner gateway.",
-  path: "/games/",
-  ogImage: "/images/og/og-games.png",
-});
+export async function generateMetadata() {
+  const locale = await getLocale();
+  return buildMetadata({
+    pageId: "games",
+    path: "/games/",
+    locale,
+    ogImage: "/images/og/og-games.png",
+  });
+}
 
 const imageMap: Record<string, string> = {
   slots: "/images/brand/yes2win-games-slots.webp",
@@ -29,53 +37,39 @@ const imageMap: Record<string, string> = {
   lottery: "/images/brand/yes2win-games-lottery.webp",
 };
 
-const formats = [
-  { title: "Slots", body: "Theme variety, feature-driven play and mobile-friendly spin cycles." },
-  { title: "Live tables", body: "Baccarat, roulette and blackjack where live dealers are available." },
-  { title: "Sports markets", body: "Football, basketball, tennis and other supported events." },
-  { title: "Fishing sessions", body: "Interactive targeting and arcade-style catch mechanics." },
-  { title: "Lottery / 4D", body: "Number-led draw formats with simpler participation flows." },
-];
+export default async function GamesPage() {
+  const locale = await getLocale();
+  const ui = getDictionary(locale);
+  const copy = getHubsCopy(locale).games;
+  const categories = getGameCategories(locale);
+  const providers = getProviders(locale);
+  const promotions = getPromotions(locale);
+  const homePath = localizePath("/", locale);
+  const gamesPath = localizePath("/games/", locale);
 
-const gamesFaq = [
-  {
-    id: "g1",
-    question: "Where do I play YES2WIN games?",
-    answer:
-      "Games open in the official YES2WIN lobby after you register or log in. This partner site explains categories and routes you into that platform.",
-  },
-  {
-    id: "g2",
-    question: "Which studios are referenced by YES2WIN?",
-    answer:
-      "Public YES2WIN materials reference Evolution Gaming, Pragmatic Play, SA Gaming, CMD368 and Playtech. Live catalogues can still vary by region and account.",
-  },
-  {
-    id: "g3",
-    question: "Can I browse games on mobile?",
-    answer:
-      "Yes. Category pages and the live lobby are designed for phone browsing when your connection and browser are ready.",
-  },
-];
-
-export default function GamesPage() {
   return (
     <>
-      <WebPageJsonLd name="YES2WIN Games" description="Explore YES2WIN game categories." path="/games/" />
-      <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Games", path: "/games/" }]} />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={gamesPath} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: ui.breadcrumb.home, path: homePath },
+          { name: copy.crumb, path: gamesPath },
+        ]}
+      />
       <PageHero
         tone="dark"
         image="/images/brand/yes2win-featured-games.webp"
-        imageAlt="YES2WIN games hub artwork"
-        eyebrow="Games Hub"
-        title="YES2WIN games in one place"
-        description="Browse category guides, studio references and access paths before you open the live lobby for titles available to your account."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Games" }]}
+        imageAlt={copy.heroImageAlt}
+        eyebrow={copy.eyebrow}
+        title={copy.title}
+        description={copy.description}
+        crumbsLabel={ui.breadcrumb.label}
+        crumbs={[{ label: ui.breadcrumb.home, href: homePath }, { label: copy.crumb }]}
         actions={
           <>
-            <CtaLink cta="register">Register Now</CtaLink>
-            <CtaLink href="/promotions/" variant="outline">
-              View Promotions
+            <CtaLink cta="register">{copy.primaryCta}</CtaLink>
+            <CtaLink href={localizePath("/promotions/", locale)} variant="outline">
+              {copy.secondaryCta}
             </CtaLink>
           </>
         }
@@ -84,12 +78,12 @@ export default function GamesPage() {
       <Section tone="white">
         <Container>
           <SectionHeading
-            eyebrow="Featured"
-            title="Start with the categories players explore most"
-            description="Each card opens a deeper guide. Live titles appear only after you continue into the official platform."
+            eyebrow={copy.featured.eyebrow}
+            title={copy.featured.title}
+            description={copy.featured.description}
           />
           <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {gameCategories.slice(0, 4).map((category) => (
+            {categories.slice(0, 4).map((category) => (
               <Link
                 key={category.id}
                 href={category.href}
@@ -98,7 +92,7 @@ export default function GamesPage() {
                 <div className="relative aspect-[4/5]">
                   <Image
                     src={imageMap[category.id]}
-                    alt={`${category.shortName} featured visual`}
+                    alt={`${category.shortName} ${copy.featured.imageAltSuffix}`}
                     fill
                     sizes="(max-width:640px) 100vw, 25vw"
                     className="object-cover transition duration-500 group-hover:scale-[1.03]"
@@ -117,12 +111,18 @@ export default function GamesPage() {
 
       <Section>
         <Container>
-          <SectionHeading title="All categories" description="Every major YES2WIN entertainment path with a short guide and next step." />
+          <SectionHeading title={copy.allCategories.title} description={copy.allCategories.description} />
           <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {gameCategories.map((category) => (
+            {categories.map((category) => (
               <Card key={category.id} id={category.id} className="scroll-mt-28 overflow-hidden p-0">
                 <div className="relative aspect-[16/10]">
-                  <Image src={imageMap[category.id]} alt={`${category.name} artwork`} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
+                  <Image
+                    src={imageMap[category.id]}
+                    alt={`${category.name} ${copy.allCategories.imageAltSuffix}`}
+                    fill
+                    sizes="(max-width:768px) 100vw, 33vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="p-5">
                   <h2 className="text-2xl font-bold text-ink">{category.name}</h2>
@@ -140,7 +140,7 @@ export default function GamesPage() {
                       {category.ctaLabel}
                     </CtaLink>
                     <CtaLink cta="register" size="sm">
-                      Play now
+                      {copy.allCategories.playNowCta}
                     </CtaLink>
                   </div>
                 </div>
@@ -153,12 +153,12 @@ export default function GamesPage() {
       <Section tone="green" id="providers">
         <Container>
           <SectionHeading
-            eyebrow="Providers"
-            title="Studios referenced by YES2WIN"
-            description="These provider names appear in public YES2WIN materials. Game counts and live catalogues stay on the platform."
+            eyebrow={copy.providers.eyebrow}
+            title={copy.providers.title}
+            description={copy.providers.description}
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
-            {gameProviders.map((provider) => (
+            {providers.map((provider) => (
               <Card key={provider.id}>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-600">{provider.focus}</p>
                 <h2 className="mt-3 text-lg font-bold text-ink">{provider.name}</h2>
@@ -172,9 +172,9 @@ export default function GamesPage() {
 
       <Section tone="white">
         <Container>
-          <SectionHeading title="Popular formats" description="A quick map of the play styles members usually look for first." />
+          <SectionHeading title={copy.formats.title} description={copy.formats.description} />
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-            {formats.map((item) => (
+            {copy.formats.items.map((item) => (
               <Card key={item.title}>
                 <h2 className="text-lg font-bold text-ink">{item.title}</h2>
                 <p className="mt-2 text-sm text-ink-muted">{item.body}</p>
@@ -187,19 +187,25 @@ export default function GamesPage() {
       <Section>
         <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line">
-            <Image src="/images/brand/yes2win-mobile-device.webp" alt="YES2WIN mobile gaming visual" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+            <Image
+              src="/images/brand/yes2win-mobile-device.webp"
+              alt={copy.mobile.imageAlt}
+              fill
+              sizes="(max-width:1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
           <div>
             <SectionHeading
-              eyebrow="Mobile gaming"
-              title="Browse on phone, play when ready"
-              description="Category guides stay readable on smaller screens. Live streaming categories benefit from a stable connection."
+              eyebrow={copy.mobile.eyebrow}
+              title={copy.mobile.title}
+              description={copy.mobile.description}
             />
             <div className="mt-6 flex flex-wrap gap-3">
-              <CtaLink href="/mobile/" variant="secondary">
-                Mobile guide
+              <CtaLink href={localizePath("/mobile/", locale)} variant="secondary">
+                {copy.mobile.primaryCta}
               </CtaLink>
-              <CtaLink cta="register">Access YES2WIN</CtaLink>
+              <CtaLink cta="register">{copy.mobile.secondaryCta}</CtaLink>
             </div>
           </div>
         </Container>
@@ -209,28 +215,25 @@ export default function GamesPage() {
         <Container>
           <div className="grid gap-5 md:grid-cols-3">
             <Card>
-              <h2 className="text-xl font-bold text-ink">How to access games</h2>
-              <p className="mt-3 text-sm text-ink-muted">
-                Register or log in through this partner gateway, then open the live lobby and choose a category available to your account.
-              </p>
+              <h2 className="text-xl font-bold text-ink">{copy.access.howToCard.title}</h2>
+              <p className="mt-3 text-sm text-ink-muted">{copy.access.howToCard.body}</p>
             </Card>
             <Card>
-              <h2 className="text-xl font-bold text-ink">Related promotions</h2>
-              <p className="mt-3 text-sm text-ink-muted">
-                Welcome, deposit and weekly campaigns often sit alongside game discovery. Confirm live terms before opting in.
-              </p>
-              <Link href="/promotions/" className="mt-4 inline-flex text-sm font-semibold text-brand-700">
-                Promotions hub →
+              <h2 className="text-xl font-bold text-ink">{copy.access.promotionsCard.title}</h2>
+              <p className="mt-3 text-sm text-ink-muted">{copy.access.promotionsCard.body}</p>
+              <Link
+                href={localizePath("/promotions/", locale)}
+                className="mt-4 inline-flex text-sm font-semibold text-brand-700"
+              >
+                {copy.access.promotionsCard.linkLabel} →
               </Link>
             </Card>
             <Card>
-              <h2 className="text-xl font-bold text-ink">VIP & payments</h2>
-              <p className="mt-3 text-sm text-ink-muted">
-                Member recognition and cashier tools live on the platform. Use the VIP and Payment pages here for orientation first.
-              </p>
+              <h2 className="text-xl font-bold text-ink">{copy.access.vipPaymentsCard.title}</h2>
+              <p className="mt-3 text-sm text-ink-muted">{copy.access.vipPaymentsCard.body}</p>
               <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold text-brand-700">
-                <Link href="/vip/">VIP</Link>
-                <Link href="/payment/">Payment</Link>
+                <Link href={localizePath("/vip/", locale)}>{copy.access.vipPaymentsCard.vipLinkLabel}</Link>
+                <Link href={localizePath("/payment/", locale)}>{copy.access.vipPaymentsCard.paymentLinkLabel}</Link>
               </div>
             </Card>
           </div>
@@ -248,18 +251,19 @@ export default function GamesPage() {
 
       <Section tone="white">
         <Container className="grid gap-8 lg:grid-cols-2">
-          <SectionHeading eyebrow="FAQ" title="Games questions" description="Short answers before you continue into the live lobby." />
-          <Accordion items={gamesFaq} />
+          <SectionHeading eyebrow={copy.faq.eyebrow} title={copy.faq.title} description={copy.faq.description} />
+          <Accordion items={copy.faq.items} />
           <div className="lg:col-span-2 flex flex-wrap gap-4 text-sm font-semibold text-brand-800">
-            <Link href="/faq/#games">Full games FAQ</Link>
-            <Link href="/responsible-gaming/">Responsible gaming</Link>
-            <Link href="/register-guide/">Registration guide</Link>
-            <Link href="/contact/">Contact</Link>
+            {copy.faq.links.map((link) => (
+              <Link key={link.href} href={localizePath(link.href, locale)}>
+                {link.label}
+              </Link>
+            ))}
           </div>
         </Container>
       </Section>
 
-      <FinalCta title="Enter the YES2WIN lobby" description="Register or log in to browse live game categories on the official platform." />
+      <FinalCta locale={locale} title={copy.finalCta.title} description={copy.finalCta.description} />
     </>
   );
 }

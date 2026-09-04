@@ -1,15 +1,13 @@
-import { getCategoryById } from "@/config/content/games";
 import { GameCategoryPage } from "@/components/games/GameCategoryPage";
+import { getLocale } from "@/i18n/locale";
 import { buildMetadata } from "@/lib/seo";
 
-const category = getCategoryById("sports")!;
+export async function generateMetadata() {
+  const locale = await getLocale();
+  return buildMetadata({ pageId: "games-sports", path: "/games/sports/", locale });
+}
 
-export const metadata = buildMetadata({
-  title: category.seoTitle,
-  description: category.seoDescription,
-  path: category.path,
-});
-
-export default function SportsPage() {
-  return <GameCategoryPage category={category} />;
+export default async function SportsPage() {
+  const locale = await getLocale();
+  return <GameCategoryPage categoryId="sports" locale={locale} />;
 }

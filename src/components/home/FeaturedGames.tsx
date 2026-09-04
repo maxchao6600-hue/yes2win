@@ -4,67 +4,49 @@ import { media } from "@/config/media";
 import { Container, Section } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
+import { getLocale } from "@/i18n/locale";
+import { getGameCategories, getHomeCopy } from "@/i18n/get-content";
+import { localizePath } from "@/i18n/paths";
 
-const showcase = [
-  {
-    title: "Slots",
-    badge: "Spin",
-    description: "Theme-driven titles for quick sessions or longer play.",
-    image: media.categories.slots,
-    href: "/games/slots/",
-  },
-  {
-    title: "Live Casino",
-    badge: "Live",
-    description: "Dealer tables streamed in real time when available.",
-    image: media.categories["live-casino"],
-    href: "/games/live-casino/",
-  },
-  {
-    title: "Sports",
-    badge: "Markets",
-    description: "Football, basketball, tennis and more on the sports desk.",
-    image: media.categories.sports,
-    href: "/games/sports/",
-  },
-  {
-    title: "Fishing",
-    badge: "Arcade",
-    description: "Interactive catch-style sessions with vivid visuals.",
-    image: media.categories.fishing,
-    href: "/games/fishing/",
-  },
-];
+export async function FeaturedGames() {
+  const locale = await getLocale();
+  const copy = getHomeCopy(locale).featured;
+  const categories = getGameCategories(locale);
 
-export function FeaturedGames() {
+  const showcase = copy.items.map((item) => ({
+    ...item,
+    image: media.categories[item.id as keyof typeof media.categories] ?? media.categories.slots,
+    href: categories.find((category) => category.id === item.id)?.href ?? localizePath("/games/", locale),
+  }));
+
   return (
     <Section tone="green">
       <Container>
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow="Featured"
-            title="Find your next favorite"
-            description="A visual snapshot of the YES2WIN categories members explore most. Live titles open inside the official lobby after login."
+            eyebrow={copy.eyebrow}
+            title={copy.title}
+            description={copy.description}
           />
           <div className="flex flex-wrap gap-3">
-            <CtaLink href="/games/" size="lg">
-              Explore Games
+            <CtaLink href={localizePath("/games/", locale)} size="lg">
+              {copy.primaryCta}
             </CtaLink>
-            <CtaLink href="/games/slots/" variant="secondary" size="lg">
-              Browse slots
+            <CtaLink href={localizePath("/games/slots/", locale)} variant="secondary" size="lg">
+              {copy.secondaryCta}
             </CtaLink>
           </div>
         </div>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {showcase.map((item) => (
             <Link
-              key={item.title}
+              key={item.id}
               href={item.href}
               className="group relative min-h-[360px] overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-[0_18px_50px_-34px_rgba(6,78,59,0.5)]"
             >
               <Image
                 src={item.image}
-                alt={`${item.title} featured artwork`}
+                alt={`${item.title} ${copy.imageAltSuffix}`}
                 fill
                 sizes="(max-width:640px) 100vw, (max-width:1280px) 50vw, 25vw"
                 className="object-cover transition duration-500 group-hover:scale-[1.04]"
@@ -84,7 +66,7 @@ export function FeaturedGames() {
           <div className="relative aspect-[21/8]">
             <Image
               src={media.featuredGames}
-              alt="YES2WIN multi-category entertainment showcase"
+              alt={copy.showcaseImageAlt}
               fill
               sizes="100vw"
               className="object-cover"

@@ -1,4 +1,7 @@
 import { siteConfig } from "@/config/site";
+import { defaultLocale, localeHtmlLang, type Locale } from "@/i18n/config";
+import { getSiteCopy } from "@/i18n/get-content";
+import { localizePath } from "@/i18n/paths";
 import { absoluteUrl } from "@/lib/seo";
 
 export function JsonLd({ data }: { data: Record<string, unknown> | Array<Record<string, unknown>> }) {
@@ -10,36 +13,38 @@ export function JsonLd({ data }: { data: Record<string, unknown> | Array<Record<
   );
 }
 
-export function OrganizationJsonLd() {
+export function OrganizationJsonLd({ locale = defaultLocale }: { locale?: Locale }) {
+  const site = getSiteCopy(locale);
   return (
     <JsonLd
       data={{
         "@context": "https://schema.org",
         "@type": "Organization",
-        name: siteConfig.identity,
+        name: site.identity,
         alternateName: siteConfig.name,
-        url: absoluteUrl("/"),
+        url: absoluteUrl(localizePath("/", locale)),
         logo: absoluteUrl(siteConfig.logo.src),
-        description: siteConfig.description,
+        description: site.description,
         slogan: siteConfig.tagline,
       }}
     />
   );
 }
 
-export function WebSiteJsonLd() {
+export function WebSiteJsonLd({ locale = defaultLocale }: { locale?: Locale }) {
+  const site = getSiteCopy(locale);
   return (
     <JsonLd
       data={{
         "@context": "https://schema.org",
         "@type": "WebSite",
-        name: siteConfig.identity,
-        url: absoluteUrl("/"),
-        description: siteConfig.description,
-        inLanguage: "en",
+        name: site.identity,
+        url: absoluteUrl(localizePath("/", locale)),
+        description: site.description,
+        inLanguage: localeHtmlLang[locale],
         publisher: {
           "@type": "Organization",
-          name: siteConfig.identity,
+          name: site.identity,
         },
       }}
     />

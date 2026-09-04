@@ -45,7 +45,7 @@ export const siteConfig = {
   social: {} as Record<string, string>,
   languages: [
     { code: "en", label: "English", locale: "en", enabled: true, href: "/" },
-    { code: "zh", label: "中文", locale: "zh", enabled: false, href: "/zh/" },
+    { code: "zh-cn", label: "中文", locale: "zh-cn", enabled: true, href: "/zh-cn/" },
     { code: "ms", label: "Malay", locale: "ms", enabled: false, href: "/ms/" },
     { code: "th", label: "ไทย", locale: "th", enabled: false, href: "/th/" },
     { code: "vi", label: "Tiếng Việt", locale: "vi", enabled: false, href: "/vi/" },

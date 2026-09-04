@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { promotions } from "@/config/content/promotions";
 import { PageHero } from "@/components/page/PageHero";
 import { FinalCta } from "@/components/page/FinalCta";
 import { Container, Section } from "@/components/ui/Container";
@@ -9,15 +8,20 @@ import { Accordion } from "@/components/ui/Accordion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/JsonLd";
+import { getDictionary, getHubsCopy, getPromotions } from "@/i18n/get-content";
+import { getLocale } from "@/i18n/locale";
+import { localizePath } from "@/i18n/paths";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({
-  title: "YES2WIN Promotions | Offers & Rewards",
-  description:
-    "Understand YES2WIN promotion types — welcome offers, deposit campaigns, weekly promotions, rebates and VIP benefits — then check live terms on the platform.",
-  path: "/promotions/",
-  ogImage: "/images/og/og-promotions.png",
-});
+export async function generateMetadata() {
+  const locale = await getLocale();
+  return buildMetadata({
+    pageId: "promotions",
+    path: "/promotions/",
+    locale,
+    ogImage: "/images/og/og-promotions.png",
+  });
+}
 
 const promoImages: Record<string, string> = {
   welcome: "/images/brand/yes2win-promotion-welcome.webp",
@@ -28,110 +32,37 @@ const promoImages: Record<string, string> = {
   special: "/images/brand/yes2win-promotion-special.webp",
 };
 
-const claimSteps = [
-  {
-    step: "01",
-    title: "Register or log in",
-    description:
-      "Create an account or sign in through this partner gateway so you can open the official promotions lobby.",
-  },
-  {
-    step: "02",
-    title: "Open Promotions",
-    description:
-      "Browse active campaign cards on the platform. Featured and category offers appear only when they are live for your account.",
-  },
-  {
-    step: "03",
-    title: "Read the full terms",
-    description:
-      "Review eligibility, opt-in rules, wagering and expiry details next to each offer before you participate.",
-  },
-  {
-    step: "04",
-    title: "Opt in or deposit as required",
-    description:
-      "Follow the on-screen steps for that campaign. Some offers need an opt-in; others link to a qualifying deposit path.",
-  },
-];
-
-const guidePoints = [
-  {
-    title: "Start with the campaign card",
-    body: "Each live offer summarises who it is for and what actions unlock it. Use the card as your first filter before reading deeper terms.",
-  },
-  {
-    title: "Confirm eligibility in-account",
-    body: "Region, account age, prior claims and verification status can all affect what you see. Availability on this partner site is educational only.",
-  },
-  {
-    title: "Treat terms as the source of truth",
-    body: "Percentages, amounts, wagering and expiry windows change. Always rely on the official platform wording at the moment you opt in.",
-  },
-  {
-    title: "Ask support when unclear",
-    body: "If a campaign rule is ambiguous, use official contact channels rather than assuming a figure published elsewhere.",
-  },
-];
-
-const promoFaqs = [
-  {
-    id: "promo-1",
-    question: "Does YES2WIN have a welcome bonus?",
-    answer:
-      "YES2WIN publicly references a Have You YES2WIN Welcome Bonus. Exact live terms — including any percentages, deposit rules and wagering — must be checked on the official platform before you opt in.",
-  },
-  {
-    id: "promo-2",
-    question: "Why doesn’t this page list exact offer amounts?",
-    answer:
-      "Promotion values change over time and can differ by account or region. This partner site explains offer types without inventing figures that may be outdated.",
-  },
-  {
-    id: "promo-3",
-    question: "How do I know if I am eligible?",
-    answer:
-      "Eligibility is confirmed inside your account after login. Campaign cards and terms describe who can join; if an offer is not shown, it is usually unavailable for your account at that time.",
-  },
-  {
-    id: "promo-4",
-    question: "Where do VIP-related rewards appear?",
-    answer:
-      "VIP-oriented benefits are often shared through VIP channels or invitation-led communications. Browse the VIP page for experience context, then confirm live rewards on the platform.",
-  },
-];
-
-export default function PromotionsPage() {
+export default async function PromotionsPage() {
+  const locale = await getLocale();
+  const ui = getDictionary(locale);
+  const copy = getHubsCopy(locale).promotions;
+  const promotions = getPromotions(locale);
   const featured = promotions.find((promo) => promo.featured) ?? promotions[0];
+  const homePath = localizePath("/", locale);
+  const promotionsPath = localizePath("/promotions/", locale);
 
   return (
     <>
-      <WebPageJsonLd
-        name="YES2WIN Promotions"
-        description="Promotion types available across the YES2WIN experience."
-        path="/promotions/"
-      />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={promotionsPath} />
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", path: "/" },
-          { name: "Promotions", path: "/promotions/" },
+          { name: ui.breadcrumb.home, path: homePath },
+          { name: copy.crumb, path: promotionsPath },
         ]}
       />
       <PageHero
         image="/images/brand/yes2win-promotion-welcome.webp"
-        imageAlt="YES2WIN promotions artwork"
-        eyebrow="Promotions"
-        title="YES2WIN offers explained clearly"
-        description="Explore welcome, deposit, weekly, cashback, VIP and special campaign types — then confirm live terms on the official platform before you opt in."
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Promotions" },
-        ]}
+        imageAlt={copy.heroImageAlt}
+        eyebrow={copy.eyebrow}
+        title={copy.title}
+        description={copy.description}
+        crumbsLabel={ui.breadcrumb.label}
+        crumbs={[{ label: ui.breadcrumb.home, href: homePath }, { label: copy.crumb }]}
         actions={
           <>
-            <CtaLink cta="register">Register Now</CtaLink>
-            <CtaLink href="/games/" variant="secondary">
-              Explore Games
+            <CtaLink cta="register">{copy.primaryCta}</CtaLink>
+            <CtaLink href={localizePath("/games/", locale)} variant="secondary">
+              {copy.secondaryCta}
             </CtaLink>
           </>
         }
@@ -142,31 +73,24 @@ export default function PromotionsPage() {
           <div className="grid items-center gap-8 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="p-6 sm:p-8 lg:p-10">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-300">
-                Featured campaign
+                {copy.featuredCampaign.eyebrow}
               </p>
-              <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
-                Have You YES2WIN Welcome Bonus
-              </h2>
+              <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">{copy.featuredCampaign.title}</h2>
               <p className="mt-4 text-sm leading-relaxed text-brand-50/85 sm:text-base">
-                YES2WIN publicly references a Have You YES2WIN Welcome Bonus designed to help new members start with
-                extra value. Exact percentages, deposit rules and wagering change over time — check the latest offer on
-                the official platform before you opt in.
+                {copy.featuredCampaign.body}
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-brand-100/80">
-                This partner page explains the campaign type. Live eligibility and full terms always come from the
-                platform promotions lobby after login.
-              </p>
+              <p className="mt-4 text-sm leading-relaxed text-brand-100/80">{copy.featuredCampaign.note}</p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <CtaLink cta="register">Register Now</CtaLink>
-                <CtaLink href="/faq/#promotions" variant="outline">
-                  Promotions FAQ
+                <CtaLink cta="register">{copy.featuredCampaign.primaryCta}</CtaLink>
+                <CtaLink href={localizePath("/faq/#promotions", locale)} variant="outline">
+                  {copy.featuredCampaign.secondaryCta}
                 </CtaLink>
               </div>
             </div>
             <div className="relative min-h-[260px] lg:min-h-full">
               <Image
                 src="/images/brand/yes2win-promotion-welcome.webp"
-                alt="YES2WIN welcome bonus campaign artwork"
+                alt={copy.featuredCampaign.imageAlt}
                 fill
                 sizes="(max-width:1024px) 100vw, 45vw"
                 className="object-cover"
@@ -189,36 +113,32 @@ export default function PromotionsPage() {
                 }`}
               >
                 <div>
-                  <SectionHeading
-                    eyebrow={promo.category}
-                    title={promo.title}
-                    description={promo.description}
-                  />
+                  <SectionHeading eyebrow={promo.category} title={promo.title} description={promo.description} />
                   <div className="mt-6 space-y-3 rounded-2xl border border-line bg-white/90 p-5 text-sm text-ink-muted">
                     <p>
-                      <span className="font-semibold text-ink">Who it is for:</span> {promo.whoFor}
+                      <span className="font-semibold text-ink">{copy.detail.whoForLabel}</span> {promo.whoFor}
                     </p>
                     <p>
-                      <span className="font-semibold text-ink">How to check:</span> {promo.howToCheck}
+                      <span className="font-semibold text-ink">{copy.detail.howToCheckLabel}</span> {promo.howToCheck}
                     </p>
                     <p>
-                      <span className="font-semibold text-ink">Where terms live:</span> {promo.whereTerms}
+                      <span className="font-semibold text-ink">{copy.detail.whereTermsLabel}</span> {promo.whereTerms}
                     </p>
                     <p>
-                      <span className="font-semibold text-ink">Eligibility note:</span> {promo.eligibility}
+                      <span className="font-semibold text-ink">{copy.detail.eligibilityLabel}</span> {promo.eligibility}
                     </p>
                   </div>
                   <div className="mt-6 flex flex-wrap gap-3">
                     <CtaLink cta="register" size="sm">
-                      Register Now
+                      {copy.detail.registerCta}
                     </CtaLink>
                     {promo.id === "vip-benefits" ? (
-                      <CtaLink href="/vip/" variant="secondary" size="sm">
-                        VIP overview
+                      <CtaLink href={localizePath("/vip/", locale)} variant="secondary" size="sm">
+                        {copy.detail.vipCta}
                       </CtaLink>
                     ) : (
-                      <CtaLink href="/terms/" variant="secondary" size="sm">
-                        Site terms
+                      <CtaLink href={localizePath("/terms/", locale)} variant="secondary" size="sm">
+                        {copy.detail.termsCta}
                       </CtaLink>
                     )}
                   </div>
@@ -226,14 +146,14 @@ export default function PromotionsPage() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-line shadow-[0_30px_80px_-40px_rgba(2,44,34,0.55)]">
                   <Image
                     src={image}
-                    alt={`${promo.title} artwork`}
+                    alt={`${promo.title} ${copy.detail.imageAltSuffix}`}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                   />
                   {promo.featured ? (
                     <span className="absolute left-4 top-4 rounded-full bg-brand-600 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
-                      Featured
+                      {copy.detail.featuredBadge}
                     </span>
                   ) : null}
                 </div>
@@ -246,12 +166,12 @@ export default function PromotionsPage() {
       <Section tone="white">
         <Container>
           <SectionHeading
-            eyebrow="Promotion guide"
-            title="How to read YES2WIN offers"
-            description="Use this partner guide to understand campaign structure, then rely on the live platform for current values and rules."
+            eyebrow={copy.guide.eyebrow}
+            title={copy.guide.title}
+            description={copy.guide.description}
           />
           <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {guidePoints.map((point) => (
+            {copy.guide.points.map((point) => (
               <Card key={point.title}>
                 <h3 className="text-xl font-bold text-ink">{point.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-muted">{point.body}</p>
@@ -264,12 +184,12 @@ export default function PromotionsPage() {
       <Section tone="green">
         <Container>
           <SectionHeading
-            eyebrow="How to claim"
-            title="A practical path into live promotions"
-            description="Claiming happens on the official platform. This outline helps you move from orientation to opt-in without guessing hidden terms."
+            eyebrow={copy.claim.eyebrow}
+            title={copy.claim.title}
+            description={copy.claim.description}
           />
           <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {claimSteps.map((item) => (
+            {copy.claim.steps.map((item) => (
               <div key={item.step} className="rounded-2xl border border-brand-200 bg-white p-5">
                 <p className="text-xs font-semibold tracking-[0.16em] text-brand-600">{item.step}</p>
                 <h3 className="mt-2 text-lg font-bold text-ink">{item.title}</h3>
@@ -284,21 +204,17 @@ export default function PromotionsPage() {
         <Container className="grid gap-8 lg:grid-cols-2">
           <div>
             <SectionHeading
-              eyebrow="Eligibility"
-              title="Who can join a campaign"
-              description="Eligibility is defined per offer. New-member campaigns, deposit boosts and VIP rewards each follow their own rules."
+              eyebrow={copy.eligibility.eyebrow}
+              title={copy.eligibility.title}
+              description={copy.eligibility.description}
             />
             <div className="mt-6 space-y-4">
               <Card hover={false}>
-                <h3 className="text-lg font-bold text-ink">Common factors</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                  Account status, prior claims, region and verification can all influence whether an offer appears. The
-                  featured welcome path is typically oriented toward newly registered members who meet live campaign
-                  rules.
-                </p>
+                <h3 className="text-lg font-bold text-ink">{copy.eligibility.commonFactors.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{copy.eligibility.commonFactors.body}</p>
               </Card>
               <Card hover={false} className="border-brand-300 bg-brand-50/70">
-                <h3 className="text-lg font-bold text-ink">Featured welcome context</h3>
+                <h3 className="text-lg font-bold text-ink">{copy.eligibility.featuredContextTitle}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">
                   {featured.eligibility} {featured.howToCheck}
                 </p>
@@ -307,29 +223,30 @@ export default function PromotionsPage() {
           </div>
           <div>
             <SectionHeading
-              eyebrow="Terms note"
-              title="Always confirm live wording"
-              description="This partner site does not invent promo amounts, fees, limits or income guarantees."
+              eyebrow={copy.termsNote.eyebrow}
+              title={copy.termsNote.title}
+              description={copy.termsNote.description}
             />
             <Card hover={false} className="mt-6">
               <ul className="space-y-3 text-sm leading-relaxed text-ink-muted">
                 <li>
-                  <span className="font-semibold text-ink">Campaign terms change.</span> Percentages, wagering and
-                  expiry windows can update without notice on this informational page.
+                  <span className="font-semibold text-ink">{copy.termsNote.changeLead}</span>{" "}
+                  {copy.termsNote.changeBody}
                 </li>
                 <li>
-                  <span className="font-semibold text-ink">Platform wording wins.</span> If anything here differs from
-                  an official campaign card, follow the platform.
+                  <span className="font-semibold text-ink">{copy.termsNote.platformLead}</span>{" "}
+                  {copy.termsNote.platformBody}
                 </li>
                 <li>
-                  <span className="font-semibold text-ink">Read before you deposit.</span> {featured.termsNote}
+                  <span className="font-semibold text-ink">{copy.termsNote.readLead}</span> {featured.termsNote}
                 </li>
                 <li>
-                  <span className="font-semibold text-ink">Need broader rules?</span> Review the{" "}
-                  <Link href="/terms/" className="font-semibold text-brand-700">
-                    site terms overview
-                  </Link>{" "}
-                  and responsible gaming guidance.
+                  <span className="font-semibold text-ink">{copy.termsNote.rulesLead}</span>{" "}
+                  {copy.termsNote.rulesBefore}
+                  <Link href={localizePath("/terms/", locale)} className="font-semibold text-brand-700">
+                    {copy.termsNote.rulesLinkLabel}
+                  </Link>
+                  {copy.termsNote.rulesAfter}
                 </li>
               </ul>
             </Card>
@@ -340,35 +257,24 @@ export default function PromotionsPage() {
       <Section tone="white">
         <Container className="grid gap-8 lg:grid-cols-2">
           <div>
-            <SectionHeading
-              eyebrow="FAQ"
-              title="Promotion questions"
-              description="Short answers about welcome offers, eligibility and where live terms appear."
-            />
+            <SectionHeading eyebrow={copy.faq.eyebrow} title={copy.faq.title} description={copy.faq.description} />
           </div>
-          <Accordion items={promoFaqs} />
+          <Accordion items={copy.faq.items} />
         </Container>
       </Section>
 
       <Section tone="green">
         <Container>
           <SectionHeading
-            eyebrow="Related"
-            title="Continue exploring YES2WIN"
-            description="Pair promotions with games, VIP context, payments and support pathways."
+            eyebrow={copy.related.eyebrow}
+            title={copy.related.title}
+            description={copy.related.description}
           />
           <div className="mt-8 flex flex-wrap gap-3">
-            {[
-              { label: "Browse games", href: "/games/" },
-              { label: "VIP benefits", href: "/vip/" },
-              { label: "Payment guide", href: "/payment/" },
-              { label: "Promotions FAQ", href: "/faq/#promotions" },
-              { label: "Terms overview", href: "/terms/" },
-              { label: "Contact", href: "/contact/" },
-            ].map((link) => (
+            {copy.related.links.map((link) => (
               <Link
                 key={link.href}
-                href={link.href}
+                href={localizePath(link.href, locale)}
                 className="rounded-full border border-line bg-white px-4 py-2 text-sm font-semibold text-brand-800 hover:border-brand-300"
               >
                 {link.label}
@@ -378,10 +284,7 @@ export default function PromotionsPage() {
         </Container>
       </Section>
 
-      <FinalCta
-        title="Ready to check live YES2WIN promotions?"
-        description="Register or log in to open the official promotions lobby and confirm current campaign terms."
-      />
+      <FinalCta locale={locale} title={copy.finalCta.title} description={copy.finalCta.description} />
     </>
   );
 }

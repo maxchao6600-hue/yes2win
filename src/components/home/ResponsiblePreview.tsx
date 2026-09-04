@@ -1,19 +1,26 @@
 import { SplitMedia } from "@/components/visual/Media";
 import { CtaLink } from "@/components/ui/CtaLink";
+import { media } from "@/config/media";
+import { getLocale } from "@/i18n/locale";
+import { getHomeCopy } from "@/i18n/get-content";
+import { localizePath } from "@/i18n/paths";
 
-export function ResponsiblePreview() {
+export async function ResponsiblePreview() {
+  const locale = await getLocale();
+  const copy = getHomeCopy(locale).responsible;
+
   return (
     <SplitMedia
       tone="green"
       reverse
-      eyebrow="18+"
-      title="Play responsibly"
-      description="Keep entertainment recreational. Set limits, take breaks and seek help if gaming stops feeling healthy."
-      image="/images/brand/yes2win-responsible.webp"
-      imageAlt="Responsible gaming visual"
+      eyebrow={copy.eyebrow}
+      title={copy.title}
+      description={copy.description}
+      image={media.responsible}
+      imageAlt={copy.imageAlt}
       actions={
-        <CtaLink href="/responsible-gaming/" variant="secondary" size="lg">
-          Learn more
+        <CtaLink href={localizePath("/responsible-gaming/", locale)} variant="secondary" size="lg">
+          {copy.cta}
         </CtaLink>
       }
     />
