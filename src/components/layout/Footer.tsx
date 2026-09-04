@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="border-t border-brand-900/20 bg-brand-950 text-brand-50">
       <div className="container-page py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_repeat(5,1fr)]">
+        <div className="grid gap-10 lg:grid-cols-[1.35fr_repeat(6,minmax(0,1fr))]">
           <div className="lg:pr-4">
             <Link href="/" className="inline-flex items-center gap-3">
               <Image
@@ -29,6 +29,7 @@ export function Footer() {
           </div>
 
           <FooterColumn title="Explore" items={footerNav.explore} />
+          <FooterColumn title="Games" items={footerNav.games} />
           <FooterColumn
             title="Access"
             items={[
@@ -58,7 +59,11 @@ export function Footer() {
           <p>{siteConfig.disclaimer}</p>
           <p>
             18+. Play responsibly. Entertainment involves risk — only participate if it is legal for you in your
-            jurisdiction. Read our <Link href="/responsible-gaming/" className="underline hover:text-white">Responsible Gaming</Link> guidance.
+            jurisdiction. Read our{" "}
+            <Link href="/responsible-gaming/" className="underline hover:text-white">
+              Responsible Gaming
+            </Link>{" "}
+            guidance.
           </p>
           <p className="text-brand-200/80">
             © {new Date().getFullYear()} {siteConfig.identity}. All rights reserved.

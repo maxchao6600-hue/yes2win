@@ -16,6 +16,12 @@ export const primaryNav: NavItem[] = [
   { label: "Contact", href: "/contact/" },
 ];
 
+export const moreNav: NavItem[] = [
+  { label: "Register Guide", href: "/register-guide/" },
+  { label: "Account Guide", href: "/account-guide/" },
+  { label: "Responsible Gaming", href: "/responsible-gaming/" },
+];
+
 export const footerNav = {
   explore: [
     { label: "About", href: "/about/" },
@@ -26,6 +32,8 @@ export const footerNav = {
   access: [
     { label: "Mobile", href: "/mobile/" },
     { label: "Payment", href: "/payment/" },
+    { label: "Register Guide", href: "/register-guide/" },
+    { label: "Account Guide", href: "/account-guide/" },
   ],
   support: [
     { label: "FAQ", href: "/faq/" },

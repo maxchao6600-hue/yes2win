@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { primaryNav } from "@/config/navigation";
+import { moreNav, primaryNav } from "@/config/navigation";
 import { siteConfig, enabledLanguages } from "@/config/site";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { cn } from "@/lib/utils";
@@ -97,6 +97,31 @@ export function Header() {
               </Link>
             );
           })}
+          <div className="group relative">
+            <button
+              type="button"
+              className={cn(
+                "rounded-lg px-2.5 py-2 text-sm font-medium transition",
+                solid
+                  ? "text-ink/80 hover:bg-brand-50 hover:text-brand-800"
+                  : "text-white/90 hover:bg-white/10 hover:text-white",
+              )}
+              aria-haspopup="menu"
+            >
+              More
+            </button>
+            <div className="invisible absolute left-0 top-full z-20 min-w-[220px] translate-y-1 rounded-2xl border border-line bg-white p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              {moreNav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="block rounded-xl px-3 py-2 text-sm font-medium text-ink hover:bg-brand-50 hover:text-brand-800"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
         </nav>
 
         <div className="relative z-10 flex items-center gap-2">
@@ -143,7 +168,7 @@ export function Header() {
         )}
       >
         <nav aria-label="Mobile primary" className="space-y-1">
-          {primaryNav.map((item) => {
+          {[...primaryNav, ...moreNav].map((item) => {
             const active = isActive(item.href);
             return (
               <Link

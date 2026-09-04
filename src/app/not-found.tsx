@@ -20,6 +20,9 @@ export default function NotFound() {
           <CtaLink href="/games/" variant="outline" size="md">
             Explore Games
           </CtaLink>
+          <CtaLink cta="register" size="md">
+            Register
+          </CtaLink>
         </div>
         <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-brand-200">
           <Link href="/faq/" className="hover:text-white">

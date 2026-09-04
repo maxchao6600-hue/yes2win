@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about/",
     "/games/",
     "/register-guide/",
+    "/account-guide/",
     "/promotions/",
     "/vip/",
     "/payment/",
