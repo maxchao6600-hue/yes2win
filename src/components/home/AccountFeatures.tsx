@@ -16,7 +16,7 @@ export function AccountFeatures() {
           />
           <div className="relative hidden aspect-[21/9] overflow-hidden rounded-[1.5rem] border border-line lg:block">
             <Image
-              src="/images/home/account-access.webp"
+              src="/images/brand/yes2win-account-access.webp"
               alt="YES2WIN account features visual"
               fill
               sizes="50vw"

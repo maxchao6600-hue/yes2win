@@ -80,6 +80,8 @@ export default function ResponsibleGamingPage() {
         ]}
       />
       <PageHero
+        image="/images/brand/yes2win-responsible.webp"
+        imageAlt="Responsible gaming artwork"
         eyebrow="18+"
         title="Play responsibly with YES2WIN"
         description="Keep entertainment recreational. Use these principles to stay in control, protect your wellbeing and know when to pause."
@@ -103,7 +105,7 @@ export default function ResponsibleGamingPage() {
         <Container className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line">
             <Image
-              src="/images/home/responsible.webp"
+              src="/images/brand/yes2win-responsible.webp"
               alt="Responsible gaming visual for YES2WIN"
               fill
               sizes="(max-width:1024px) 100vw, 45vw"

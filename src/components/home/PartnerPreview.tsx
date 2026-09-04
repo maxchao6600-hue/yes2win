@@ -25,7 +25,7 @@ export function PartnerPreview() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-line">
             <Image
-              src="/images/partner/network.webp"
+              src="/images/brand/yes2win-partner-ecosystem.webp"
               alt="YES2WIN partner ecosystem network visual"
               fill
               sizes="(max-width:1024px) 100vw, 50vw"

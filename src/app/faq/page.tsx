@@ -103,6 +103,8 @@ export default function FaqPage() {
       />
       <FaqJsonLd items={allFaqItems} />
       <PageHero
+        image="/images/brand/yes2win-about-ecosystem.webp"
+        imageAlt="YES2WIN FAQ artwork"
         eyebrow="FAQ"
         title="Frequently asked questions"
         description="Concise answers on account access, categories, promotions, payments, mobile, partner topics and responsible play."

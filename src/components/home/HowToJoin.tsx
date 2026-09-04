@@ -33,7 +33,7 @@ export function HowToJoin() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem]">
             <Image
-              src="/images/home/join.webp"
+              src="/images/brand/yes2win-register-journey.webp"
               alt="YES2WIN registration journey visual"
               fill
               sizes="(max-width:1024px) 100vw, 50vw"

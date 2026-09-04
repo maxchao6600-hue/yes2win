@@ -160,6 +160,8 @@ export default function PaymentPage() {
         ]}
       />
       <PageHero
+        image="/images/brand/yes2win-promotion-deposit.webp"
+        imageAlt="YES2WIN payment artwork"
         eyebrow="Payment"
         title="Deposit and withdrawal overview"
         description="A clear guide to payment categories associated with YES2WIN — bank transfer, e-wallets, online banking, bank cards and crypto. Availability depends on region, account status and the live platform cashier."

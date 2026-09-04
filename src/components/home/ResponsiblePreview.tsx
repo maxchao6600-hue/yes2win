@@ -9,7 +9,7 @@ export function ResponsiblePreview() {
       eyebrow="18+"
       title="Play responsibly"
       description="Keep entertainment recreational. Set limits, take breaks and seek help if gaming stops feeling healthy."
-      image="/images/home/responsible.webp"
+      image="/images/brand/yes2win-responsible.webp"
       imageAlt="Responsible gaming visual"
       actions={
         <CtaLink href="/responsible-gaming/" variant="secondary" size="lg">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Breadcrumbs, type Crumb } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/SectionHeading";
@@ -11,6 +12,8 @@ export function PageHero({
   crumbs,
   actions,
   tone = "green",
+  image,
+  imageAlt = "YES2WIN page visual",
 }: {
   eyebrow?: string;
   title: string;
@@ -18,30 +21,53 @@ export function PageHero({
   crumbs: Crumb[];
   actions?: ReactNode;
   tone?: "green" | "dark";
+  image?: string;
+  imageAlt?: string;
 }) {
   return (
     <div
       className={cn(
         "relative overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16",
-        tone === "dark" ? "surface-dark" : "surface-green",
+        !image && (tone === "dark" ? "surface-dark" : "surface-green"),
+        image && "min-h-[420px] text-white sm:min-h-[480px]",
       )}
     >
-      <div className="glow-orb left-[-4rem] top-10 h-48 w-48 opacity-50" />
-      <div className="glow-orb right-[-2rem] top-24 h-56 w-56 opacity-40" />
-      <Container>
+      {image ? (
+        <>
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[68%_center] sm:object-center"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(2,44,34,0.92)_0%,rgba(2,44,34,0.74)_42%,rgba(2,44,34,0.42)_100%)]" />
+        </>
+      ) : (
+        <>
+          <div className="glow-orb left-[-4rem] top-10 h-48 w-48 opacity-50" />
+          <div className="glow-orb right-[-2rem] top-24 h-56 w-56 opacity-40" />
+        </>
+      )}
+      <Container className="relative">
         <Breadcrumbs
           items={crumbs}
-          className={tone === "dark" ? "[&_a]:text-brand-100 [&_span]:text-brand-50" : undefined}
+          className={
+            image || tone === "dark"
+              ? "[&_a]:text-brand-100 [&_span]:text-brand-50"
+              : undefined
+          }
         />
         {eyebrow ? (
-          <Badge tone={tone === "dark" ? "light" : "brand"} className="mb-4">
+          <Badge tone={image || tone === "dark" ? "light" : "brand"} className="mb-4">
             {eyebrow}
           </Badge>
         ) : null}
         <h1
           className={cn(
             "max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl",
-            tone === "dark" ? "text-white" : "text-ink",
+            image || tone === "dark" ? "text-white" : "text-ink",
           )}
         >
           {title}
@@ -49,7 +75,7 @@ export function PageHero({
         <p
           className={cn(
             "mt-5 max-w-2xl text-base leading-relaxed sm:text-lg",
-            tone === "dark" ? "text-brand-100/90" : "text-ink-muted",
+            image || tone === "dark" ? "text-brand-50/90" : "text-ink-muted",
           )}
         >
           {description}

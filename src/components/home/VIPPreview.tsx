@@ -8,17 +8,17 @@ const points = [
   {
     title: "Personalized experience",
     body: "Service and communications that reflect how you like to play.",
-    image: "/images/vip/personal.webp",
+    image: "/images/brand/yes2win-vip-personal.webp",
   },
   {
     title: "Priority support",
     body: "Elevated help pathways when VIP channels are available to your membership.",
-    image: "/images/vip/support.webp",
+    image: "/images/brand/yes2win-vip-personal.webp",
   },
   {
     title: "Exclusive experiences",
     body: "Selected invitations and recognition moments shared through official VIP routes.",
-    image: "/images/vip/events.webp",
+    image: "/images/brand/yes2win-vip-events.webp",
   },
 ];
 
@@ -45,7 +45,7 @@ export function VIPPreview() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-white/10">
             <Image
-              src="/images/vip/hero.webp"
+              src="/images/brand/yes2win-vip-hero.webp"
               alt="YES2WIN VIP experience artwork"
               fill
               sizes="(max-width:1024px) 100vw, 50vw"

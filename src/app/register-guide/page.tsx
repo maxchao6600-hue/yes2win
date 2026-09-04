@@ -63,6 +63,8 @@ export default function RegisterGuidePage() {
         ]}
       />
       <PageHero
+        image="/images/brand/yes2win-register-journey.webp"
+        imageAlt="YES2WIN registration artwork"
         eyebrow="Register Guide"
         title="How to register for YES2WIN"
         description="A practical walkthrough of the official YES2WIN signup journey based on the public registration flow. Live fields can change, so always follow the current form."
@@ -84,7 +86,7 @@ export default function RegisterGuidePage() {
         <Container className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-40px_rgba(6,78,59,0.45)]">
             <Image
-              src="/images/home/join.webp"
+              src="/images/brand/yes2win-register-journey.webp"
               alt="YES2WIN account registration guide visual"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"

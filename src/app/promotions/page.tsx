@@ -20,12 +20,12 @@ export const metadata = buildMetadata({
 });
 
 const promoImages: Record<string, string> = {
-  welcome: "/images/promotions/welcome.webp",
-  deposit: "/images/promotions/deposit.webp",
-  weekly: "/images/promotions/weekly.webp",
-  cashback: "/images/promotions/cashback.webp",
-  "vip-benefits": "/images/promotions/vip.webp",
-  special: "/images/promotions/special.webp",
+  welcome: "/images/brand/yes2win-promotion-welcome.webp",
+  deposit: "/images/brand/yes2win-promotion-deposit.webp",
+  weekly: "/images/brand/yes2win-promotion-weekly.webp",
+  cashback: "/images/brand/yes2win-promotion-cashback.webp",
+  "vip-benefits": "/images/brand/yes2win-promotion-vip.webp",
+  special: "/images/brand/yes2win-promotion-special.webp",
 };
 
 const claimSteps = [
@@ -118,6 +118,8 @@ export default function PromotionsPage() {
         ]}
       />
       <PageHero
+        image="/images/brand/yes2win-promotion-welcome.webp"
+        imageAlt="YES2WIN promotions artwork"
         eyebrow="Promotions"
         title="YES2WIN offers explained clearly"
         description="Explore welcome, deposit, weekly, cashback, VIP and special campaign types — then confirm live terms on the official platform before you opt in."
@@ -163,7 +165,7 @@ export default function PromotionsPage() {
             </div>
             <div className="relative min-h-[260px] lg:min-h-full">
               <Image
-                src="/images/promotions/welcome.webp"
+                src="/images/brand/yes2win-promotion-welcome.webp"
                 alt="YES2WIN welcome bonus campaign artwork"
                 fill
                 sizes="(max-width:1024px) 100vw, 45vw"

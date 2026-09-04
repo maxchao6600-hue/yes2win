@@ -22,11 +22,11 @@ export const metadata = buildMetadata({
 });
 
 const imageMap: Record<string, string> = {
-  slots: "/images/categories/slots.webp",
-  "live-casino": "/images/categories/live-casino.webp",
-  sports: "/images/categories/sports.webp",
-  fishing: "/images/categories/fishing.webp",
-  lottery: "/images/categories/lottery.webp",
+  slots: "/images/brand/yes2win-games-slots.webp",
+  "live-casino": "/images/brand/yes2win-games-live-casino.webp",
+  sports: "/images/brand/yes2win-games-sports.webp",
+  fishing: "/images/brand/yes2win-games-fishing.webp",
+  lottery: "/images/brand/yes2win-games-lottery.webp",
 };
 
 const formats = [
@@ -65,6 +65,8 @@ export default function GamesPage() {
       <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Games", path: "/games/" }]} />
       <PageHero
         tone="dark"
+        image="/images/brand/yes2win-featured-games.webp"
+        imageAlt="YES2WIN games hub artwork"
         eyebrow="Games Hub"
         title="YES2WIN games in one place"
         description="Browse category guides, studio references and access paths before you open the live lobby for titles available to your account."
@@ -185,7 +187,7 @@ export default function GamesPage() {
       <Section>
         <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line">
-            <Image src="/images/mobile/devices.webp" alt="YES2WIN mobile gaming visual" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+            <Image src="/images/brand/yes2win-mobile-device.webp" alt="YES2WIN mobile gaming visual" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
           </div>
           <div>
             <SectionHeading

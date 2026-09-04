@@ -1,60 +1,53 @@
 import Image from "next/image";
 import Link from "next/link";
-import { gameCategories } from "@/config/content/games";
+import { media } from "@/config/media";
 import { Container, Section } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
 
-const imageMap: Record<string, string> = {
-  slots: "/images/categories/slots.webp",
-  "live-casino": "/images/categories/live-casino.webp",
-  sports: "/images/categories/sports.webp",
-  fishing: "/images/categories/fishing.webp",
-  lottery: "/images/categories/lottery.webp",
-};
+const imageMap = media.categories;
 
 export function Ecosystem() {
+  const categories = [
+    { id: "slots", name: "Slot Games", href: "/games/slots/", description: "Theme-driven spins for short sessions or longer play.", cta: "Explore slots" },
+    { id: "live-casino", name: "Live Casino", href: "/games/live-casino/", description: "Dealer tables streamed in real time when available.", cta: "View live casino" },
+    { id: "sports", name: "Sports", href: "/games/sports/", description: "Football, basketball, tennis and more on the sports desk.", cta: "Browse sports" },
+    { id: "fishing", name: "Fishing Games", href: "/games/fishing/", description: "Interactive catch-style play with vivid underwater energy.", cta: "Try fishing games" },
+    { id: "lottery", name: "Lottery / 4D", href: "/games/lottery/", description: "Number-led draw entertainment with a calmer pace.", cta: "See lottery options" },
+  ] as const;
+
   return (
     <Section tone="white">
       <Container>
         <SectionHeading
           eyebrow="Game categories"
           title="Five ways to enjoy YES2WIN"
-          description="Browse slots, live casino, sports, fishing and lottery — then open the official lobby for titles available to your account."
+          description="Large category artworks lead into deeper guides — then into the official lobby for live titles."
         />
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {gameCategories.map((category, index) => (
-            <article
+          {categories.map((category, index) => (
+            <Link
               key={category.id}
-              className="group overflow-hidden rounded-3xl border border-line bg-white shadow-[0_18px_50px_-34px_rgba(6,78,59,0.5)]"
+              href={category.href}
+              className="group relative min-h-[320px] overflow-hidden rounded-[1.75rem] border border-line shadow-[0_24px_60px_-36px_rgba(6,78,59,0.55)]"
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <Image
-                  src={imageMap[category.id]}
-                  alt={`${category.shortName} category artwork`}
-                  fill
-                  sizes="(max-width:768px) 100vw, (max-width:1280px) 50vw, 33vw"
-                  className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                  priority={index < 2}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-transparent to-transparent" />
-                <p className="absolute bottom-3 left-4 text-xs font-semibold uppercase tracking-[0.16em] text-brand-100">
-                  {category.shortName}
-                </p>
+              <Image
+                src={imageMap[category.id]}
+                alt={`${category.name} artwork`}
+                fill
+                sizes="(max-width:768px) 100vw, (max-width:1280px) 50vw, 33vw"
+                className="object-cover transition duration-700 group-hover:scale-[1.04]"
+                priority={index < 2}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/35 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                <h3 className="text-2xl font-bold">{category.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-brand-50/90">{category.description}</p>
+                <span className="mt-4 inline-flex text-sm font-semibold text-brand-200">{category.cta} →</span>
               </div>
-              <div className="p-5 sm:p-6">
-                <h3 className="text-xl font-bold text-ink">{category.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{category.description}</p>
-                <Link
-                  href={category.href}
-                  className="mt-4 inline-flex text-sm font-semibold text-brand-700"
-                >
-                  {category.ctaLabel} →
-                </Link>
-              </div>
-            </article>
+            </Link>
           ))}
-          <article className="flex flex-col justify-between rounded-3xl bg-gradient-to-br from-brand-700 to-brand-950 p-6 text-white">
+          <div className="flex min-h-[320px] flex-col justify-between rounded-[1.75rem] bg-gradient-to-br from-brand-700 to-brand-950 p-6 text-white">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-200">Next step</p>
               <h3 className="mt-3 text-2xl font-bold">Ready for the lobby?</h3>
@@ -70,7 +63,7 @@ export function Ecosystem() {
                 Explore Games
               </CtaLink>
             </div>
-          </article>
+          </div>
         </div>
       </Container>
     </Section>

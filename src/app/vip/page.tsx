@@ -108,6 +108,8 @@ export default function VipPage() {
       />
       <PageHero
         tone="dark"
+        image="/images/brand/yes2win-vip-hero.webp"
+        imageAlt="YES2WIN VIP artwork"
         eyebrow="VIP"
         title={vipContent.headline}
         description="A more personal way to enjoy YES2WIN — recognition, thoughtful support and curated moments, without guaranteed financial outcomes."
@@ -146,7 +148,7 @@ export default function VipPage() {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-line shadow-[0_30px_80px_-40px_rgba(2,44,34,0.55)]">
               <Image
-                src="/images/vip/hero.webp"
+                src="/images/brand/yes2win-vip-hero.webp"
                 alt="YES2WIN VIP experience artwork"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -184,7 +186,7 @@ export default function VipPage() {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-line shadow-[0_30px_80px_-40px_rgba(2,44,34,0.55)] lg:order-2">
               <Image
-                src="/images/vip/personal.webp"
+                src="/images/brand/yes2win-vip-personal.webp"
                 alt="Personalised YES2WIN VIP service"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -237,7 +239,7 @@ export default function VipPage() {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-line shadow-[0_30px_80px_-40px_rgba(2,44,34,0.55)]">
               <Image
-                src="/images/vip/support.webp"
+                src="/images/brand/yes2win-vip-personal.webp"
                 alt="YES2WIN VIP priority support"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -253,7 +255,7 @@ export default function VipPage() {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-line shadow-[0_30px_80px_-40px_rgba(2,44,34,0.55)]">
               <Image
-                src="/images/vip/events.webp"
+                src="/images/brand/yes2win-vip-events.webp"
                 alt="YES2WIN VIP exclusive events"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

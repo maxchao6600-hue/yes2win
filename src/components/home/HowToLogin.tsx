@@ -34,7 +34,7 @@ export function HowToLogin() {
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-line">
             <Image
-              src="/images/home/signin-signup.jpg"
+              src="/images/brand/yes2win-register-journey.webp"
               alt="YES2WIN login and account access visual"
               fill
               sizes="(max-width:1024px) 100vw, 45vw"

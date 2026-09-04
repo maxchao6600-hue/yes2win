@@ -19,11 +19,11 @@ export const metadata = buildMetadata({
 });
 
 const imageMap: Record<string, string> = {
-  slots: "/images/categories/slots.webp",
-  "live-casino": "/images/categories/live-casino.webp",
-  sports: "/images/categories/sports.webp",
-  fishing: "/images/categories/fishing.webp",
-  lottery: "/images/categories/lottery.webp",
+  slots: "/images/brand/yes2win-games-slots.webp",
+  "live-casino": "/images/brand/yes2win-games-live-casino.webp",
+  sports: "/images/brand/yes2win-games-sports.webp",
+  fishing: "/images/brand/yes2win-games-fishing.webp",
+  lottery: "/images/brand/yes2win-games-lottery.webp",
 };
 
 const siteProvides = [
@@ -81,6 +81,8 @@ export default function AboutPage() {
 
       {/* 1. Hero / About YES2WIN */}
       <PageHero
+        image="/images/brand/yes2win-about-ecosystem.webp"
+        imageAlt="YES2WIN about artwork"
         eyebrow="About"
         title="About YES2WIN Official Partner"
         description="An official partner information and access gateway connected to the YES2WIN ecosystem — helping visitors understand games, offers and next steps with clarity."
@@ -126,7 +128,7 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-44px_rgba(6,78,59,0.45)]">
             <Image
-              src="/images/about/hero.webp"
+              src="/images/brand/yes2win-about-ecosystem.webp"
               alt="YES2WIN brand and ecosystem overview artwork"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
@@ -142,7 +144,7 @@ export default function AboutPage() {
         <Container className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-44px_rgba(6,78,59,0.45)]">
             <Image
-              src="/images/about/map.webp"
+              src="/images/brand/yes2win-about-ecosystem.webp"
               alt="YES2WIN ecosystem map visual"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
@@ -328,7 +330,7 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-44px_rgba(6,78,59,0.45)]">
             <Image
-              src="/images/about/platform-access.webp"
+              src="/images/brand/yes2win-account-access.webp"
               alt="YES2WIN platform access through the partner gateway"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"

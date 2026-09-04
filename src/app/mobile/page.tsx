@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { gameCategories } from "@/config/content/games";
+import { media } from "@/config/media";
 import { PageHero } from "@/components/page/PageHero";
 import { FinalCta } from "@/components/page/FinalCta";
 import { Container, Section } from "@/components/ui/Container";
@@ -71,6 +72,8 @@ export default function MobilePage() {
       {/* 1. Mobile overview / Hero */}
       <PageHero
         tone="dark"
+        image="/images/brand/yes2win-mobile-device.webp"
+        imageAlt="YES2WIN mobile artwork"
         eyebrow="Mobile"
         title="YES2WIN, built for mobile"
         description="Browse categories, manage access and move into the YES2WIN platform from your phone — with responsive layouts and clear touch targets. Continue through Access YES2WIN / Login rather than unverified store downloads."
@@ -95,7 +98,7 @@ export default function MobilePage() {
             <div className="absolute -inset-10 rounded-full bg-brand-200/50 blur-3xl" />
             <div className="relative aspect-[9/16] overflow-hidden rounded-[2.2rem] border border-brand-900/15 shadow-2xl">
               <Image
-                src="/images/mobile/hero.webp"
+                src="/images/brand/yes2win-mobile-device.webp"
                 alt="YES2WIN mobile browser experience"
                 fill
                 sizes="(max-width: 1024px) 80vw, 320px"
@@ -196,13 +199,27 @@ export default function MobilePage() {
           />
           <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
             {gameCategories.map((category) => (
-              <Card key={category.id}>
-                <h2 className="text-lg font-bold text-ink">{category.shortName}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{category.mobileNote}</p>
-                <Link href={category.href} className="mt-4 inline-flex text-sm font-semibold text-brand-700">
-                  {category.ctaLabel} →
-                </Link>
-              </Card>
+              <Link
+                key={category.id}
+                href={category.href}
+                className="group relative min-h-[240px] overflow-hidden rounded-[1.5rem] border border-line shadow-[0_18px_50px_-34px_rgba(6,78,59,0.45)]"
+              >
+                <Image
+                  src={media.categories[category.id as keyof typeof media.categories]}
+                  alt={`${category.shortName} mobile category artwork`}
+                  fill
+                  sizes="(max-width:640px) 100vw, (max-width:1280px) 50vw, 20vw"
+                  className="object-cover transition duration-500 group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-950/92 via-brand-950/35 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+                  <h2 className="text-lg font-bold">{category.shortName}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-brand-50/90">{category.mobileNote}</p>
+                  <span className="mt-3 inline-flex text-sm font-semibold text-brand-200">
+                    {category.ctaLabel} →
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </Container>
@@ -211,39 +228,61 @@ export default function MobilePage() {
       {/* 5. Promotions + account access */}
       <Section tone="white">
         <Container className="grid gap-5 lg:grid-cols-2">
-          <Card>
-            <SectionHeading
-              eyebrow="Promotions"
-              title="Review offers on a smaller screen"
-              description="Promotion categories stay readable on mobile so you can understand offer types before confirming live terms inside the platform."
-            />
-            <div className="mt-6 flex flex-wrap gap-3">
-              <CtaLink href="/promotions/" variant="secondary" size="sm">
-                Promotions hub
-              </CtaLink>
-              <CtaLink cta="register" size="sm">
-                Access YES2WIN
-              </CtaLink>
+          <article className="overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-[0_18px_50px_-34px_rgba(6,78,59,0.45)]">
+            <div className="relative aspect-[16/10]">
+              <Image
+                src={media.promotions.welcome}
+                alt="YES2WIN mobile promotions artwork"
+                fill
+                sizes="(max-width:1024px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
-          </Card>
-          <Card>
-            <SectionHeading
-              eyebrow="Account access"
-              title="Register and login from your phone"
-              description="Account creation, sign-in, security prompts and profile tools continue inside the official platform environment after you tap Access YES2WIN or Login."
-            />
-            <div className="mt-6 flex flex-wrap gap-3">
-              <CtaLink cta="register" size="sm">
-                Register
-              </CtaLink>
-              <CtaLink cta="login" variant="secondary" size="sm">
-                Login
-              </CtaLink>
-              <CtaLink href="/register-guide/" variant="secondary" size="sm">
-                Register guide
-              </CtaLink>
+            <div className="p-6">
+              <SectionHeading
+                eyebrow="Promotions"
+                title="Review offers on a smaller screen"
+                description="Promotion categories stay readable on mobile so you can understand offer types before confirming live terms inside the platform."
+              />
+              <div className="mt-6 flex flex-wrap gap-3">
+                <CtaLink href="/promotions/" variant="secondary" size="sm">
+                  Promotions hub
+                </CtaLink>
+                <CtaLink cta="register" size="sm">
+                  Access YES2WIN
+                </CtaLink>
+              </div>
             </div>
-          </Card>
+          </article>
+          <article className="overflow-hidden rounded-[1.75rem] border border-line bg-white shadow-[0_18px_50px_-34px_rgba(6,78,59,0.45)]">
+            <div className="relative aspect-[16/10]">
+              <Image
+                src={media.accountAccess}
+                alt="YES2WIN mobile account access artwork"
+                fill
+                sizes="(max-width:1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6">
+              <SectionHeading
+                eyebrow="Account access"
+                title="Register and login from your phone"
+                description="Account creation, sign-in, security prompts and profile tools continue inside the official platform environment after you tap Access YES2WIN or Login."
+              />
+              <div className="mt-6 flex flex-wrap gap-3">
+                <CtaLink cta="register" size="sm">
+                  Register
+                </CtaLink>
+                <CtaLink cta="login" variant="secondary" size="sm">
+                  Login
+                </CtaLink>
+                <CtaLink href="/register-guide/" variant="secondary" size="sm">
+                  Register guide
+                </CtaLink>
+              </div>
+            </div>
+          </article>
         </Container>
       </Section>
 
@@ -281,8 +320,8 @@ export default function MobilePage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line bg-white shadow-[0_30px_80px_-40px_rgba(6,78,59,0.45)]">
             <Image
-              src="/images/mobile/devices.webp"
-              alt="YES2WIN mobile access across devices"
+              src={media.promotions.deposit}
+              alt="YES2WIN mobile cashier pathway visual"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
               className="object-cover"
@@ -314,7 +353,7 @@ export default function MobilePage() {
         <Container className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="relative aspect-[3/4] max-w-md overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-40px_rgba(6,78,59,0.45)] lg:mx-auto">
             <Image
-              src="/images/mobile/phone.webp"
+              src="/images/brand/yes2win-mobile-device.webp"
               alt="YES2WIN mobile phone visual"
               fill
               sizes="(max-width: 1024px) 90vw, 360px"

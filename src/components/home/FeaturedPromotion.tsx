@@ -24,7 +24,7 @@ export function FeaturedPromotion() {
           </div>
           <div className="relative min-h-[260px] lg:min-h-full">
             <Image
-              src="/images/promotions/welcome.webp"
+              src="/images/brand/yes2win-promotion-welcome.webp"
               alt="YES2WIN welcome bonus campaign artwork"
               fill
               sizes="(max-width:1024px) 100vw, 45vw"

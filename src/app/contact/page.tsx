@@ -55,6 +55,8 @@ export default function ContactPage() {
 
       {/* 1. Hero */}
       <PageHero
+        image="/images/brand/yes2win-contact-support.webp"
+        imageAlt="YES2WIN support artwork"
         eyebrow="Contact"
         title="How can we help?"
         description="Choose the pathway that matches your question — customer support, account help, payments, registration, login, partner support or general site guidance."

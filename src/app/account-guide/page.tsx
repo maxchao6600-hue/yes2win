@@ -55,6 +55,8 @@ export default function AccountGuidePage() {
         ]}
       />
       <PageHero
+        image="/images/brand/yes2win-account-access.webp"
+        imageAlt="YES2WIN account artwork"
         eyebrow="Account Guide"
         title="Understand your YES2WIN account"
         description="A practical map of the tools members usually look for after login — without recreating the live account dashboard on this partner site."
@@ -76,7 +78,7 @@ export default function AccountGuidePage() {
         <Container className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line">
             <Image
-              src="/images/home/account-access.webp"
+              src="/images/brand/yes2win-account-access.webp"
               alt="YES2WIN account access overview"
               fill
               sizes="(max-width:1024px) 100vw, 45vw"

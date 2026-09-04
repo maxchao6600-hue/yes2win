@@ -1,26 +1,44 @@
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
+import { media } from "@/config/media";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(165deg,#022c22_0%,#064e3b_42%,#0b3d30_72%,#f5faf7_72%)] pb-16 pt-28 text-white sm:pt-32 lg:pb-24">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="glow-orb left-[8%] top-[18%] h-64 w-64 opacity-40" />
-        <div className="glow-orb right-[12%] top-[10%] h-72 w-72 opacity-30" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(52,211,153,0.18),transparent_35%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-surface to-transparent" />
+    <section className="relative overflow-hidden pb-16 pt-28 text-white sm:pt-32 lg:min-h-[92vh] lg:pb-24">
+      <div className="absolute inset-0">
+        <Image
+          src={media.homeHero}
+          alt="YES2WIN premium gaming atmosphere"
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover object-[72%_center] sm:object-center"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(2,44,34,0.92)_0%,rgba(2,44,34,0.78)_38%,rgba(2,44,34,0.35)_68%,rgba(2,44,34,0.55)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-surface to-transparent" />
       </div>
 
-      <Container className="relative grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="fade-up">
-          <Badge tone="light">Official YES2WIN Partner</Badge>
-          <h1 className="mt-5 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+      <Container className="relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="fade-up max-w-2xl">
+          <div className="mb-5 flex items-center gap-3">
+            <Image
+              src={siteConfig.logo.src}
+              alt={siteConfig.logo.alt}
+              width={150}
+              height={45}
+              className="h-10 w-auto brightness-0 invert"
+              priority
+            />
+            <Badge tone="light">Official YES2WIN Partner</Badge>
+          </div>
+          <h1 className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
             YES2WIN — Your Gateway to the Winning Ecosystem
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-brand-50/90 sm:text-lg">
+          <p className="mt-6 text-base leading-relaxed text-brand-50/92 sm:text-lg">
             Explore YES2WIN games, offers and member pathways through an official partner site built for a modern,
             confident first impression.
           </p>
@@ -28,42 +46,27 @@ export function Hero() {
             {siteConfig.tagline}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <CtaLink cta="register" size="lg" className="fade-up delay-1">
+            <CtaLink cta="register" size="lg">
               Register Now
             </CtaLink>
-            <CtaLink cta="login" variant="outline" size="lg" className="fade-up delay-2">
+            <CtaLink cta="login" variant="outline" size="lg">
               Login
             </CtaLink>
           </div>
         </div>
 
-        <div className="fade-up delay-2 relative mx-auto w-full max-w-md lg:max-w-none">
-          <div className="absolute -inset-6 rounded-[2rem] bg-brand-400/20 blur-2xl" />
+        <div className="fade-up delay-2 relative mx-auto hidden w-full max-w-md lg:block lg:max-w-none">
           <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/10 p-5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.55)] backdrop-blur-md">
-            <div className="flex items-center justify-between gap-3">
-              <Image
-                src={siteConfig.logo.src}
-                alt={siteConfig.logo.alt}
-                width={150}
-                height={45}
-                className="h-10 w-auto brightness-0 invert"
-                priority
-              />
-              <span className="rounded-full bg-brand-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-100">
-                Partner Portal
-              </span>
-            </div>
-
-            <div className="mt-6 grid gap-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-100">Partner Portal</p>
+            <div className="mt-5 grid gap-3">
               {[
                 { label: "Slots", meta: "Spin & discover" },
                 { label: "Live Casino", meta: "Real-time tables" },
                 { label: "Sports", meta: "Follow the action" },
-              ].map((item, index) => (
+              ].map((item) => (
                 <div
                   key={item.label}
-                  className="flex items-center justify-between rounded-2xl border border-white/10 bg-brand-950/35 px-4 py-3"
-                  style={{ transform: `translateX(${index * 6}px)` }}
+                  className="flex items-center justify-between rounded-2xl border border-white/10 bg-brand-950/45 px-4 py-3"
                 >
                   <div>
                     <p className="font-semibold">{item.label}</p>
@@ -73,7 +76,6 @@ export function Hero() {
                 </div>
               ))}
             </div>
-
             <div className="mt-5 rounded-2xl bg-gradient-to-r from-brand-500 to-brand-700 p-4">
               <p className="text-xs uppercase tracking-[0.16em] text-white/80">Ready when you are</p>
               <p className="mt-1 text-lg font-semibold">Register · Login · Explore</p>

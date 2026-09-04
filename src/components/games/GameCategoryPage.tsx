@@ -1,30 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { GameCategory } from "@/config/content/games";
+import { media } from "@/config/media";
 import { PageHero } from "@/components/page/PageHero";
 import { FinalCta } from "@/components/page/FinalCta";
 import { Container, Section } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
-import { CategoryVisual, type IconName } from "@/components/ui/Icon";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { Accordion } from "@/components/ui/Accordion";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/JsonLd";
 
-const iconMap: Record<string, IconName> = {
-  slots: "slots",
-  "live-casino": "live",
-  sports: "sports",
-  fishing: "fishing",
-  lottery: "lottery",
-};
-
-const visualMap: Record<string, string> = {
-  slots: "/images/categories/slots.webp",
-  "live-casino": "/images/categories/live-casino.webp",
-  sports: "/images/categories/sports.webp",
-  fishing: "/images/categories/fishing.webp",
-  lottery: "/images/categories/lottery.webp",
-};
+const visualMap = media.categories;
 
 const detailMap: Record<
   string,
@@ -193,6 +179,8 @@ export function GameCategoryPage({ category }: { category: GameCategory }) {
       />
       <PageHero
         tone="dark"
+        image={visualMap[category.id as keyof typeof visualMap]}
+        imageAlt={`${category.shortName} category artwork`}
         eyebrow="YES2WIN Games"
         title={category.name}
         description={category.intro}
@@ -216,7 +204,7 @@ export function GameCategoryPage({ category }: { category: GameCategory }) {
           <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-40px_rgba(6,78,59,0.45)]">
               <Image
-                src={visualMap[category.id]}
+                src={visualMap[category.id as keyof typeof visualMap]}
                 alt={`${category.shortName} category artwork`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
@@ -224,8 +212,7 @@ export function GameCategoryPage({ category }: { category: GameCategory }) {
               />
             </div>
             <Card hover={false}>
-              <CategoryVisual name={iconMap[category.id] ?? "spark"} className="h-16 w-16" />
-              <h2 className="mt-5 text-2xl font-bold text-ink">What to expect</h2>
+              <h2 className="text-2xl font-bold text-ink">What to expect</h2>
               <ul className="mt-4 space-y-3 text-sm text-ink-muted">
                 {category.whatToExpect.map((item) => (
                   <li key={item} className="flex gap-2">

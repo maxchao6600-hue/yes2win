@@ -33,6 +33,8 @@ export default function PartnerPage() {
       {/* 1. Hero */}
       <PageHero
         tone="dark"
+        image="/images/brand/yes2win-partner-ecosystem.webp"
+        imageAlt="YES2WIN partner ecosystem artwork"
         eyebrow="Partner"
         title={partnerContent.headline}
         description={partnerContent.intro}
@@ -70,7 +72,7 @@ export default function PartnerPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-44px_rgba(6,78,59,0.45)]">
             <Image
-              src="/images/partner/hero.webp"
+              src="/images/brand/yes2win-partner-ecosystem.webp"
               alt="YES2WIN partner ecosystem visual"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
@@ -131,7 +133,7 @@ export default function PartnerPage() {
         <Container className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-44px_rgba(6,78,59,0.45)]">
             <Image
-              src="/images/partner/network.webp"
+              src="/images/brand/yes2win-partner-ecosystem.webp"
               alt="YES2WIN partner referral network visual"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
@@ -198,7 +200,7 @@ export default function PartnerPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-44px_rgba(6,78,59,0.45)]">
             <Image
-              src="/images/partner/resources.webp"
+              src="/images/brand/yes2win-partner-tracking.webp"
               alt="YES2WIN partner brand and resource materials"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
@@ -255,7 +257,7 @@ export default function PartnerPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-44px_rgba(6,78,59,0.45)]">
             <Image
-              src="/images/partner/tracking.webp"
+              src="/images/brand/yes2win-partner-tracking.webp"
               alt="YES2WIN partner progress tracking visual"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
