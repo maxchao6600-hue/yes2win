@@ -53,20 +53,24 @@ export function Header() {
           : "bg-transparent",
       )}
     >
-      <div className="container-page flex h-16 items-center justify-between gap-4 lg:h-[4.5rem]">
-        <Link href="/" className="relative z-10 flex items-center gap-3" onClick={() => setOpen(false)}>
+      <div className="mx-auto grid h-16 w-[min(100%-1.5rem,86rem)] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-5 sm:gap-x-6 lg:h-[4.5rem] xl:gap-x-8 2xl:gap-x-10">
+        <Link
+          href="/"
+          className="flex w-max max-w-full min-w-0 shrink-0 items-center gap-2 sm:gap-2.5"
+          onClick={() => setOpen(false)}
+        >
           <Image
             src={siteConfig.logo.src}
             alt={siteConfig.logo.alt}
             width={140}
             height={42}
-            className={cn("h-9 w-auto", !solid && "brightness-0 invert")}
+            className={cn("h-9 w-auto shrink-0", !solid && "brightness-0 invert")}
             priority
             fetchPriority="high"
           />
           <span
             className={cn(
-              "hidden text-xs font-semibold uppercase tracking-[0.16em] sm:inline",
+              "hidden whitespace-nowrap text-[0.68rem] font-semibold uppercase tracking-[0.12em] sm:inline",
               solid ? "text-brand-700" : "text-brand-100",
             )}
           >
@@ -74,57 +78,59 @@ export function Header() {
           </span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-1 xl:flex">
-          {primaryNav.map((item) => {
-            const active = isActive(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={active ? "page" : undefined}
-                className={cn(
-                  "rounded-lg px-2.5 py-2 text-sm font-medium transition",
-                  solid
-                    ? active
-                      ? "bg-brand-50 text-brand-800"
-                      : "text-ink/80 hover:bg-brand-50 hover:text-brand-800"
-                    : active
-                      ? "bg-white/15 text-white"
-                      : "text-white/90 hover:bg-white/10 hover:text-white",
-                )}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-          <div className="group relative">
-            <button
-              type="button"
-              className={cn(
-                "rounded-lg px-2.5 py-2 text-sm font-medium transition",
-                solid
-                  ? "text-ink/80 hover:bg-brand-50 hover:text-brand-800"
-                  : "text-white/90 hover:bg-white/10 hover:text-white",
-              )}
-              aria-haspopup="menu"
-            >
-              More
-            </button>
-            <div className="invisible absolute left-0 top-full z-20 min-w-[220px] translate-y-1 rounded-2xl border border-line bg-white p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-              {moreNav.map((item) => (
+        <div className="flex min-w-0 items-center justify-center">
+          <nav aria-label="Primary" className="hidden min-w-0 items-center gap-0.5 xl:flex 2xl:gap-1">
+            {primaryNav.map((item) => {
+              const active = isActive(item.href);
+              return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block rounded-xl px-3 py-2 text-sm font-medium text-ink hover:bg-brand-50 hover:text-brand-800"
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "shrink-0 whitespace-nowrap rounded-lg px-1.5 py-2 text-sm font-medium transition 2xl:px-2.5",
+                    solid
+                      ? active
+                        ? "bg-brand-50 text-brand-800"
+                        : "text-ink/80 hover:bg-brand-50 hover:text-brand-800"
+                      : active
+                        ? "bg-white/15 text-white"
+                        : "text-white/90 hover:bg-white/10 hover:text-white",
+                  )}
                 >
                   {item.label}
                 </Link>
-              ))}
+              );
+            })}
+            <div className="group relative shrink-0">
+              <button
+                type="button"
+                className={cn(
+                  "whitespace-nowrap rounded-lg px-1.5 py-2 text-sm font-medium transition 2xl:px-2.5",
+                  solid
+                    ? "text-ink/80 hover:bg-brand-50 hover:text-brand-800"
+                    : "text-white/90 hover:bg-white/10 hover:text-white",
+                )}
+                aria-haspopup="menu"
+              >
+                More
+              </button>
+              <div className="invisible absolute left-0 top-full z-20 min-w-[220px] translate-y-1 rounded-2xl border border-line bg-white p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                {moreNav.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block rounded-xl px-3 py-2 text-sm font-medium text-ink hover:bg-brand-50 hover:text-brand-800"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
 
-        <div className="relative z-10 flex items-center gap-2">
+        <div className="flex shrink-0 items-center justify-end gap-2">
           <LanguageSwitcher solid={solid} />
           <CtaLink
             cta="login"
