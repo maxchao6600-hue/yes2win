@@ -8,6 +8,7 @@ import { localizePath } from "@/i18n/paths";
 export async function FeaturedPromotion() {
   const locale = await getLocale();
   const copy = getHomeCopy(locale).featuredPromotion;
+  const points = "points" in copy && Array.isArray(copy.points) ? copy.points : [];
 
   return (
     <Section tone="dark">
@@ -19,6 +20,16 @@ export async function FeaturedPromotion() {
             <p className="mt-4 text-sm leading-relaxed text-brand-50/85 sm:text-base">
               {copy.description}
             </p>
+            {points.length > 0 ? (
+              <ul className="mt-5 space-y-2.5">
+                {points.map((point) => (
+                  <li key={point} className="flex gap-2 text-sm text-brand-50/85">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-300" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
             <div className="mt-6 flex flex-wrap gap-3">
               <CtaLink cta="register">{copy.primaryCta}</CtaLink>
               <CtaLink href={localizePath("/promotions/", locale)} variant="outline">

@@ -24,10 +24,21 @@ export async function FAQPreview() {
   const locale = await getLocale();
   const copy = getHomeCopy(locale).faq;
   const faqItems = getFaqCategories(locale).flatMap((category) => category.items);
+  const teasers = "teasers" in copy && Array.isArray(copy.teasers) ? copy.teasers : [];
 
-  const preview = previewIds
+  const previewFromIds = previewIds
     .map((id) => faqItems.find((item) => item.id === id))
-    .filter((item): item is NonNullable<typeof item> => Boolean(item));
+    .filter((item): item is NonNullable<typeof item> => Boolean(item))
+    .map((item) => ({ id: item.id, question: item.question, answer: item.answer }));
+
+  const preview =
+    teasers.length > 0
+      ? teasers.map((item, index) => ({
+          id: `home-teaser-${index}`,
+          question: item.question,
+          answer: item.answer,
+        }))
+      : previewFromIds;
 
   return (
     <Section tone="white">

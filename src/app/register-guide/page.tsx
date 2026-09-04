@@ -90,9 +90,29 @@ export default async function RegisterGuidePage() {
         </Container>
       </Section>
 
+      <Section tone="white">
+        <Container>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">
+            {copy.troubleshooting.eyebrow}
+          </p>
+          <h2 className="mt-3 text-3xl font-bold text-ink">{copy.troubleshooting.title}</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-muted">
+            {copy.troubleshooting.description}
+          </p>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {copy.troubleshooting.points.map((item) => (
+              <Card key={item.title}>
+                <h3 className="text-lg font-bold text-ink">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-muted">{item.body}</p>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
       <Section>
         <Container>
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {copy.tips.map((item) => (
               <Card key={item.title}>
                 <h2 className="text-xl font-bold text-ink">{item.title}</h2>

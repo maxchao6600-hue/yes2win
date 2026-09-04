@@ -24,6 +24,16 @@ export async function PartnerPreview() {
               title={copy.title}
               description={copy.description}
             />
+            {"points" in copy && Array.isArray(copy.points) ? (
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {copy.points.map((point) => (
+                  <div key={point.title} className="rounded-2xl border border-brand-200 bg-white/90 p-4">
+                    <h3 className="text-base font-bold text-ink">{point.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-muted">{point.body}</p>
+                  </div>
+                ))}
+              </div>
+            ) : null}
             <div className="mt-8 flex flex-wrap gap-3">
               <CtaLink cta="partner">{copy.primaryCta}</CtaLink>
               <Link

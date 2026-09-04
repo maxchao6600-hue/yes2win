@@ -26,6 +26,9 @@ export async function VIPPreview() {
               title={copy.title}
               description={copy.description}
             />
+            {"body" in copy && typeof copy.body === "string" ? (
+              <p className="mt-4 text-sm leading-relaxed text-brand-50/85 sm:text-base">{copy.body}</p>
+            ) : null}
             <div className="mt-8 flex flex-wrap gap-3">
               <CtaLink href={localizePath("/vip/", locale)} variant="outline">
                 {copy.primaryCta}

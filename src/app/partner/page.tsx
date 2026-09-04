@@ -79,6 +79,17 @@ export default async function PartnerPage() {
                 </Card>
               ))}
             </div>
+            <div className="mt-8 rounded-[2rem] border border-line bg-brand-50/60 p-6">
+              <h3 className="text-lg font-bold text-ink">{copy.whyPoints.title}</h3>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {copy.whyPoints.items.map((item) => (
+                  <div key={item.title}>
+                    <p className="text-sm font-semibold text-ink">{item.title}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-muted">{item.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line shadow-[0_30px_80px_-44px_rgba(6,78,59,0.45)]">
             <Image
@@ -128,6 +139,18 @@ export default async function PartnerPage() {
                 <p className="mt-2 text-sm text-ink-muted">{step.description}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-8 rounded-[2rem] border border-brand-200 bg-white p-6">
+            <h3 className="text-lg font-bold text-ink">{copy.journeyExtra.title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink-muted">{copy.journeyExtra.body}</p>
+            <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+              {copy.journeyExtra.points.map((point) => (
+                <li key={point} className="flex gap-2 text-sm leading-relaxed text-ink-muted">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <CtaLink cta="partner">{copy.journey.primaryCta}</CtaLink>
@@ -303,16 +326,45 @@ export default async function PartnerPage() {
         </Container>
       </Section>
 
-      {/* 11. FAQ */}
+      {/* 11. Responsible marketing */}
+      <Section>
+        <Container>
+          <SectionHeading
+            eyebrow={copy.responsibleMarketing.eyebrow}
+            title={copy.responsibleMarketing.title}
+            description={copy.responsibleMarketing.description}
+          />
+          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {copy.responsibleMarketing.items.map((item) => (
+              <Card key={item.title}>
+                <h2 className="text-lg font-bold text-ink">{item.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-muted">{item.body}</p>
+              </Card>
+            ))}
+          </div>
+          <p className="mt-8 rounded-2xl border border-line bg-brand-50/70 p-4 text-sm leading-relaxed text-ink-muted">
+            {copy.responsibleMarketing.note}
+          </p>
+        </Container>
+      </Section>
+
+      {/* 12. FAQ */}
       <Section tone="white">
         <Container className="grid gap-8 lg:grid-cols-2">
           <SectionHeading eyebrow={copy.faq.eyebrow} title={copy.faq.title} description={copy.faq.description} />
           <Accordion
-            items={partnerContent.faqs.map((item, index) => ({
-              id: `partner-faq-${index}`,
-              question: item.question,
-              answer: item.answer,
-            }))}
+            items={[
+              ...partnerContent.faqs.map((item, index) => ({
+                id: `partner-faq-${index}`,
+                question: item.question,
+                answer: item.answer,
+              })),
+              ...copy.faq.items.map((item) => ({
+                id: item.id,
+                question: item.question,
+                answer: item.answer,
+              })),
+            ]}
           />
           <div className="lg:col-span-2 flex flex-wrap gap-4 text-sm font-semibold text-brand-800">
             {copy.faq.links.map((link) => (
@@ -324,7 +376,24 @@ export default async function PartnerPage() {
         </Container>
       </Section>
 
-      {/* 12. CTAs */}
+      {/* 13. Related links */}
+      <Section tone="green">
+        <Container>
+          <h2 className="text-3xl font-bold text-ink">{copy.relatedLinks.title}</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-muted">
+            {copy.relatedLinks.description}
+          </p>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-brand-800">
+            {copy.relatedLinks.links.map((link) => (
+              <Link key={link.href} href={localizePath(link.href, locale)}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* 14. CTAs */}
       <FinalCta
         locale={locale}
         title={copy.finalCta.title}

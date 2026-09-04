@@ -69,27 +69,27 @@ export const pageMetaEn: Record<PageId, PageMeta> = {
       "Discover YES2WIN lottery games — simple draw formats and easy mobile access through the partner gateway.",
   },
   promotions: {
-    title: "YES2WIN Promotions | Offers & Rewards",
+    title: "YES2WIN Promotions | Current Offers & Campaigns",
     description:
-      "Understand YES2WIN promotion types — welcome offers, deposit campaigns, weekly promotions, rebates and VIP benefits — then check live terms on the platform.",
+      "Understand YES2WIN promotion types — welcome offers, deposit campaigns, weekly promotions, cashback concepts and VIP-linked campaigns — then confirm live terms on the platform.",
   },
   vip: {
-    title: "YES2WIN VIP | Premium Member Experience",
+    title: "YES2WIN VIP | Membership & Exclusive Benefits",
     description:
       "Discover the YES2WIN VIP experience — personalised service, priority support and member recognition without guaranteed financial promises.",
   },
   payment: {
     title: "YES2WIN Payment Methods | Deposit & Withdrawal Guide",
     description:
-      "YES2WIN payment overview covering bank transfer, e-wallet, DuitNow, TNG, GrabPay, online banking, bank cards and crypto — verify live details in the official cashier.",
+      "YES2WIN payment overview covering bank transfer, e-wallet, DuitNow, Touch n Go, GrabPay, online banking, bank cards and crypto — verify live details in the official cashier.",
   },
   mobile: {
-    title: "YES2WIN Mobile | Gaming Experience on Mobile",
+    title: "YES2WIN Mobile | Mobile Gaming & Account Access",
     description:
-      "Access YES2WIN on mobile browsers — responsive navigation, games, promotions, payments and partner pathways on your phone via Access YES2WIN / Login.",
+      "Access YES2WIN on mobile browsers — responsive navigation, games, promotions, payments and account tools on your phone via the official partner gateway.",
   },
   faq: {
-    title: "YES2WIN FAQ | Registration, Games & Payments",
+    title: "YES2WIN FAQ | Account, Games, Payments & Support",
     description:
       "Answers about YES2WIN registration, login, games, promotions, payments, mobile access, partner pathways and responsible gaming.",
   },

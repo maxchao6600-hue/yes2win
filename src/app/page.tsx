@@ -1,7 +1,9 @@
 import { Hero } from "@/components/home/Hero";
 import { TrustStrip } from "@/components/home/TrustStrip";
+import { Intro } from "@/components/home/Intro";
 import { FeaturedGames } from "@/components/home/FeaturedGames";
 import { Ecosystem } from "@/components/home/Ecosystem";
+import { CategoryGuides } from "@/components/home/CategoryGuides";
 import { ProvidersPreview } from "@/components/home/ProvidersPreview";
 import { PromotionsPreview } from "@/components/home/PromotionsPreview";
 import { FeaturedPromotion } from "@/components/home/FeaturedPromotion";
@@ -42,8 +44,10 @@ export default async function HomePage() {
       <WebPageJsonLd name={site.identity} description={site.description} path={localizePath("/", locale)} />
       <Hero />
       <TrustStrip />
+      <Intro />
       <FeaturedGames />
       <Ecosystem />
+      <CategoryGuides />
       <ProvidersPreview />
       <PromotionsPreview />
       <FeaturedPromotion />

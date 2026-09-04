@@ -31,11 +31,16 @@ export async function WhyYes2Win() {
     <Section tone="white">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
-          <SectionHeading
-            eyebrow={copy.eyebrow}
-            title={copy.title}
-            description={copy.description}
-          />
+          <div>
+            <SectionHeading
+              eyebrow={copy.eyebrow}
+              title={copy.title}
+              description={copy.description}
+            />
+            {"body" in copy && typeof copy.body === "string" ? (
+              <p className="mt-4 text-sm leading-relaxed text-ink-muted sm:text-base">{copy.body}</p>
+            ) : null}
+          </div>
           <div className="relative hidden aspect-[21/9] overflow-hidden rounded-[1.5rem] lg:block">
             <Image
               src={media.aboutEcosystem}

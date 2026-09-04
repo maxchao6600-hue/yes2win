@@ -10,6 +10,7 @@ export async function PaymentPreview() {
   const locale = await getLocale();
   const copy = getHomeCopy(locale).payment;
   const methods = getPaymentMethods(locale);
+  const points = "points" in copy && Array.isArray(copy.points) ? copy.points : [];
 
   return (
     <Section tone="white">
@@ -19,6 +20,16 @@ export async function PaymentPreview() {
           title={copy.title}
           description={copy.description}
         />
+        {points.length > 0 ? (
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            {points.map((point) => (
+              <div key={point.title} className="rounded-2xl border border-line bg-brand-50/40 p-4">
+                <h3 className="text-base font-bold text-ink">{point.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{point.body}</p>
+              </div>
+            ))}
+          </div>
+        ) : null}
         <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
           {methods.map((method) => (
             <div

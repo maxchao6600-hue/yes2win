@@ -23,31 +23,55 @@ export const hubsEn = {
       eyebrow: "Brand",
       title: "YES2WIN — YES is the Choice. WIN is the Result.",
       description:
-        "YES2WIN is the entertainment brand and platform spanning slots, live casino, sports, fishing and lottery. Members interact with games, payments, promotions and account tools through the official platform.",
+        "YES2WIN is the entertainment brand and platform spanning slots, live casino, sports, fishing and lottery. Members interact with games, payments, promotions and account tools through the official platform, which is where anything account-specific happens. The tagline — YES is the Choice, WIN is the Result — is a brand expression about engaging with that experience, not a statement about outcomes.",
       imageAlt: "YES2WIN brand and ecosystem overview artwork",
       platformCard: {
         title: "YES2WIN",
-        body: "The multi-category entertainment platform where live play, cashier actions and account tools take place after registration or login.",
+        body: "The multi-category entertainment platform where live play, cashier actions, verification and account tools take place after registration or login. Everything that depends on your individual account — the lobby you see, the payment methods offered, the promotions available — is determined there rather than here.",
       },
       /** Rendered under the `siteConfig.identity` heading. */
       partnerCardBody:
-        "This partner website provides orientation, category education and access CTAs while remaining clear about its partner role in the wider ecosystem.",
+        "This partner website provides orientation, category education and access CTAs while remaining clear about its partner role in the wider ecosystem. It is deliberately explicit about what it is not: it does not host games, hold funds, process payments or grant account status, and it is not the primary corporate YES2WIN website.",
     },
     ecosystem: {
       eyebrow: "Ecosystem",
       title: "One entertainment world with clear pathways",
       description:
-        "YES2WIN brings together multiple entertainment paths in one ecosystem. This partner website helps you understand each area before you continue into the live platform.",
+        "YES2WIN brings together multiple entertainment paths in one ecosystem, and they do not all work the same way. This partner website helps you understand each area — how it plays, what it asks of you and what to check first — before you continue into the live platform.",
       imageAlt: "YES2WIN ecosystem map visual",
       /** `{title}` is replaced with the card title. */
       exploreLabelTemplate: "Explore {title}",
       items: [
-        { title: "Games", body: "Category guides with direct internal links.", href: "/games/" },
-        { title: "Promotions", body: "Offer types and how to confirm live terms.", href: "/promotions/" },
-        { title: "VIP", body: "Recognition and premium member experience.", href: "/vip/" },
-        { title: "Payment", body: "Deposit and withdrawal category education.", href: "/payment/" },
-        { title: "Mobile", body: "Phone-friendly access and browsing tips.", href: "/mobile/" },
-        { title: "Partner", body: "Sharing journey, resources and support.", href: "/partner/" },
+        {
+          title: "Games",
+          body: "Category guides covering slots, live casino, sports, fishing and lottery — how each one plays and who it suits.",
+          href: "/games/",
+        },
+        {
+          title: "Promotions",
+          body: "Offer types explained structurally, plus how to read eligibility and confirm live terms before you opt in.",
+          href: "/promotions/",
+        },
+        {
+          title: "VIP",
+          body: "Recognition-led member experience: what it emphasises, how it is communicated, and what it deliberately does not promise.",
+          href: "/vip/",
+        },
+        {
+          title: "Payment",
+          body: "Deposit and withdrawal categories, what to check before confirming, and why fees and limits stay on the platform.",
+          href: "/payment/",
+        },
+        {
+          title: "Mobile",
+          body: "Phone-friendly access, browser habits that prevent most issues, and how to reach the platform without unverified downloads.",
+          href: "/mobile/",
+        },
+        {
+          title: "Partner",
+          body: "The sharing journey, public resources you can reference, and the messaging standards that keep promotion responsible.",
+          href: "/partner/",
+        },
       ],
     },
     games: {
@@ -120,23 +144,31 @@ export const hubsEn = {
       eyebrow: "This website",
       title: "What YES2WIN Official Partner provides",
       description:
-        "A calm place to understand the ecosystem, compare pathways and move into official access when you are ready.",
+        "A calm place to understand the ecosystem, compare pathways and move into official access when you are ready — without being rushed into a decision by a countdown or a headline figure.",
       items: [
         {
           title: "Category orientation",
-          body: "Clear guides for games, promotions, VIP, payments and mobile so visitors understand YES2WIN before they continue.",
+          body: "Clear guides for games, promotions, VIP, payments and mobile so visitors understand YES2WIN before they continue, including the practical differences between categories that marketing copy tends to flatten.",
         },
         {
           title: "Access pathways",
-          body: "Register, Login and Partner CTAs route into the official platform destinations connected to this partner gateway.",
+          body: "Register, Login and Partner CTAs route into the official platform destinations connected to this partner gateway, rather than to unverified downloads or third-party mirrors.",
         },
         {
           title: "Support navigation",
-          body: "FAQ answers, contact pathways and responsible gaming guidance help people find the next practical step.",
+          body: "FAQ answers, contact pathways and responsible gaming guidance help people find the next practical step, including what to do when something has already gone wrong.",
         },
         {
           title: "Partner education",
-          body: "A dedicated partner journey explains sharing, resources and support without inventing commissions or income guarantees.",
+          body: "A dedicated partner journey explains sharing, resources and support without inventing commissions or income guarantees, and sets out the messaging standards expected of anyone promoting the brand.",
+        },
+        {
+          title: "Honest limits",
+          body: "Where a figure changes — offer values, fees, limits, odds, lobby catalogues — this site says so and points to the platform instead of publishing a number that would age badly.",
+        },
+        {
+          title: "Bilingual coverage",
+          body: "The same guidance is maintained in English and Simplified Chinese, so the depth of the explanation does not depend on which language you read it in.",
         },
       ],
       quickLinks: [
@@ -147,6 +179,10 @@ export const hubsEn = {
         { label: "Mobile", href: "/mobile/" },
         { label: "Partner", href: "/partner/" },
         { label: "FAQ", href: "/faq/" },
+        { label: "Register guide", href: "/register-guide/" },
+        { label: "Account guide", href: "/account-guide/" },
+        { label: "Responsible gaming", href: "/responsible-gaming/" },
+        { label: "Terms", href: "/terms/" },
         { label: "Contact", href: "/contact/" },
       ],
     },
@@ -171,6 +207,14 @@ export const hubsEn = {
         {
           title: "Can partners use these pages?",
           body: "Yes. Public pages can support educational messaging. Do not misrepresent this site as the primary corporate YES2WIN website.",
+        },
+        {
+          title: "Why are there no bonus figures here?",
+          body: "Because they change. Offer values, fees, limits and odds are set by the live platform and can differ by account, so publishing them here would guarantee that someone reads an outdated number and acts on it.",
+        },
+        {
+          title: "Can this site help with my account?",
+          body: "Not directly. It cannot see, change or verify an account, apply limits or confirm VIP status. What it can do is explain how those processes work so you know what to expect before you open the platform.",
         },
       ],
     },
@@ -202,19 +246,23 @@ export const hubsEn = {
       eyebrow: "Account help",
       title: "Profile, security and member tools",
       description:
-        "Account settings and security options are managed on the official YES2WIN platform after you sign in.",
+        "Account settings and security options are managed on the official YES2WIN platform after you sign in. This page explains what to expect from each area so you are not exploring blind — but the actions themselves belong to the platform.",
       cards: [
         {
           title: "Profile updates",
-          body: "Change personal details and review account information inside the live platform account area.",
+          body: "Change personal details and review account information inside the live platform account area. Some fields stay editable while identity-linked ones may be restricted once set, which is why accuracy at registration matters.",
         },
         {
           title: "Security & recovery",
-          body: "Use the official login recovery tools if you cannot sign in, then continue with platform support if needed.",
+          body: "Use the official login recovery tools if you cannot sign in — they normally work from your registered contact details. Avoid opening a second account as a workaround, since duplicates complicate verification later.",
         },
         {
           title: "Verification prompts",
-          body: "Identity or payment checks appear inside the official platform when required for withdrawals or account review.",
+          body: "Identity or payment checks appear inside the official platform when required for withdrawals or account review. Complete them promptly through in-account upload flows only, never by message or email.",
+        },
+        {
+          title: "Records & history",
+          body: "Transaction, betting and promotion records are the authoritative account of what happened. Check them before resubmitting anything, and quote them when you contact support.",
         },
       ],
     },
@@ -222,17 +270,17 @@ export const hubsEn = {
       eyebrow: "Payment help",
       title: "Deposits, withdrawals and cashier questions",
       description:
-        "Review payment categories here, then confirm live methods, limits and verification steps in the cashier after login.",
+        "Review payment categories here, then confirm live methods, limits and verification steps in the cashier after login. Most payment questions resolve faster once you know whether you are looking at an availability issue, a pending status or a verification step.",
       cards: [
         {
           title: "Before you deposit",
-          body: "Understand common categories such as bank transfer, e-wallet, online banking and cryptocurrency on the Payment page. Exact options depend on region and account status.",
+          body: "Understand common categories such as bank transfer, e-wallet, online banking and cryptocurrency on the Payment page, along with what to double-check before confirming. Exact options depend on region and account status, and a method that is not listed is simply not enabled for you.",
           linkLabel: "Payment guide",
           href: "/payment/",
         },
         {
           title: "Withdrawal readiness",
-          body: "Withdrawals may require verification. Follow only the official platform prompts and avoid sharing sensitive details outside those flows.",
+          body: "Withdrawals may require verification, and payout details usually need to match your registered name. Follow only the official platform prompts, avoid sharing sensitive details outside those flows, and check that no promotion condition is still attached to your balance.",
           linkLabel: "Payments FAQ",
           href: "/faq/#payments",
         },
@@ -289,6 +337,8 @@ export const hubsEn = {
       coverageItems: [
         "Partner access and onboarding questions",
         "Referral sharing and resource guidance",
+        "Which public pages you can reference when educating an audience",
+        "Messaging standards and responsible promotion expectations",
         "Where to find live partner terms after access is granted",
       ],
       faqLinkLabel: "Partner FAQ",
@@ -300,6 +350,8 @@ export const hubsEn = {
       links: [
         { label: "About this site", href: "/about/" },
         { label: "FAQ hub", href: "/faq/" },
+        { label: "Terms of use", href: "/terms/" },
+        { label: "Privacy policy", href: "/privacy/" },
         { label: "Responsible gaming", href: "/responsible-gaming/" },
       ],
     },
@@ -307,13 +359,20 @@ export const hubsEn = {
       eyebrow: "FAQ links",
       title: "Start with answers already published",
       description:
-        "Many common questions are covered across registration, login, payments, games, mobile and partner topics.",
+        "Many common questions are covered across registration, login, payments, games, mobile and partner topics — often in more detail than a support reply would fit. It is usually faster to check here first, and it means any question you do send can be more specific.",
       links: [
         { label: "Registration FAQ", href: "/faq/#registration" },
         { label: "Login FAQ", href: "/faq/#login" },
+        { label: "Account FAQ", href: "/faq/#account" },
         { label: "Payments FAQ", href: "/faq/#payments" },
+        { label: "Deposit FAQ", href: "/faq/#deposit" },
+        { label: "Withdrawal FAQ", href: "/faq/#withdrawal" },
+        { label: "Promotions FAQ", href: "/faq/#promotions" },
+        { label: "Games FAQ", href: "/faq/#games" },
         { label: "Mobile FAQ", href: "/faq/#mobile" },
+        { label: "Security FAQ", href: "/faq/#security" },
         { label: "Partner FAQ", href: "/faq/#partner" },
+        { label: "Responsible gaming FAQ", href: "/faq/#responsible-gaming" },
         { label: "Full FAQ hub", href: "/faq/" },
       ],
     },
@@ -366,12 +425,13 @@ export const hubsEn = {
       eyebrow: "Featured",
       title: "Start with the categories players explore most",
       description:
-        "Each card opens a deeper guide. Live titles appear only after you continue into the official platform.",
+        "Each card opens a deeper guide covering how the category plays, who it suits and what to check before your first session. Live titles appear only after you continue into the official platform, so treat these pages as preparation rather than a catalogue.",
       imageAltSuffix: "featured visual",
     },
     allCategories: {
       title: "All categories",
-      description: "Every major YES2WIN entertainment path with a short guide and next step.",
+      description:
+        "Every major YES2WIN entertainment path with a short guide and a next step. If you are undecided, the quickest way to choose is by pace: slots and fishing keep you actively involved, live tables run on a dealer’s timing, sports follow real fixtures, and lottery separates your decision from a scheduled draw.",
       imageAltSuffix: "artwork",
       playNowCta: "Play now",
     },
@@ -379,24 +439,40 @@ export const hubsEn = {
       eyebrow: "Providers",
       title: "Studios referenced by YES2WIN",
       description:
-        "These provider names appear in public YES2WIN materials. Game counts and live catalogues stay on the platform.",
+        "These provider names appear in public YES2WIN materials, and knowing them is genuinely useful — the studio behind a title shapes its interface, feature style and pacing more than the theme does. Game counts and live catalogues stay on the platform, because what is available to you depends on your region and account.",
     },
     formats: {
       title: "Popular formats",
-      description: "A quick map of the play styles members usually look for first.",
+      description:
+        "A quick map of the play styles members usually look for first, described by how a session actually feels rather than by marketing language. Use it to narrow down where to start, then open the category guide for the detail.",
       items: [
-        { title: "Slots", body: "Theme variety, feature-driven play and mobile-friendly spin cycles." },
-        { title: "Live tables", body: "Baccarat, roulette and blackjack where live dealers are available." },
-        { title: "Sports markets", body: "Football, basketball, tennis and other supported events." },
-        { title: "Fishing sessions", body: "Interactive targeting and arcade-style catch mechanics." },
-        { title: "Lottery / 4D", body: "Number-led draw formats with simpler participation flows." },
+        {
+          title: "Slots",
+          body: "Theme variety, feature-driven play and short spin cycles that suit both brief sessions and longer play. Each title publishes its own paytable explaining symbols and feature triggers.",
+        },
+        {
+          title: "Live tables",
+          body: "Baccarat, roulette and blackjack where live dealers are available, paced by timed betting windows rather than by you. Table panels list rules, side bets and limits before you join.",
+        },
+        {
+          title: "Sports markets",
+          body: "Football, basketball, tennis and other supported events, with pre-match markets for considered selections and in-play markets that move during an event.",
+        },
+        {
+          title: "Fishing sessions",
+          body: "Interactive targeting and arcade-style catch mechanics, with adjustable shot levels that change how quickly a session moves. Play is continuous rather than round-based.",
+        },
+        {
+          title: "Lottery / 4D",
+          body: "Number-led draw formats with simpler participation flows. You make a selection, entries close, and the result follows a published draw schedule.",
+        },
       ],
     },
     mobile: {
       eyebrow: "Mobile gaming",
       title: "Browse on phone, play when ready",
       description:
-        "Category guides stay readable on smaller screens. Live streaming categories benefit from a stable connection.",
+        "Category guides stay readable on smaller screens, so you can do the deciding on your phone and open the lobby when you are ready. Live streaming categories benefit from a stable connection more than a fast one — a steady signal matters more than raw speed, and landscape orientation makes table layouts far easier to read.",
       imageAlt: "YES2WIN mobile gaming visual",
       primaryCta: "Mobile guide",
       secondaryCta: "Access YES2WIN",
@@ -404,16 +480,16 @@ export const hubsEn = {
     access: {
       howToCard: {
         title: "How to access games",
-        body: "Register or log in through this partner gateway, then open the live lobby and choose a category available to your account.",
+        body: "Register or log in through this partner gateway, then open the live lobby and choose a category available to your account. If a category you expected is missing, it is usually unavailable for your region or account status at that moment rather than removed.",
       },
       promotionsCard: {
         title: "Related promotions",
-        body: "Welcome, deposit and weekly campaigns often sit alongside game discovery. Confirm live terms before opting in.",
+        body: "Welcome, deposit and weekly campaigns often sit alongside game discovery, and some are limited to particular categories. Check the promotions lobby before you deposit rather than afterwards, and confirm live terms before opting in.",
         linkLabel: "Promotions hub",
       },
       vipPaymentsCard: {
         title: "VIP & payments",
-        body: "Member recognition and cashier tools live on the platform. Use the VIP and Payment pages here for orientation first.",
+        body: "Member recognition and cashier tools live on the platform, but both are easier to use once you know what to expect. Use the VIP and Payment pages here for orientation first, then handle the actions themselves after login.",
         vipLinkLabel: "VIP",
         paymentLinkLabel: "Payment",
       },
@@ -441,9 +517,35 @@ export const hubsEn = {
           answer:
             "Yes. Category pages and the live lobby are designed for phone browsing when your connection and browser are ready.",
         },
+        {
+          id: "g4",
+          question: "Which category should I start with?",
+          answer:
+            "Choose by pace rather than by theme. Slots and fishing keep you continuously involved, live tables run on the dealer’s timing, sports follow real fixtures you may already follow, and lottery separates your selection from a scheduled draw. Each category guide describes who it suits.",
+        },
+        {
+          id: "g5",
+          question: "Where do I find the rules for an individual game?",
+          answer:
+            "Every title carries its own information or paytable panel inside the lobby, covering symbols, rules and how feature rounds trigger. Read it before your first session — two games sharing a theme can behave very differently.",
+        },
+        {
+          id: "g6",
+          question: "Why can’t I see every category on my account?",
+          answer:
+            "Availability depends on region, account status and platform updates, so the lobby you see is filtered to what applies to you. If something expected is missing, check again after login rather than assuming it has been withdrawn.",
+        },
       ],
       links: [
         { label: "Full games FAQ", href: "/faq/#games" },
+        { label: "Slots guide", href: "/games/slots/" },
+        { label: "Live casino guide", href: "/games/live-casino/" },
+        { label: "Sports guide", href: "/games/sports/" },
+        { label: "Fishing guide", href: "/games/fishing/" },
+        { label: "Lottery guide", href: "/games/lottery/" },
+        { label: "Promotions", href: "/promotions/" },
+        { label: "Payment guide", href: "/payment/" },
+        { label: "Mobile access", href: "/mobile/" },
         { label: "Responsible gaming", href: "/responsible-gaming/" },
         { label: "Registration guide", href: "/register-guide/" },
         { label: "Contact", href: "/contact/" },
@@ -490,23 +592,31 @@ export const hubsEn = {
       eyebrow: "Promotion guide",
       title: "How to read YES2WIN offers",
       description:
-        "Use this partner guide to understand campaign structure, then rely on the live platform for current values and rules.",
+        "Most confusion about promotions comes from reading them in the wrong order — starting with the headline instead of the conditions. Use this partner guide to understand how campaigns are structured, then rely on the live platform for current values and rules at the moment you opt in.",
       points: [
         {
           title: "Start with the campaign card",
-          body: "Each live offer summarises who it is for and what actions unlock it. Use the card as your first filter before reading deeper terms.",
+          body: "Each live offer summarises who it is for and what actions unlock it. Use the card as your first filter before reading deeper terms — if the summary does not describe you, the detail will not change that.",
         },
         {
           title: "Confirm eligibility in-account",
-          body: "Region, account age, prior claims and verification status can all affect what you see. Availability on this partner site is educational only.",
+          body: "Region, account age, prior claims, payment method and verification status can all affect what you see. If an offer is not shown to you, it is not currently available to your account. Availability described on this partner site is educational only.",
+        },
+        {
+          title: "Read the three conditions that matter",
+          body: "For most campaigns, everything comes down to what qualifies, what has to happen before bonus-linked funds behave like normal balance, and how long you have. Find those three answers before anything else.",
+        },
+        {
+          title: "Check the timing before you act",
+          body: "Some offers must be selected at the moment of a qualifying action, and a completed deposit usually cannot be reassigned to a campaign afterwards. Open the promotions lobby before you transact, not after.",
         },
         {
           title: "Treat terms as the source of truth",
-          body: "Percentages, amounts, wagering and expiry windows change. Always rely on the official platform wording at the moment you opt in.",
+          body: "Percentages, amounts, wagering and expiry windows change without notice on an informational page. Always rely on the official platform wording at the moment you opt in, and disregard figures quoted on third-party sites.",
         },
         {
           title: "Ask support when unclear",
-          body: "If a campaign rule is ambiguous, use official contact channels rather than assuming a figure published elsewhere.",
+          body: "If a campaign rule is ambiguous, use official contact channels rather than assuming a figure published elsewhere. A short question before opting in is easier than a dispute afterwards.",
         },
       ],
     },
@@ -538,7 +648,13 @@ export const hubsEn = {
           step: "04",
           title: "Opt in or deposit as required",
           description:
-            "Follow the on-screen steps for that campaign. Some offers need an opt-in; others link to a qualifying deposit path.",
+            "Follow the on-screen steps for that campaign. Some offers need an opt-in before you act; others link to a qualifying deposit path where the payment method itself may need to match.",
+        },
+        {
+          step: "05",
+          title: "Track it in your account",
+          description:
+            "Check your promotion history and transaction records so you can see what you joined and whether any condition is still attached to your balance — that is also where an unexpected withdrawal hold usually gets explained.",
         },
       ],
     },
@@ -546,10 +662,10 @@ export const hubsEn = {
       eyebrow: "Eligibility",
       title: "Who can join a campaign",
       description:
-        "Eligibility is defined per offer. New-member campaigns, deposit boosts and VIP rewards each follow their own rules.",
+        "Eligibility is defined per offer rather than platform-wide, which is why two members can open the same promotions lobby and see different cards. New-member campaigns, deposit boosts, rebate programmes and VIP rewards each follow their own rules, and none of them inherit conditions from the others.",
       commonFactors: {
         title: "Common factors",
-        body: "Account status, prior claims, region and verification can all influence whether an offer appears. The featured welcome path is typically oriented toward newly registered members who meet live campaign rules.",
+        body: "Account status, prior claims on the account, region, payment method and verification status can all influence whether an offer appears — as can the simple question of whether the campaign is currently running. The featured welcome path is typically oriented toward newly registered members who meet live campaign rules and have not already claimed a similar offer. If a campaign is not visible to you, treat that as the answer rather than a display problem.",
       },
       /** Body text is composed from the featured promotion in `@/config/content/promotions`. */
       featuredContextTitle: "Featured welcome context",
@@ -557,7 +673,8 @@ export const hubsEn = {
     termsNote: {
       eyebrow: "Terms note",
       title: "Always confirm live wording",
-      description: "This partner site does not invent promo amounts, fees, limits or income guarantees.",
+      description:
+        "This partner site does not invent promo amounts, fees, limits or income guarantees, and it does not estimate them either. Everything here describes structure so that you know what to look for; the numbers themselves belong to the campaign card you are actually opting into.",
       changeLead: "Campaign terms change.",
       changeBody: "Percentages, wagering and expiry windows can update without notice on this informational page.",
       platformLead: "Platform wording wins.",
@@ -598,18 +715,42 @@ export const hubsEn = {
           answer:
             "VIP-oriented benefits are often shared through VIP channels or invitation-led communications. Browse the VIP page for experience context, then confirm live rewards on the platform.",
         },
+        {
+          id: "promo-5",
+          question: "How do promo codes work?",
+          answer:
+            "When a campaign uses a code, it is published with that campaign or sent to you directly, and entered in the field the platform specifies — usually at registration or in the cashier. Use only codes from official sources: guessed or third-party codes typically fail, and an expired code will not be honoured retroactively.",
+        },
+        {
+          id: "promo-6",
+          question: "What do wagering or turnover conditions mean?",
+          answer:
+            "They describe how much qualifying play must happen before bonus-linked funds behave like normal balance. The rate, which categories count and how long you have are set per campaign rather than platform-wide, so read those three points before opting in.",
+        },
+        {
+          id: "promo-7",
+          question: "Can a deposit qualify for an offer after I have made it?",
+          answer:
+            "Usually not. Many campaigns require the offer to be selected at the moment of a qualifying action, and payment method can also affect eligibility. Open the promotions lobby before you transact rather than afterwards.",
+        },
       ],
     },
     related: {
       eyebrow: "Related",
       title: "Continue exploring YES2WIN",
-      description: "Pair promotions with games, VIP context, payments and support pathways.",
+      description:
+        "Promotions rarely sit on their own — an offer usually touches a game category, a payment method and sometimes your VIP standing at the same time. These links cover the pages most often needed alongside a campaign.",
       links: [
         { label: "Browse games", href: "/games/" },
+        { label: "Slots guide", href: "/games/slots/" },
+        { label: "Live casino guide", href: "/games/live-casino/" },
         { label: "VIP benefits", href: "/vip/" },
         { label: "Payment guide", href: "/payment/" },
         { label: "Promotions FAQ", href: "/faq/#promotions" },
+        { label: "Deposit FAQ", href: "/faq/#deposit" },
+        { label: "Register guide", href: "/register-guide/" },
         { label: "Terms overview", href: "/terms/" },
+        { label: "Responsible gaming", href: "/responsible-gaming/" },
         { label: "Contact", href: "/contact/" },
       ],
     },
@@ -642,17 +783,19 @@ export const hubsEn = {
       eyebrow: "Benefits",
       title: "What the VIP experience emphasises",
       description:
-        "Curated advantages that enhance how you engage with YES2WIN — communicated through official channels when membership status qualifies.",
+        "Curated advantages that enhance how you engage with YES2WIN, communicated through official channels when membership status qualifies. The emphasis throughout is on quality of experience rather than a public list anyone can claim — which is also why benefits can differ between members and change as the programme develops.",
     },
     personalised: {
       eyebrow: "Personalised",
       title: "Service shaped around how you engage",
       description:
-        "Expect communications and service touchpoints that consider how you like to play — rather than generic mass messaging.",
+        "Expect communications and service touchpoints that consider how you like to play rather than generic mass messaging. In practice the difference is often visible in what you stop receiving: fewer blanket announcements about categories you never open, and more attention to the preferences you have actually shared.",
       imageAlt: "Personalised YES2WIN VIP service",
       items: [
         "Relevant updates instead of one-size outreach",
         "Attention to preferences shared through official VIP pathways",
+        "Fewer blanket announcements about categories you do not use",
+        "Context carried between conversations rather than starting over each time",
         "A calmer, more considered member relationship over time",
       ],
     },
@@ -660,8 +803,8 @@ export const hubsEn = {
       eyebrow: "Priority support",
       title: "Elevated attention when available",
       description:
-        "VIP members may receive elevated support pathways so account questions can be handled with greater attention when those channels are available.",
-      note: "Support quality still depends on live programme capacity and account context. Use official contact routes and follow verification prompts when requested.",
+        "VIP members may receive elevated support pathways so account questions can be handled with greater attention when those channels are available. That usually means a shorter route to someone who already has context on your account, which matters most for time-sensitive cashier or verification questions.",
+      note: "Support quality still depends on live programme capacity and account context. Use official contact routes and follow verification prompts when requested — priority means faster attention, not an exemption from security steps.",
       cta: "View contact options",
       imageAlt: "YES2WIN VIP priority support",
     },
@@ -669,8 +812,8 @@ export const hubsEn = {
       eyebrow: "Exclusive events",
       title: "Invitations beyond the everyday calendar",
       description:
-        "Selected invitations and event-style moments may be shared with VIP members as part of a more exclusive calendar.",
-      note: "Event availability and formats are defined by the official programme. This page does not invent guest lists, prize pools or attendance guarantees.",
+        "Selected invitations and event-style moments may be shared with VIP members as part of a more exclusive calendar that sits alongside the public promotions schedule rather than replacing it.",
+      note: "Event availability and formats are defined by the official programme, and invitations arrive through your account channels or an authorised VIP contact. This page does not invent guest lists, prize pools or attendance guarantees — and anything reaching you elsewhere that asks for a payment or your password is not a genuine invitation.",
       imageAlt: "YES2WIN VIP exclusive events",
     },
     recognition: {
@@ -753,7 +896,11 @@ export const hubsEn = {
       description: "Clear answers about access, guarantees and related offers.",
       links: [
         { label: "Promotions hub", href: "/promotions/" },
+        { label: "VIP FAQ", href: "/faq/#vip" },
         { label: "Member FAQ", href: "/faq/" },
+        { label: "Payment guide", href: "/payment/" },
+        { label: "Account guide", href: "/account-guide/" },
+        { label: "Responsible gaming", href: "/responsible-gaming/" },
         { label: "Contact", href: "/contact/" },
       ],
       items: [
@@ -780,6 +927,18 @@ export const hubsEn = {
           question: "Does this page list VIP tiers or cash rewards?",
           answer:
             "No. This partner site does not invent VIP tiers, cash figures or income promises. Programme specifics are shared through official YES2WIN VIP channels.",
+        },
+        {
+          id: "vip-5",
+          question: "How would I recognise a genuine VIP invitation?",
+          answer:
+            "Genuine communications arrive through your account channels or an authorised VIP contact. Anything that reaches you by unsolicited message and asks for your password, a fee or a payment is fraudulent — verify through official support instead of replying.",
+        },
+        {
+          id: "vip-6",
+          question: "How is VIP different from the promotions calendar?",
+          answer:
+            "Promotions are published campaigns any eligible member can open and opt into. VIP is a recognition-led relationship built around service, priority pathways and selected invitations, shared privately when it applies. They can overlap, but they are not the same thing.",
         },
       ],
     },
@@ -871,37 +1030,50 @@ export const hubsEn = {
     deposits: {
       eyebrow: "Deposits",
       title: "Deposit guide",
-      description: "A practical outline for funding your account through the official cashier.",
+      description:
+        "A practical outline for funding your account through the official cashier. Most deposit problems trace back to a detail entered incorrectly rather than a platform fault, so the checking steps matter as much as the transaction itself.",
       steps: [
         "Sign in through this partner gateway and open the official cashier.",
+        "If you intend a deposit to qualify for a campaign, check the promotions lobby first — method and timing can both matter.",
         "Choose an available deposit method shown for your account and region.",
-        "Follow the on-screen steps for that channel — bank, e-wallet, card or crypto.",
-        "Confirm the transaction status in your account records after submission.",
+        "Follow the on-screen steps for that channel — bank, e-wallet, card or crypto — and let redirects complete rather than closing the tab.",
+        "Copy any reference, narration or wallet address exactly as shown, and confirm the sending account is in your own name.",
+        "Confirm the transaction status in your account records after submission, and allow the channel to settle before trying again.",
       ],
     },
     withdrawals: {
       eyebrow: "Withdrawals",
       title: "Withdrawal guide",
-      description: "Request payouts through supported methods and complete any checks the platform asks for.",
+      description:
+        "Request payouts through supported methods and complete any checks the platform asks for. Timing depends on both the platform’s review and the settlement speed of the channel you choose, and a first withdrawal often takes longer because verification may run alongside it.",
       steps: [
+        "Check that no promotion condition is still attached to your balance before requesting.",
         "Open withdrawals from your account once funds are available to request.",
-        "Select a supported payout method displayed in the live cashier.",
-        "Complete any verification or payment-detail checks requested by the platform.",
-        "Track the request in transaction history and respond to follow-up prompts if asked.",
+        "Select a supported payout method displayed in the live cashier, using an account in your own name.",
+        "Complete any verification or payment-detail checks requested by the platform, through official upload flows only.",
+        "Track the request in transaction history and respond to follow-up prompts promptly, since that is the most common cause of delay.",
       ],
     },
     safety: [
       {
         title: "Verification",
-        body: "Identity or payment verification may be required before certain withdrawals. Follow official platform prompts and avoid sharing documents through unofficial channels.",
+        body: "Identity or payment verification may be required before certain withdrawals. Follow official platform prompts, upload only through in-account flows, and never send documents by message, email or chat app — completing a prompt promptly is the single most effective way to avoid a payout sitting in review.",
       },
       {
         title: "Transaction records",
-        body: "Deposits, withdrawals and status updates are recorded in your account history. Use those records when checking progress or contacting support.",
+        body: "Deposits, withdrawals and status updates are recorded in your account history, which is the authoritative version of what happened. Check records before resubmitting anything — most “missing” transactions are simply still pending — and quote them when contacting support.",
       },
       {
         title: "Fees & limits",
-        body: "Fees, minimums, maximums and processing times are not published as fixed figures on this partner site because they vary. Confirm them in the live cashier.",
+        body: "Fees, minimums, maximums and processing times are not published as fixed figures on this partner site because they vary by method, region and account status. Confirm them in the live cashier, and disregard any figures quoted on third-party pages.",
+      },
+      {
+        title: "Payment safety",
+        body: "Only enter payment details inside the official cashier, never through a link sent to you. Legitimate support will not ask for your password, full card details or payment PIN, and no genuine contact requires a payment to release a balance.",
+      },
+      {
+        title: "Matching details",
+        body: "Keep the name on your payment method matching your account name. Mismatched details are the most common reason a deposit is held or a payout is returned for review, and they are also the easiest thing to get right in advance.",
       },
     ],
     issues: {
@@ -934,8 +1106,13 @@ export const hubsEn = {
       description: "Need more detail? Continue to the full FAQ or contact pathways.",
       links: [
         { label: "Full payments FAQ", href: "/faq/#payments" },
+        { label: "Deposit FAQ", href: "/faq/#deposit" },
+        { label: "Withdrawal FAQ", href: "/faq/#withdrawal" },
+        { label: "Register guide", href: "/register-guide/" },
+        { label: "Account guide", href: "/account-guide/" },
         { label: "Related promotions", href: "/promotions/" },
         { label: "Browse games", href: "/games/" },
+        { label: "Mobile access", href: "/mobile/" },
         { label: "Contact support", href: "/contact/" },
       ],
       items: [
@@ -962,6 +1139,24 @@ export const hubsEn = {
           question: "Do I need verification for withdrawals?",
           answer:
             "Many platforms require identity or payment verification before larger withdrawals. Follow the prompts shown in your account and use official document upload tools only.",
+        },
+        {
+          id: "pay-5",
+          question: "How long does a deposit or withdrawal take?",
+          answer:
+            "It depends on the channel. E-wallet and instant banking flows usually reflect quickly, cards depend on your issuer, bank transfers follow banking hours and cut-off times, and crypto waits on network confirmations. Check the status in your transaction records rather than resubmitting.",
+        },
+        {
+          id: "pay-6",
+          question: "Why might a withdrawal be delayed or returned?",
+          answer:
+            "The usual causes are an outstanding verification step, payout details that do not match your registered name, a promotion condition still attached to your balance, or a routine security review. Your transaction records normally show which one applies.",
+        },
+        {
+          id: "pay-7",
+          question: "What should I check before confirming a payment?",
+          answer:
+            "Confirm the method, that the account name matches your own, that any reference or narration field is copied exactly, and — for crypto — that the network and address match the checkout instructions precisely. Crypto transfers cannot be reversed.",
         },
       ],
     },
@@ -1077,24 +1272,30 @@ export const hubsEn = {
     tips: {
       eyebrow: "Navigation tips",
       title: "Move through YES2WIN more comfortably on mobile",
-      description: "Small habits that keep browsing, signup and live play easier on a phone.",
+      description:
+        "None of these are complicated, but together they remove most of the small frustrations people report on a phone — dropped sessions, elements that will not load, and streams that stutter at exactly the wrong moment.",
       items: [
         "Use the sticky Register and Login actions when you are ready to continue into the official platform.",
         "Start with Games, Promotions, Payment or FAQ if you want context before signup.",
         "Keep one browser tab for this partner guide and another for the live platform if you are comparing pathways.",
-        "Switch to a stronger network before opening live-streamed or animation-heavy categories.",
+        "Keep your browser updated and allow cookies for the platform so sessions persist between visits.",
+        "Avoid aggressive data-saver or script-blocking modes, which can stop lobby elements loading correctly.",
+        "Rotate to landscape for live tables and sports pages, where the extra width makes layouts much easier to read.",
+        "Close unused tabs before opening streaming categories so the browser has memory to work with.",
+        "Switch to a stronger network before opening live-streamed or animation-heavy categories, not during a round.",
       ],
     },
     howToAccess: {
       eyebrow: "How to access",
       title: "From this partner site to the live platform",
       description:
-        "Mobile is not a reduced YES2WIN experience. It is the day-to-day path for browsing categories, checking promotions, handling payments and moving between account tools.",
+        "Mobile is not a reduced YES2WIN experience. For most members it is the primary one — the day-to-day path for browsing categories, checking promotions, handling payments and moving between account tools, with a desktop session reserved for longer play.",
       imageAlt: "YES2WIN mobile phone visual",
       steps: [
         "Open this Mobile page or any partner guide on your phone browser.",
         "Review games, promotions, payments or FAQ content as needed.",
         "Tap Access YES2WIN or Login to continue into the official platform.",
+        "Save the official destination as a home-screen shortcut if you want faster access next time.",
         "Complete account, cashier or lobby actions inside that live environment.",
       ],
       primaryCta: "Access YES2WIN",
@@ -1130,10 +1331,26 @@ export const hubsEn = {
           answer:
             "Live dealer streams are more connection-sensitive than static pages. A stable network and an up-to-date browser usually provide the smoothest experience.",
         },
+        {
+          id: "mobile-5",
+          question: "Can I add YES2WIN to my home screen?",
+          answer:
+            "Modern mobile browsers let you save a page as a home-screen shortcut through the share or menu options. Create it from the official destination you reached through this partner site so the icon always opens the correct address — safer than installing a file from an unverified download page.",
+        },
+        {
+          id: "mobile-6",
+          question: "Why do some pages stop loading correctly on my phone?",
+          answer:
+            "Aggressive data-saver or script-blocking modes are the usual cause, followed by a stale cache after a platform update. Allow cookies for the platform, clear the cache, and try again with a current browser before assuming something is broken.",
+        },
       ],
       links: [
         { label: "Full mobile FAQ", href: "/faq/#mobile" },
         { label: "Explore games", href: "/games/" },
+        { label: "Promotions", href: "/promotions/" },
+        { label: "Payment guide", href: "/payment/" },
+        { label: "Register guide", href: "/register-guide/" },
+        { label: "Account guide", href: "/account-guide/" },
         { label: "Partner page", href: "/partner/" },
         { label: "Contact", href: "/contact/" },
       ],
@@ -1157,21 +1374,57 @@ export const hubsEn = {
       eyebrow: "Why partner",
       title: "Reasons partners choose YES2WIN",
       description:
-        "Focus on brand clarity, multi-category entertainment and a practical onboarding path — without guaranteed income claims.",
+        "Focus on brand clarity, multi-category entertainment and a practical onboarding path — without guaranteed income claims. The proposition here is straightforward: an ecosystem broad enough to suit a mixed audience, public pages accurate enough to link to, and a support route for the questions that actually come up.",
       imageAlt: "YES2WIN partner ecosystem visual",
+    },
+    /** Extra reasoning rendered alongside `partnerContent.whyPartner`. */
+    whyPoints: {
+      title: "What this pathway is — and is not",
+      items: [
+        {
+          title: "A clear brand to explain",
+          body: "Slots, live casino, sports, fishing and lottery under one platform means one introduction can serve very different interests, rather than needing a separate pitch for each audience segment.",
+        },
+        {
+          title: "Public pages built to be linked",
+          body: "The guides on this site are written so you can point people at them instead of rewriting explanations of payments, categories or responsible play yourself — and so those explanations stay accurate when the platform updates.",
+        },
+        {
+          title: "No invented numbers to defend",
+          body: "Because nothing here publishes rates, commissions or guaranteed outcomes, you are never in the position of repeating a figure you cannot verify or having to walk one back later.",
+        },
+        {
+          title: "Not a get-rich pitch",
+          body: "Results depend on audience fit, consistency and timing. If you are looking for a promised return, this is the wrong pathway; if you want to build something durable with an audience that trusts you, it is a reasonable one.",
+        },
+      ],
     },
     audience: {
       eyebrow: "Audience",
       title: "Who can partner with YES2WIN",
       description:
-        "The partner pathway is built for people who introduce YES2WIN clearly — creators, communities, marketers and referral-focused collaborators.",
+        "The partner pathway is built for people who introduce YES2WIN clearly — creators, communities, marketers and referral-focused collaborators. What they have in common matters more than the label: an existing audience, a channel they actually publish on, and a willingness to explain things accurately rather than loudly.",
     },
     journey: {
       eyebrow: "Partner journey",
       title: "From access to progress tracking",
-      description: "A practical sequence that keeps onboarding, sharing and review easy to understand.",
+      description:
+        "A practical sequence that keeps onboarding, sharing and review easy to understand. Each stage has a defined next action rather than an open-ended wait, so you always know whether the ball is in your court.",
       primaryCta: "Start partner access",
       secondaryCta: "Partner support",
+    },
+    /** Practical preparation notes rendered under the journey steps. */
+    journeyExtra: {
+      title: "Before you start step one",
+      body: "The partner journey moves faster when the thinking is done first. None of this requires approval or tooling — it is the groundwork that decides whether your first few weeks produce anything.",
+      points: [
+        "Know who your audience is and what they would actually want from an entertainment platform.",
+        "Decide which channel you will publish on, and how often you can realistically sustain it.",
+        "Read the Games, Promotions and Payment guides so your explanations are accurate from the first post.",
+        "Draft how you would describe YES2WIN in three sentences without a single unverifiable claim.",
+        "Plan where responsible gaming context and age restrictions will appear in your messaging.",
+        "Set your own expectations: early activity is about building trust, not about a number.",
+      ],
     },
     referral: {
       eyebrow: "Referral system",
@@ -1222,14 +1475,109 @@ export const hubsEn = {
       primaryCta: "Open contact hub",
       secondaryCta: "Partner FAQ",
     },
+    /** Promotion standards section rendered before the partner FAQ. */
+    responsibleMarketing: {
+      eyebrow: "Responsible marketing",
+      title: "Standards that keep partner promotion credible",
+      description:
+        "These are not optional extras bolted on at the end — they are what makes partner messaging durable. Audiences discount hype quickly, and regulators and platforms take overstatement seriously. Accurate framing protects the people you are talking to and the channel you have built.",
+      items: [
+        {
+          title: "No outcome or income claims",
+          body: "Never promise winnings, profits or partner earnings, and never imply them through selective examples. Results vary by audience fit, consistency and timing, and no honest figure can be given in advance.",
+        },
+        {
+          title: "No invented numbers",
+          body: "Do not publish percentages, bonus values, fees, limits or commission rates. If a figure is not in official documentation you have access to, it does not belong in your material — including figures copied from third-party pages.",
+        },
+        {
+          title: "Age and eligibility first",
+          body: "Never target anyone under the legal age in their jurisdiction, and make the age requirement visible rather than buried. Be clear that availability depends on where someone lives.",
+        },
+        {
+          title: "Responsible gaming in context",
+          body: "Include responsible gaming guidance as a normal part of your messaging, not a footnote. Link to the Responsible Gaming page so your audience has a route to support without having to search for one.",
+        },
+        {
+          title: "Accurate positioning",
+          body: "Describe this site as YES2WIN Official Partner — an information and access gateway. Do not present it as the primary corporate YES2WIN website, and do not imply you speak on the platform’s behalf.",
+        },
+        {
+          title: "Point to official terms",
+          body: "For anything time-sensitive — offer values, eligibility, payment details, VIP status — direct people to the live platform rather than paraphrasing. Your job is to get them to the right page accurately informed.",
+        },
+      ],
+      note: "Platform promotion rules and any advertising law applying in your jurisdiction take precedence over anything summarised here. When in doubt, ask through official partner support before publishing.",
+    },
     faq: {
       eyebrow: "FAQ",
       title: "Partner questions",
       description: "Short answers about income expectations, terms, materials and who the pathway is for.",
+      /** Rendered alongside `partnerContent.faqs`. */
+      items: [
+        {
+          id: "partner-hub-1",
+          question: "Do I need an existing audience to apply?",
+          answer:
+            "An audience helps, but size matters far less than fit and consistency. A small community that trusts your explanations is more useful than a large one that scrolls past. What the pathway does assume is that you have somewhere you actually publish.",
+        },
+        {
+          id: "partner-hub-2",
+          question: "What can I say about promotions in my content?",
+          answer:
+            "Describe offer types structurally — what a welcome campaign, deposit offer or rebate programme generally is — and then send people to the live promotions lobby for values, eligibility and terms. Do not quote percentages or amounts, because they change and differ by account.",
+        },
+        {
+          id: "partner-hub-3",
+          question: "Can I use this site’s pages and images in my content?",
+          answer:
+            "You may reference and link to public pages for education. Use the approved positioning and tagline, keep the partner-gateway role clear, and do not present this site as the primary corporate YES2WIN website or imply you speak for the platform.",
+        },
+        {
+          id: "partner-hub-4",
+          question: "When do referral tools and tracking become available?",
+          answer:
+            "After partner access is granted and onboarding is complete. Visibility depends on your partner status and the tools enabled for your account, and the official partner tools are the only place that activity is recorded — a rewritten or shortened link can break attribution entirely.",
+        },
+        {
+          id: "partner-hub-5",
+          question: "Where do referred members get help?",
+          answer:
+            "Once someone registers or logs in, their account, payment and login questions are handled by YES2WIN platform support. Point them to the FAQ and Contact pages here for orientation, but do not attempt to resolve account-specific issues yourself.",
+        },
+        {
+          id: "partner-hub-6",
+          question: "What is the most common mistake new partners make?",
+          answer:
+            "Leading with a number. It sets an expectation nobody can honour, attracts an audience that leaves as soon as it is not met, and undermines everything accurate you say afterwards. Explaining the ecosystem clearly performs better and lasts longer.",
+        },
+      ],
       links: [
         { label: "More partner FAQ", href: "/faq/#partner" },
         { label: "Partner support", href: "/contact/" },
         { label: "About the partner site", href: "/about/" },
+      ],
+    },
+    /** Internal pages partners most often need alongside this hub. */
+    relatedLinks: {
+      title: "Pages worth having open while you work",
+      description:
+        "These are the guides partners reference most often — both for their own understanding and as links to share with an audience.",
+      links: [
+        { label: "Games hub", href: "/games/" },
+        { label: "Slots guide", href: "/games/slots/" },
+        { label: "Live casino guide", href: "/games/live-casino/" },
+        { label: "Sports guide", href: "/games/sports/" },
+        { label: "Promotions", href: "/promotions/" },
+        { label: "VIP overview", href: "/vip/" },
+        { label: "Payment guide", href: "/payment/" },
+        { label: "Mobile access", href: "/mobile/" },
+        { label: "Register guide", href: "/register-guide/" },
+        { label: "Account guide", href: "/account-guide/" },
+        { label: "Responsible gaming", href: "/responsible-gaming/" },
+        { label: "Partner FAQ", href: "/faq/#partner" },
+        { label: "Terms of use", href: "/terms/" },
+        { label: "Contact", href: "/contact/" },
       ],
     },
     finalCta: {
@@ -1243,7 +1591,7 @@ export const hubsEn = {
     eyebrow: "FAQ",
     title: "Frequently asked questions",
     description:
-      "Concise answers on account access, categories, promotions, payments, mobile, partner topics and responsible play.",
+      "Practical answers on account access, game categories, promotions, payments, mobile use, partner topics and responsible play — grouped by subject so you can jump to the section that matches your question. Where something changes on the live platform, the answer explains where to check rather than quoting a figure that would age.",
     crumb: "FAQ",
     heroImageAlt: "YES2WIN FAQ artwork",
     primaryCta: "Register Now",
@@ -1254,11 +1602,22 @@ export const hubsEn = {
     relatedLinks: {
       general: [
         { label: "About this site", href: "/about/" },
+        { label: "Games overview", href: "/games/" },
         { label: "Responsible gaming", href: "/responsible-gaming/" },
       ],
-      account: [{ label: "Contact", href: "/contact/" }],
-      registration: [],
-      login: [],
+      account: [
+        { label: "Account guide", href: "/account-guide/" },
+        { label: "Payment guide", href: "/payment/" },
+        { label: "Contact", href: "/contact/" },
+      ],
+      registration: [
+        { label: "Register guide", href: "/register-guide/" },
+        { label: "Account guide", href: "/account-guide/" },
+      ],
+      login: [
+        { label: "Account guide", href: "/account-guide/" },
+        { label: "Contact", href: "/contact/" },
+      ],
       games: [
         { label: "Games overview", href: "/games/" },
         { label: "Slots", href: "/games/slots/" },
@@ -1370,18 +1729,21 @@ export const hubsEn = {
       slots: {
         formatTitle: "Game formats & themes",
         formatItems: [
-          "Classic, modern and feature-driven slot styles can appear in the live lobby.",
-          "Themes often range from simple icons to high-energy fantasy, adventure or character-led visuals.",
-          "Short spin cycles make slots easy to sample in mobile sessions.",
+          "Classic, modern and feature-driven slot styles can appear in the live lobby, differing mainly in how much is happening on screen at once.",
+          "Themes often range from simple icons to high-energy fantasy, adventure or character-led visuals — presentation varies far more than the underlying flow.",
+          "Every title publishes its own paytable covering symbols, payline structure and how feature rounds are triggered.",
+          "Feature rounds such as free spins or multipliers are game mechanics set by the provider, not platform promotions.",
+          "Short spin cycles make slots easy to sample in mobile sessions without committing to a long sitting.",
         ],
         suitedFor: [
-          "Players who want easy entry and fast browsing.",
-          "Members looking for variety across themes and pacing.",
-          "Mobile-first players who prefer touch-friendly gameplay.",
+          "Players who want easy entry and fast browsing without learning a table format first.",
+          "Members looking for variety across themes and pacing rather than one fixed experience.",
+          "Mobile-first players who prefer touch-friendly gameplay in short bursts.",
+          "Anyone who likes reading a paytable and understanding a game before committing to it.",
         ],
         relatedTitle: "Related promotions",
         relatedCopy:
-          "Welcome and deposit-style offers are often the first place members look when exploring slot play. Confirm active terms inside the official promotions area.",
+          "Welcome and deposit-style offers are often the first place members look when exploring slot play, and some campaigns count slot activity differently from other categories. Confirm active terms inside the official promotions area before you opt in, paying particular attention to which categories contribute towards any wagering condition.",
         faq: [
           {
             id: "slots-faq-1",
@@ -1395,6 +1757,18 @@ export const hubsEn = {
             answer:
               "Yes. Slot layouts are generally well suited to mobile browsing and touch controls when the title is enabled on your device.",
           },
+          {
+            id: "slots-faq-3",
+            question: "How do I choose between titles?",
+            answer:
+              "Decide what you want from the session first. Simpler classic-style games are easier to follow, while feature-led titles reward exploring. Open the information panel before playing so you know how each feature behaves.",
+          },
+          {
+            id: "slots-faq-4",
+            question: "How should I manage a slot session?",
+            answer:
+              "Set your time and spending limit before you open the lobby and treat it as fixed. Because rounds resolve quickly, check the clock between spins so a short session does not quietly become a long one.",
+          },
         ],
       },
       "live-casino": {
@@ -1402,16 +1776,19 @@ export const hubsEn = {
         formatItems: [
           "Live dealer tables can include familiar formats such as baccarat, roulette and blackjack where available.",
           "Streaming presentation is designed to recreate table energy with real-time dealing and interface controls.",
+          "Each table publishes its own information panel covering rules, side bets and limits before you take a seat.",
+          "Timed betting windows keep rounds on schedule, so decisions happen at the table’s pace rather than yours.",
           "Stable connectivity matters more here than for simpler category pages because the experience depends on live video.",
         ],
         suitedFor: [
-          "Players who want a more immersive table-game environment.",
-          "Members who enjoy real-time pace rather than automated rounds.",
+          "Players who want a more immersive table-game environment than automated rounds provide.",
+          "Members who enjoy real-time pace and are comfortable deciding within a betting window.",
           "Users comfortable switching between table views and account controls on mobile.",
+          "Anyone happy to watch a few rounds before joining in order to learn a table’s flow.",
         ],
         relatedTitle: "Access & etiquette",
         relatedCopy:
-          "Live casino is best approached with a stable network, clear bankroll limits and enough time to follow each table flow. Keep sessions intentional and recreational.",
+          "Live casino is best approached with a stable network, clear limits set in advance and enough time to follow each table flow without rushing. A little table etiquette goes a long way too: place decisions inside the betting window so the round is not held up, and keep chat respectful towards the dealer and other players. Because the table sets the pace rather than you, decide how long you will stay before you sit down.",
         faq: [
           {
             id: "live-faq-1",
@@ -1424,6 +1801,18 @@ export const hubsEn = {
             question: "Does live casino work on mobile?",
             answer: "Yes, provided your browser and connection can handle real-time streaming smoothly.",
           },
+          {
+            id: "live-faq-3",
+            question: "Where do I learn a table’s rules and limits?",
+            answer:
+              "The table information panel shows rules, bet types, side bets and limits before you join. Read it first, since variants differ between studios even when the core game is familiar.",
+          },
+          {
+            id: "live-faq-4",
+            question: "Why does my stream stutter sometimes?",
+            answer:
+              "Live video is more connection-sensitive than static pages. A steady signal matters more than a fast one, so switch networks between rounds rather than mid-hand and close unused browser tabs to free memory.",
+          },
         ],
       },
       sports: {
@@ -1431,16 +1820,19 @@ export const hubsEn = {
         formatItems: [
           "Football, basketball and tennis are core reference categories across sports-oriented YES2WIN content.",
           "Other supported sports may appear depending on current platform coverage and your region.",
-          "Markets and live availability are shown on the official platform, not fixed on this partner site.",
+          "Pre-match markets open before an event, giving you time to review a selection properly.",
+          "In-play markets update during an event and can be suspended around key moments, so prices move quickly.",
+          "Markets, prices and settlement rules are shown on the official platform, not fixed on this partner site.",
         ],
         suitedFor: [
           "Fans who follow major fixtures and want a clear sports navigation flow.",
-          "Members who check markets from their phone during the day.",
-          "Users who prefer event-driven entertainment over lobby-style browsing.",
+          "Members who check markets from their phone during the day rather than sitting in a lobby.",
+          "Users who prefer event-driven entertainment over continuous play.",
+          "Newcomers who want to start with a single simple market in a competition they already know.",
         ],
         relatedTitle: "How to follow sports on mobile",
         relatedCopy:
-          "Sports pages work best when you need quick scans of events, categories and related links. For live market details, continue into the official sports area after login.",
+          "Sports pages work best when you need quick scans of events, categories and related links, which makes the phone a natural place to keep up during the day. In-play betting is the most connection-sensitive part of the category, so use a stable network when prices are moving. For live market details, settlement rules and your betting history, continue into the official sports area after login — that history is the authoritative record of any selection’s status.",
         faq: [
           {
             id: "sports-faq-1",
@@ -1453,23 +1845,38 @@ export const hubsEn = {
             question: "Do you publish odds on this site?",
             answer: "No. Odds, lines and event availability change live and must be checked on the official platform.",
           },
+          {
+            id: "sports-faq-3",
+            question: "What is the difference between pre-match and in-play?",
+            answer:
+              "Pre-match markets are available before an event starts and give you time to consider. In-play markets update while the event runs, move faster and can be suspended around key moments, so they suit people already comfortable with the sport.",
+          },
+          {
+            id: "sports-faq-4",
+            question: "When will my selection be settled?",
+            answer:
+              "Settlement follows the official result, so it usually happens shortly after an event ends. Disputed, delayed, postponed or abandoned events follow the rules published with that market, and your betting history shows the current status.",
+          },
         ],
       },
       fishing: {
         formatTitle: "Fishing gameplay overview",
         formatItems: [
-          "Fishing titles mix arcade-style shooting with fast target selection and visual feedback.",
-          "Sessions often feel more active than slots because you aim, fire and chase higher-value catches.",
+          "Fishing titles mix arcade-style shooting with fast target selection and immediate visual feedback.",
+          "Sessions often feel more active than slots because you aim, fire and chase higher-value catches continuously.",
+          "Each title publishes a value table showing which targets carry which rewards.",
+          "Adjustable shot or weapon levels change how quickly a session moves — and how quickly a balance moves with it.",
           "Bright visuals and touch interaction make the category especially easy to understand on phones.",
         ],
         suitedFor: [
-          "Players who prefer a more hands-on pace.",
-          "Members who enjoy colourful, skill-flavoured interfaces.",
+          "Players who prefer a more hands-on pace than spin- or draw-based play.",
+          "Members who enjoy colourful, skill-flavoured interfaces with instant feedback.",
           "Mobile users looking for short but lively sessions.",
+          "Anyone comfortable watching a room for a moment before joining it.",
         ],
         relatedTitle: "How to approach fishing games",
         relatedCopy:
-          "Use the partner site to understand the category, then browse the live fishing section after login to see which titles and interfaces are available for your account.",
+          "Use the partner site to understand the category, then browse the live fishing section after login to see which titles and interfaces are available for your account. Two habits make the difference: read the value table before you start so you know what you are aiming at, and keep an eye on your shot level, since play is continuous rather than round-based and higher levels spend noticeably faster. Setting a session limit up front is more effective here than in almost any other category.",
         faq: [
           {
             id: "fishing-faq-1",
@@ -1482,23 +1889,38 @@ export const hubsEn = {
             question: "Can I access fishing on mobile?",
             answer: "Yes, when supported, because touch controls translate naturally to fishing-style gameplay.",
           },
+          {
+            id: "fishing-faq-3",
+            question: "What controls should I expect?",
+            answer:
+              "Most titles combine aiming, firing and a control for shot strength or weapon type, with auto-fire in some games. On a phone you generally tap where you want to shoot. Check the on-screen legend before increasing your shot level.",
+          },
+          {
+            id: "fishing-faq-4",
+            question: "How do I keep a session under control?",
+            answer:
+              "Because play is continuous rather than round-based, set a session limit before you start, avoid leaving auto-fire running unattended, and take breaks at fixed intervals so you check your balance deliberately.",
+          },
         ],
       },
       lottery: {
         formatTitle: "Lottery / 4D overview",
         formatItems: [
-          "Lottery is the calmer, number-led side of the YES2WIN ecosystem.",
+          "Lottery is the calmer, number-led side of the YES2WIN ecosystem, with no continuous session to manage.",
           "4D-style references focus on draw participation and results checking rather than fast interactive play.",
+          "Formats differ in how many digits you select and how a selection resolves, so each publishes its own rules.",
+          "Entries close before the published draw time, which means there is a deadline rather than an open window.",
           "Current formats and draw information must always be confirmed on the live platform.",
         ],
         suitedFor: [
-          "Members who prefer number-based entertainment.",
-          "Users looking for a simpler participation flow.",
+          "Members who prefer number-based entertainment over interface-driven play.",
+          "Users looking for a simpler participation flow they can complete in a minute.",
           "Players who want a contrast to live streaming or arcade-style categories.",
+          "Anyone who finds a scheduled draw easier to budget for than a continuous session.",
         ],
         relatedTitle: "Current draw information",
         relatedCopy:
-          "This partner page explains the category structure only. For live lottery / 4D availability, current rules and results views, continue into the official platform after login.",
+          "This partner page explains the category structure only. For live lottery / 4D availability, current rules and results views, continue into the official platform after login. Two practical points before your first entry: read the rules for the specific format you choose, since the way a selection wins is not identical across formats, and leave yourself a margin before the closing time rather than entering at the last moment.",
         faq: [
           {
             id: "lottery-faq-1",
@@ -1511,6 +1933,18 @@ export const hubsEn = {
             question: "How do I access lottery options?",
             answer:
               "Use Register or Login, then open the lottery area inside the YES2WIN platform if the category is available to your account.",
+          },
+          {
+            id: "lottery-faq-3",
+            question: "How do I enter a draw?",
+            answer:
+              "Open the lottery area, choose a format, make your selection, confirm the entry and check that it appears in your account records. Entries close before the draw time published for that format.",
+          },
+          {
+            id: "lottery-faq-4",
+            question: "Why do some members prefer lottery?",
+            answer:
+              "It separates the decision from the outcome — you make a selection, then wait for a scheduled draw. Without a continuous play loop, many people find it calmer and easier to budget for.",
           },
         ],
       },

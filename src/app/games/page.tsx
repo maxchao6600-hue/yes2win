@@ -82,8 +82,8 @@ export default async function GamesPage() {
             title={copy.featured.title}
             description={copy.featured.description}
           />
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {categories.slice(0, 4).map((category) => (
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
+            {categories.map((category) => (
               <Link
                 key={category.id}
                 href={category.href}

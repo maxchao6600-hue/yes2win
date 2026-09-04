@@ -45,6 +45,18 @@ export const faqCategories: FaqCategory[] = [
         answer:
           "You can explore guides, FAQ answers, page-by-page overviews and access routes for registration, login and partner entry. This site does not host live games or payment tools directly.",
       },
+      {
+        id: "how-to-navigate",
+        question: "How is this website organised?",
+        answer:
+          "The site is grouped by intent. Games explains each entertainment category, Promotions covers offer structure, Payment maps deposit and withdrawal channels, Mobile focuses on phone access, Partner covers the sharing pathway, and FAQ plus Contact handle everything else. Start with the hub closest to your question, then follow its internal links.",
+      },
+      {
+        id: "content-accuracy",
+        question: "How current is the information on this site?",
+        answer:
+          "Structural information — category names, payment channel types, offer categories and access routes — is kept stable and reviewed as the ecosystem evolves. Anything that changes frequently, such as live offer values, odds, cashier limits or lobby catalogues, is deliberately left to the official platform so you never act on an outdated figure.",
+      },
     ],
   },
   {
@@ -80,6 +92,24 @@ export const faqCategories: FaqCategory[] = [
         question: "Why might my account need verification?",
         answer:
           "Verification can be required for security, identity checks or payment-related reviews. Always follow the official prompts shown in your account.",
+      },
+      {
+        id: "account-recovery",
+        question: "How do I recover access if I am locked out?",
+        answer:
+          "Start with the recovery option on the official login page, which normally works from your registered contact details. Make sure you are on the official login destination, check that your registered phone or email is still reachable, and avoid creating a second account — duplicate accounts usually complicate verification later. If recovery does not resolve it, use official platform support and be ready to confirm your identity.",
+      },
+      {
+        id: "payment-pin",
+        question: "What is a payment PIN and why might I need one?",
+        answer:
+          "A payment PIN is a separate code some platforms ask you to set so cashier actions are protected even if someone reaches your session. If a PIN setup step appears during registration or the first time you open the cashier, complete it carefully and store the value somewhere private — it is not the same as your login password and should never be shared with anyone, including people claiming to be support staff.",
+      },
+      {
+        id: "account-details-change",
+        question: "Can I change my username, phone number or bank details later?",
+        answer:
+          "Some fields can be edited freely, while identity-linked details such as your username or payout account are often restricted or need a verification step. Open the profile area on the official platform to see what is editable for your account. Because these fields affect verification and payouts, enter them accurately at registration rather than planning to correct them afterwards.",
       },
     ],
   },
@@ -117,6 +147,18 @@ export const faqCategories: FaqCategory[] = [
         answer:
           "Yes. Visit the Register Guide page on this website for a step-by-step overview of the public signup flow before you open the official form.",
       },
+      {
+        id: "registration-time",
+        question: "How long does registration usually take?",
+        answer:
+          "The form itself is short — creating credentials and entering the requested details is normally a few minutes. What can extend the process is any follow-up step such as phone confirmation, payment PIN setup or document verification, which depends on your region and account status. Having your contact details to hand before you start keeps the whole flow smooth.",
+      },
+      {
+        id: "registration-troubleshoot",
+        question: "What should I check if the registration form will not submit?",
+        answer:
+          "Work through the obvious causes first: a required field left blank, a password that does not meet the format rules, a username already taken, an unchecked terms box, or a phone number entered without the expected country format. Refresh the page, disable aggressive ad-blockers or autofill that may be interfering, and try a current browser. If it still fails, use official support rather than submitting repeatedly.",
+      },
     ],
   },
   {
@@ -146,6 +188,24 @@ export const faqCategories: FaqCategory[] = [
         question: "How do I avoid login security problems?",
         answer:
           "Use a strong unique password, avoid shared devices when possible and access YES2WIN through official links rather than unknown third-party pages.",
+      },
+      {
+        id: "login-forgot-username",
+        question: "What if I remember my password but not my username?",
+        answer:
+          "Use the account recovery option on the official login page, which normally identifies you through the contact details you registered with. Do not open a second account to work around it, because two accounts can complicate verification and payment checks. If recovery does not identify you, official support can help once you confirm your identity.",
+      },
+      {
+        id: "login-multiple-devices",
+        question: "Can I use my account on more than one device?",
+        answer:
+          "Most members move between a phone and a desktop browser without issue, though the platform may end older sessions when a new one starts. Treat every device as something you need to secure: lock the device, avoid saving the password in shared browsers, and log out fully when you finish on a device that is not yours.",
+      },
+      {
+        id: "login-after-inactivity",
+        question: "Why was I logged out automatically?",
+        answer:
+          "Automatic sign-out after a period of inactivity is a normal security measure — it limits how long an unattended session stays open. Switching networks, clearing browser data or using private browsing can also end a session. Simply sign in again; if you are being disconnected constantly, check your connection stability and browser cookie settings first.",
       },
     ],
   },
@@ -183,6 +243,18 @@ export const faqCategories: FaqCategory[] = [
         answer:
           "Slots suit quick variety, live casino offers streamed tables, sports follows events, fishing is more interactive and lottery is simpler and draw-based. The Games hub explains each path.",
       },
+      {
+        id: "game-rules",
+        question: "Where do I find the rules for a specific game?",
+        answer:
+          "Individual titles carry their own information panel inside the lobby — usually an “i”, help or paytable icon that explains the rules, symbols, payline structure and any feature rounds. Read that panel before your first session rather than relying on general descriptions, because two titles with the same theme can behave very differently.",
+      },
+      {
+        id: "demo-play",
+        question: "Can I look at a game before committing real funds?",
+        answer:
+          "Where a title offers a practice or demo mode, it appears inside the lobby rather than on this partner site. Availability varies by provider, region and account status. When a demo is available it is a sensible way to learn the interface and feature flow first; when it is not, start with the smallest stake the game allows while you get familiar with it.",
+      },
     ],
   },
   {
@@ -206,6 +278,24 @@ export const faqCategories: FaqCategory[] = [
         question: "Where do I check slot-related promotions?",
         answer:
           "Visit the Promotions page for the offer structure, then confirm any slot-related live campaign terms inside the official platform.",
+      },
+      {
+        id: "slots-choose",
+        question: "How do I choose a slot that suits me?",
+        answer:
+          "Think about pace and presentation rather than chasing a title someone else recommended. If you prefer simple, quick rounds, classic-style games with fewer moving parts are easier to follow; if you enjoy feature rounds and story-led visuals, the more elaborate titles will feel more rewarding to explore. Open the game information panel first so you know what each feature does before you play.",
+      },
+      {
+        id: "slots-features",
+        question: "What do slot features like free spins or bonus rounds mean?",
+        answer:
+          "They are in-game mechanics defined by the game provider, not platform promotions. A free spin round, multiplier or pick-style bonus is triggered by the game’s own rules and is described in that title’s paytable. Because every provider implements them differently, always read the individual game’s information panel rather than assuming behaviour carries over between titles.",
+      },
+      {
+        id: "slots-session",
+        question: "How should I manage a slot session?",
+        answer:
+          "Decide your time and spending limit before you open the lobby, and treat it as fixed. Because spins resolve quickly, it is easy to lose track of how long you have been playing, so set a reminder or check the clock between rounds. If a session stops feeling enjoyable, close it rather than continuing out of momentum.",
       },
     ],
   },
@@ -231,6 +321,24 @@ export const faqCategories: FaqCategory[] = [
         answer:
           "Yes, provided your device and browser can handle the stream smoothly and the category is available to your account.",
       },
+      {
+        id: "live-rules",
+        question: "Where can I learn the rules for baccarat, roulette or blackjack?",
+        answer:
+          "Each live table shows its own rules, bet types and limits in the table information panel before you join. Read that panel first, because side bets and table variants differ between studios even when the core game is familiar. Watching a few rounds without betting is also a practical way to learn the pace and the interface.",
+      },
+      {
+        id: "live-etiquette",
+        question: "Is there etiquette I should follow at a live table?",
+        answer:
+          "Live tables run on a timer, so place decisions within the betting window and avoid holding up the round. Keep chat respectful towards the dealer and other players — chat privileges can be withdrawn if they are misused. Treat the dealer as a host running a scheduled game rather than someone who can change outcomes or table limits.",
+      },
+      {
+        id: "live-session",
+        question: "How long should a live casino session last?",
+        answer:
+          "Live tables are paced by the dealer rather than by you, which makes it easy to stay seated longer than intended. Decide in advance how many rounds or how much time you will play, and stand up at that point. Taking a break between tables also gives you a natural moment to check your spending against the limit you set.",
+      },
     ],
   },
   {
@@ -254,6 +362,24 @@ export const faqCategories: FaqCategory[] = [
         question: "Is sports access mobile-friendly?",
         answer:
           "Yes. Sports browsing is designed to stay readable on smaller screens so you can check events and navigate quickly.",
+      },
+      {
+        id: "sports-start",
+        question: "I am new to sports betting — where should I start?",
+        answer:
+          "Begin with a sport and competition you already follow, because familiarity makes the markets far easier to read. Look at a single simple market first rather than combining several selections, and check how the platform displays stake, potential return and settlement rules before confirming anything. Keep early stakes small while you learn how the interface behaves.",
+      },
+      {
+        id: "sports-live-vs-pre",
+        question: "What is the difference between pre-match and live markets?",
+        answer:
+          "Pre-match markets are available before an event starts and give you time to review your selection. Live (in-play) markets update while the event runs, so prices move quickly and selections can be suspended around key moments. Live betting demands a stable connection and faster decisions, which is why it suits people already comfortable with the sport.",
+      },
+      {
+        id: "sports-settlement",
+        question: "When are sports bets settled?",
+        answer:
+          "Settlement follows the official result for that competition, so it usually happens shortly after an event concludes — though it can take longer if a result is disputed, delayed or subject to review. Abandoned, postponed or void events follow the specific rules published with that market. Your betting history on the platform is the authoritative record of status.",
       },
     ],
   },
@@ -279,6 +405,24 @@ export const faqCategories: FaqCategory[] = [
         answer:
           "Use this partner site to learn the category, then open the official YES2WIN lobby after login to browse fishing titles available to your account.",
       },
+      {
+        id: "fishing-start",
+        question: "How do I get started with fishing games?",
+        answer:
+          "Open a title, read its information panel to see which targets carry which values, and start at the lowest available weapon or shot level while you learn the rhythm. Fishing rooms often run continuously, so you can watch for a moment before joining. Getting familiar with the value table first makes the session much easier to follow.",
+      },
+      {
+        id: "fishing-controls",
+        question: "What controls do fishing games normally use?",
+        answer:
+          "Most titles combine aiming, firing and a control for shot strength or weapon type, plus an auto-fire option in some games. On a phone you generally tap where you want to shoot, while desktop uses the pointer. The exact layout varies by provider, so check the on-screen legend before you increase your shot level.",
+      },
+      {
+        id: "fishing-budget",
+        question: "How do I keep a fishing session under control?",
+        answer:
+          "Fishing games consume your balance continuously rather than in discrete rounds, and higher shot levels spend faster. Set a session limit before you start, keep an eye on your shot level rather than leaving auto-fire running unattended, and take a break at fixed intervals so you can check your balance deliberately.",
+      },
     ],
   },
   {
@@ -302,6 +446,24 @@ export const faqCategories: FaqCategory[] = [
         question: "How do I access lottery options?",
         answer:
           "Register or log in, then open the lottery section inside the YES2WIN platform if it is enabled for your account and region.",
+      },
+      {
+        id: "lottery-formats",
+        question: "What kinds of lottery formats might I see?",
+        answer:
+          "Number-led formats generally differ in how many digits you select and how the draw resolves, with 4D-style play being the most commonly referenced. Each format publishes its own selection rules and draw schedule inside the platform. Read those details before your first entry, because the way a selection wins is not always identical across formats.",
+      },
+      {
+        id: "lottery-start",
+        question: "How do I take part in a draw?",
+        answer:
+          "After login, open the lottery area, choose the format you want, make your number selection, confirm the entry and check that it appears in your records. Entries close before the draw time shown for that format, so leave yourself a margin rather than entering at the last moment.",
+      },
+      {
+        id: "lottery-pace",
+        question: "Why do some members prefer lottery to faster categories?",
+        answer:
+          "Lottery separates the decision from the outcome — you make a selection, then wait for a scheduled draw. That removes the continuous-play loop found in slots, live tables or fishing, which many people find calmer and easier to budget for. It suits anyone who wants participation without an ongoing session.",
       },
     ],
   },
@@ -339,6 +501,24 @@ export const faqCategories: FaqCategory[] = [
         answer:
           "Eligibility can depend on account status, location, timing, category, payment method or whether you already used a similar offer. Always review the live rules.",
       },
+      {
+        id: "check-live-promotions",
+        question: "How do I check which promotions are live right now?",
+        answer:
+          "Log in and open the promotions area on the official platform — that lobby only shows campaigns currently active and available to your account, which is exactly the filter you want. Check it before you deposit rather than afterwards, since some offers must be selected at the moment of a qualifying action to count.",
+      },
+      {
+        id: "promo-codes",
+        question: "How do promo codes work?",
+        answer:
+          "When a campaign uses a code, the code is published with that campaign or sent to you directly, and it is entered in the field the platform specifies — usually at registration or in the cashier. Use only codes from official sources: guessed or third-party codes typically fail, and an expired code will not be honoured retroactively. If a code is rejected, re-check the campaign wording before contacting support.",
+      },
+      {
+        id: "promo-wagering",
+        question: "What do wagering or turnover conditions mean?",
+        answer:
+          "Wagering (sometimes called turnover or rollover) describes how much qualifying play must happen before bonus-linked funds behave like normal balance. The rate, which categories count towards it, and how long you have are all defined per campaign — they are not fixed platform-wide. Read those three points on the campaign card before opting in, because they determine what the offer is actually worth to you.",
+      },
     ],
   },
   {
@@ -362,6 +542,24 @@ export const faqCategories: FaqCategory[] = [
         question: "Can VIP members receive priority support?",
         answer:
           "Priority or more personalised support may be available where the VIP programme provides it. Confirm live details through official VIP communications.",
+      },
+      {
+        id: "vip-invitation",
+        question: "How would I know if a VIP invitation applies to me?",
+        answer:
+          "Programme communications reach you through your account channels or an authorised VIP contact — not through unsolicited social media messages or third-party pages. If something claims to grant VIP status and asks for your password, a payment or a fee, treat it as fraudulent and verify through official support instead.",
+      },
+      {
+        id: "vip-vs-promotions",
+        question: "How is VIP different from regular promotions?",
+        answer:
+          "Promotions are published campaigns anyone eligible can review and opt into from the promotions lobby. VIP is a recognition-led relationship built around service, priority pathways and selected invitations, communicated privately when it applies. The two can overlap when a VIP-oriented campaign appears, but they are not the same thing.",
+      },
+      {
+        id: "vip-contact",
+        question: "Who should I contact about VIP questions?",
+        answer:
+          "Use the official platform support channels, or your assigned VIP contact if one has been provided to you. This partner site can explain how the experience is positioned, but it cannot confirm your status, issue invitations or discuss individual rewards — those answers only come from the official programme.",
       },
     ],
   },
@@ -399,6 +597,18 @@ export const faqCategories: FaqCategory[] = [
         answer:
           "Supported options can vary by region, account status and cashier configuration. Log in again, review your account status and use official support if the issue continues.",
       },
+      {
+        id: "payment-security",
+        question: "How do I keep my payment details safe?",
+        answer:
+          "Only enter payment information inside the official cashier, never through a link sent to you in a message. Legitimate support will not ask for your password, full card details or a payment PIN. Keep the name on your payment method matching your account name, and review your transaction records regularly so anything unexpected is spotted early.",
+      },
+      {
+        id: "payment-currency",
+        question: "Which currencies and crypto assets are referenced?",
+        answer:
+          "Local banking, e-wallet and card channels follow your regional cashier configuration, and where cryptocurrency is enabled YES2WIN references coins such as BTC, ETH and USDT. Networks, wallet requirements and confirmation steps are shown at checkout. This site does not publish exchange rates, network fees or settlement times because they move constantly.",
+      },
     ],
   },
   {
@@ -423,6 +633,24 @@ export const faqCategories: FaqCategory[] = [
         answer:
           "Yes. Some live campaigns can be limited by method, timing or account status, so always read the current offer terms carefully.",
       },
+      {
+        id: "deposit-time",
+        question: "How long does a deposit take to appear?",
+        answer:
+          "It depends entirely on the channel. E-wallet and instant banking flows usually reflect quickly, card payments depend on the issuer, bank transfers follow banking hours and cut-off times, and crypto waits on network confirmations. Rather than assuming a fixed window, check the status shown in your transaction records and allow the channel to complete before trying again.",
+      },
+      {
+        id: "deposit-details",
+        question: "What should I double-check before confirming a deposit?",
+        answer:
+          "Confirm you selected the right method, that the account name matches your own, that any reference or narration field is copied exactly as shown, and — for crypto — that the network and address match the checkout instructions precisely. Most delayed deposits trace back to a mistyped reference or a mismatched sending account rather than a platform fault.",
+      },
+      {
+        id: "deposit-minimum",
+        question: "Is there a minimum deposit amount?",
+        answer:
+          "Minimums exist and differ by method, region and sometimes by campaign, so the cashier is the only reliable place to read them. This partner site does not publish figures that would go stale. If a promotion requires a qualifying deposit, its campaign card states the threshold that applies to that offer.",
+      },
     ],
   },
   {
@@ -446,6 +674,24 @@ export const faqCategories: FaqCategory[] = [
         question: "Where do I check withdrawal history?",
         answer:
           "Withdrawal records are typically shown inside the official account or cashier area after login.",
+      },
+      {
+        id: "withdrawal-time",
+        question: "How long do withdrawals take?",
+        answer:
+          "Two things drive the timing: the platform’s own review of the request, and the settlement speed of the payout channel you chose. A first withdrawal often takes longer because verification may run alongside it, while later requests on a verified account tend to move faster. Watch the status in your records rather than resubmitting, and complete any verification prompt promptly since that is the most common cause of delay.",
+      },
+      {
+        id: "withdrawal-method",
+        question: "Can I withdraw to a different method than I deposited with?",
+        answer:
+          "Many platforms prefer payouts to return to the source of funds, and payout details usually have to match your registered account name. That is a standard anti-fraud measure rather than an obstacle. Check which payout channels appear for your account in the cashier, and make sure the receiving account is in your own name before you request.",
+      },
+      {
+        id: "withdrawal-delayed",
+        question: "Why might a withdrawal request be delayed or returned?",
+        answer:
+          "The usual causes are an outstanding verification step, payout details that do not match your registered name, a pending promotion condition still attached to your balance, or a routine security review. Open your transaction records to see the status and any message attached to the request, resolve what is flagged, then follow up through official support if it remains unclear.",
       },
     ],
   },
@@ -476,6 +722,24 @@ export const faqCategories: FaqCategory[] = [
         question: "Can I handle payments from mobile?",
         answer:
           "Yes, when supported by the platform. Deposits, withdrawals and related verification usually continue inside the official cashier after login.",
+      },
+      {
+        id: "mobile-browser-tips",
+        question: "Which mobile browser habits make the experience better?",
+        answer:
+          "Keep your browser updated, allow cookies for the platform so sessions persist, and clear the cache if pages start rendering oddly after an update. Avoid aggressive data-saver or script-blocking modes, which can break lobby elements. Rotating to landscape helps on live tables and sports pages, and closing unused tabs frees memory for streaming categories.",
+      },
+      {
+        id: "mobile-data",
+        question: "Should I use Wi-Fi or mobile data?",
+        answer:
+          "For browsing guides, promotions or the cashier, either works. For live dealer tables and animation-heavy titles, a stable connection matters more than a fast one — a steady Wi-Fi signal usually beats mobile data that fluctuates as you move. If a stream stutters, switching networks before the round starts is better than mid-session.",
+      },
+      {
+        id: "mobile-shortcut",
+        question: "Can I add YES2WIN to my phone’s home screen?",
+        answer:
+          "Modern mobile browsers let you save any page you trust as a home-screen shortcut through the share or menu options. Create the shortcut from the official destination you reached through this partner site, so the icon always opens the correct address. That is safer than installing a file from an unverified download page, which this site does not publish.",
       },
     ],
   },
@@ -513,6 +777,18 @@ export const faqCategories: FaqCategory[] = [
         answer:
           "This site provides public-facing guidance around YES2WIN categories, messaging, navigation and responsible positioning. Official commercial terms and private tools remain on the platform side.",
       },
+      {
+        id: "partner-getting-started",
+        question: "What should I prepare before starting the partner journey?",
+        answer:
+          "Have three things clear: who your audience is, which channel you will actually publish on, and how you intend to explain YES2WIN without overstating anything. Read the Games, Promotions, Payment and Responsible Gaming pages first so your explanations are accurate, then open official partner access. Preparing the message before the link is what makes the first weeks productive.",
+      },
+      {
+        id: "partner-responsible-marketing",
+        question: "What messaging standards should partners follow?",
+        answer:
+          "Keep it educational and honest: no guaranteed winnings or income claims, no invented percentages or commission figures, no targeting of anyone under the legal age, and no presenting this partner site as the primary corporate YES2WIN website. Include responsible gaming context, direct people to official terms for anything time-sensitive, and follow the platform’s promotion rules and any local advertising law that applies to you.",
+      },
     ],
   },
   {
@@ -543,6 +819,18 @@ export const faqCategories: FaqCategory[] = [
         answer:
           "Shared devices increase risk. If you must use one, log out fully, avoid saving passwords and clear any sensitive session data afterwards.",
       },
+      {
+        id: "extra-security",
+        question: "Should I turn on any extra security features?",
+        answer:
+          "Yes — enable whatever the platform offers, such as a payment PIN, login notifications or additional verification on sensitive actions. Each one adds a step that an attacker would also have to pass. Pair that with a password you use nowhere else, ideally stored in a password manager rather than in your browser on a shared machine.",
+      },
+      {
+        id: "report-suspicious",
+        question: "What should I do if I receive a suspicious message or find a fake page?",
+        answer:
+          "Do not click, reply or enter anything. Close it, then reach the platform yourself through the official links on this site or an address you already know. If you did enter credentials, change your password immediately and contact official support. Genuine communications never ask for your password, and no legitimate contact requires payment to release a balance or unlock a status.",
+      },
     ],
   },
   {
@@ -572,6 +860,24 @@ export const faqCategories: FaqCategory[] = [
         question: "When should I stop playing?",
         answer:
           "Stop if you feel stressed, are spending beyond your budget, are trying to recover losses or notice that gaming is affecting daily responsibilities.",
+      },
+      {
+        id: "healthy-habits",
+        question: "What everyday habits keep play healthy?",
+        answer:
+          "Decide your budget and finishing time before you open the lobby, not while you are in it. Keep entertainment money separate from money you need, play only when you are rested and clear-headed rather than to relieve stress, and review your deposits weekly so the real total is never a surprise. Small routines like these do far more than good intentions in the moment.",
+      },
+      {
+        id: "self-exclusion",
+        question: "Can I take a break or set limits on my account?",
+        answer:
+          "Where account-level tools such as deposit limits, session reminders, cooling-off periods or self-exclusion are offered, they are found in the official platform’s responsible gaming or account settings area — this partner site cannot apply them for you. If you are considering a break, setting the limit while you feel in control is far easier than trying to stop mid-session.",
+      },
+      {
+        id: "talk-to-someone",
+        question: "How do I start a conversation about gambling worries?",
+        answer:
+          "Choose a calm moment and be concrete — how much time or money is involved, and what you want to change — rather than trying to justify anything. Speaking to one trusted person makes it real and much harder to minimise. Support organisations such as BeGambleAware and Gambling Therapy offer confidential help, and reaching out early is a practical step rather than a last resort.",
       },
     ],
   },
