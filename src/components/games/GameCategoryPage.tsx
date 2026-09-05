@@ -36,7 +36,7 @@ export async function GameCategoryPage({
 
   return (
     <>
-      <WebPageJsonLd name={category.name} description={category.seoDescription} path={category.path} />
+      <WebPageJsonLd name={category.name} description={category.seoDescription} path={category.path} locale={activeLocale} />
       <BreadcrumbJsonLd
         items={[
           { name: ui.breadcrumb.home, path: localizePath("/", activeLocale) },

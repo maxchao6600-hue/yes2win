@@ -43,7 +43,7 @@ export default async function PromotionsPage() {
 
   return (
     <>
-      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={promotionsPath} />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={promotionsPath} locale={locale} />
       <BreadcrumbJsonLd
         items={[
           { name: ui.breadcrumb.home, path: homePath },

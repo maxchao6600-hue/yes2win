@@ -258,6 +258,18 @@ export const legalEn: LegalCopy = {
               "For account-specific issues — including registration, login, verification, deposits, withdrawals, promotion eligibility and VIP status — use the support options available after you log in to the official platform. This website cannot access, review or alter any account, and cannot resolve matters that require account records.",
             ],
           },
+          {
+            type: "p",
+            content: [
+              "Related pages on this partner site include ",
+              { text: "Privacy", href: "/privacy/" },
+              ", ",
+              { text: "Responsible Gaming", href: "/responsible-gaming/" },
+              " and ",
+              { text: "About", href: "/about/" },
+              ".",
+            ],
+          },
         ],
       },
     ],
@@ -275,7 +287,7 @@ export const legalEn: LegalCopy = {
       withEntity: "This website is operated by {entity}.",
       withEntityAndJurisdiction: "This website is operated by {entity} in {jurisdiction}.",
       fallback:
-        "This website is operated as YES2WIN Official Partner. Operator details may be updated when formally published.",
+        "This website is operated as YES2WIN Official Partner — an information and access gateway connected to the YES2WIN ecosystem.",
     },
     sections: [
       {
@@ -303,6 +315,14 @@ export const legalEn: LegalCopy = {
             content: [
               { token: "operatorLine" },
               " YES2WIN platform privacy practices remain separate from this partner website, and each is responsible only for the information it handles.",
+            ],
+          },
+          {
+            type: "p",
+            content: [
+              "Questions about how this informational site is run can be raised through the ",
+              { text: "Contact", href: "/contact/" },
+              " page. Questions about an account on the official platform must go through platform support, because this site does not hold account records.",
             ],
           },
         ],
@@ -393,6 +413,12 @@ export const legalEn: LegalCopy = {
               "Technical logs and enquiry records are retained only as long as needed for security, operations and legal obligations, after which they are deleted or aggregated so that individuals can no longer be identified. Retention periods vary by record type: routine technical logs are kept for short operational periods, while correspondence may be kept longer where it is needed to handle a continuing enquiry.",
             ],
           },
+          {
+            type: "p",
+            content: [
+              "Because this partner website does not operate member accounts, it does not retain gameplay, cashier or verification records. Those records, where they exist, are held only within the official platform under its own policies.",
+            ],
+          },
         ],
       },
       {
@@ -402,6 +428,12 @@ export const legalEn: LegalCopy = {
             type: "p",
             content: [
               "Reasonable technical and organisational measures are used to protect the limited information this website handles against loss, misuse and unauthorised access. No method of transmission or storage over the internet can be guaranteed completely secure, and information sent to us by email or messaging is only as secure as the service you use to send it.",
+            ],
+          },
+          {
+            type: "p",
+            content: [
+              "You can reduce risk by using the published contact pathways only, never sharing passwords or payment credentials in messages about this site, and treating unexpected requests for sensitive details as untrustworthy.",
             ],
           },
         ],
@@ -443,6 +475,18 @@ export const legalEn: LegalCopy = {
             type: "p",
             content: [
               "We may revise this policy periodically to reflect changes in how the website operates or in applicable requirements. The “Last updated” date at the top of this page reflects the latest version, and material changes will be shown here rather than communicated individually. Reviewing this page occasionally is the most reliable way to stay informed.",
+            ],
+          },
+          {
+            type: "p",
+            content: [
+              "For related site rules and support pathways, see the ",
+              { text: "Terms of use", href: "/terms/" },
+              ", ",
+              { text: "Contact", href: "/contact/" },
+              " and ",
+              { text: "Responsible Gaming", href: "/responsible-gaming/" },
+              " pages.",
             ],
           },
         ],

@@ -31,7 +31,7 @@ export const hubsEn = {
       },
       /** Rendered under the `siteConfig.identity` heading. */
       partnerCardBody:
-        "This partner website provides orientation, category education and access CTAs while remaining clear about its partner role in the wider ecosystem. It is deliberately explicit about what it is not: it does not host games, hold funds, process payments or grant account status, and it is not the primary corporate YES2WIN website.",
+        "This site orients visitors to the YES2WIN ecosystem: category guides, how offers and payments are structured, and clear Register / Login / Partner CTAs into the official platform. As an official partner gateway, its job is preparation and navigation — so you arrive on the live platform already knowing what each area is for.",
     },
     ecosystem: {
       eyebrow: "Ecosystem",
@@ -127,8 +127,8 @@ export const hubsEn = {
           body: "Review category guides, payment overviews, mobile tips, FAQ answers and responsible gaming guidance before you decide to continue.",
         },
         {
-          title: "Clear scope",
-          body: "Live games, account records, cashier tools, verification and promotions claiming all happen on the official platform after you log in.",
+          title: "What happens after login",
+          body: "Once you continue into the official platform, account tools, the live lobby, cashier flows and offer claiming are handled there under that environment’s own rules.",
         },
         {
           title: "Partner pathway",
@@ -163,8 +163,8 @@ export const hubsEn = {
           body: "A dedicated partner journey explains sharing, resources and support without inventing commissions or income guarantees, and sets out the messaging standards expected of anyone promoting the brand.",
         },
         {
-          title: "Honest limits",
-          body: "Where a figure changes — offer values, fees, limits, odds, lobby catalogues — this site says so and points to the platform instead of publishing a number that would age badly.",
+          title: "Time-sensitive details stay live",
+          body: "Where a figure changes — offer values, fees, limits, odds, lobby catalogues — this site explains the structure and points you to the platform at the moment you act, so you never rely on a stale number.",
         },
         {
           title: "Bilingual coverage",
@@ -190,31 +190,27 @@ export const hubsEn = {
       eyebrow: "Quick clarity",
       title: "Common questions about this partner site",
       description:
-        "Short answers that keep the difference between public guidance and platform actions easy to understand.",
+        "Short answers with distinct jobs — so each card adds something new rather than repeating the same disclaimer.",
       cards: [
         {
-          title: "Is this the main YES2WIN website?",
-          body: "No. This is an official partner information and access gateway connected to the YES2WIN ecosystem — not the primary corporate website.",
-        },
-        {
-          title: "Where do live games and payments happen?",
-          body: "Live lobbies, cashier tools, verification and account records sit on the official YES2WIN platform after Register or Login.",
+          title: "What is this site for?",
+          body: "Orientation and access: category guides, offer and payment structure, FAQ answers and CTAs into the official YES2WIN platform when you are ready to continue.",
         },
         {
           title: "What should I explore first?",
-          body: "Start with Games, Promotions, Payment or Mobile depending on your question, then continue into the platform when you are ready.",
+          body: "Start with Games if you are choosing a pace, Promotions or Payment if you need structural context, or Mobile if you will mostly browse on a phone — then open the platform when the map feels clear.",
         },
         {
-          title: "Can partners use these pages?",
-          body: "Yes. Public pages can support educational messaging. Do not misrepresent this site as the primary corporate YES2WIN website.",
+          title: "Where do live actions happen?",
+          body: "Registration, login, the live lobby, cashier tools, verification and offer claiming all continue on the official YES2WIN platform after you leave this site through those CTAs.",
+        },
+        {
+          title: "How should partners use these pages?",
+          body: "Link to public guides for educational context. Keep messaging factual, include responsible-play framing, and send audiences to the platform for anything time-sensitive or account-specific.",
         },
         {
           title: "Why are there no bonus figures here?",
-          body: "Because they change. Offer values, fees, limits and odds are set by the live platform and can differ by account, so publishing them here would guarantee that someone reads an outdated number and acts on it.",
-        },
-        {
-          title: "Can this site help with my account?",
-          body: "Not directly. It cannot see, change or verify an account, apply limits or confirm VIP status. What it can do is explain how those processes work so you know what to expect before you open the platform.",
+          body: "Offer values, fees, limits and odds change and can differ by account. This site explains categories and what to check; current numbers belong in the live platform at the moment you act.",
         },
       ],
     },
@@ -420,7 +416,8 @@ export const hubsEn = {
     primaryCta: "Register Now",
     secondaryCta: "View Promotions",
     jsonLdName: "YES2WIN Games",
-    jsonLdDescription: "Explore YES2WIN game categories.",
+    jsonLdDescription:
+      "YES2WIN games hub covering slots, live casino, sports, fishing and lottery — how categories differ by pace, how to choose a session, and how to continue into the official lobby.",
     featured: {
       eyebrow: "Featured",
       title: "Start with the categories players explore most",
@@ -448,23 +445,149 @@ export const hubsEn = {
       items: [
         {
           title: "Slots",
-          body: "Theme variety, feature-driven play and short spin cycles that suit both brief sessions and longer play. Each title publishes its own paytable explaining symbols and feature triggers.",
+          body: "Theme variety, feature-driven play and short spin cycles that suit both brief sessions and longer play. Paylines and ways-to-win differ by title, so each game’s paytable is the practical rulebook for symbols, features and free-spin style rounds.",
         },
         {
           title: "Live tables",
-          body: "Baccarat, roulette and blackjack where live dealers are available, paced by timed betting windows rather than by you. Table panels list rules, side bets and limits before you join.",
+          body: "Baccarat, roulette and blackjack where live dealers are available, paced by timed betting windows rather than by you. Table panels list rules, side bets and limits before you join, and a steady connection matters more than peak download speed.",
         },
         {
           title: "Sports markets",
-          body: "Football, basketball, tennis and other supported events, with pre-match markets for considered selections and in-play markets that move during an event.",
+          body: "Football, basketball, tennis and other supported events, with pre-match markets for considered selections and in-play markets that move during an event. Your bet slip and settlement record are the place to confirm what you placed and when it resolved.",
         },
         {
           title: "Fishing sessions",
-          body: "Interactive targeting and arcade-style catch mechanics, with adjustable shot levels that change how quickly a session moves. Play is continuous rather than round-based.",
+          body: "Interactive targeting and arcade-style catch mechanics, with adjustable shot levels that change how quickly a session moves. Play is continuous rather than round-based, so a pre-set time limit is especially useful.",
         },
         {
           title: "Lottery / 4D",
-          body: "Number-led draw formats with simpler participation flows. You make a selection, entries close, and the result follows a published draw schedule.",
+          body: "Number-led draw formats with simpler participation flows. You make a selection, entries close ahead of a published draw, and the result follows that schedule — a calmer pace than continuous play categories.",
+        },
+      ],
+    },
+    ecosystem: {
+      eyebrow: "How it fits together",
+      title: "How the YES2WIN game ecosystem is organised",
+      description:
+        "YES2WIN is not one play style with five labels. Categories differ in pace, in who sets the rhythm of a round, and in how much you need to decide before you begin. Understanding that map makes the lobby far easier to navigate.",
+      points: [
+        {
+          title: "Pace is the first filter",
+          body: "Slots and fishing keep you continuously involved; live tables run on dealer timing; sports follow real fixtures; lottery separates your selection from a scheduled draw. Choosing by pace usually beats choosing by theme alone.",
+        },
+        {
+          title: "The lobby is authoritative",
+          body: "Guides on this partner site explain structure. The titles, tables and markets you can open appear only in the official lobby after Register or Login, filtered by region and account status.",
+        },
+        {
+          title: "Studios shape the feel",
+          body: "Provider names matter because interface habits, feature styles and table presentation often follow the studio more than the theme artwork. Knowing a few referenced studios helps you recognise patterns as you browse.",
+        },
+        {
+          title: "Match the category to the session",
+          body: "A short phone break suits self-paced reels or a quick number entry; a longer window suits a live table or an in-play sports desk. Decide the session type first, then open the matching category guide.",
+        },
+      ],
+    },
+    categoryGuides: {
+      eyebrow: "Category education",
+      title: "What each YES2WIN category actually involves",
+      description:
+        "Short educational summaries of the five main paths — mechanics concepts and session habits, not marketing claims. Open a full guide when you want a deeper walkthrough before continuing into the lobby.",
+      items: [
+        {
+          id: "slots",
+          title: "Slots",
+          summary:
+            "Slots are self-paced: each spin is a short round you control. Themes set the look, while paylines or ways-to-win structures decide how matching symbols count. Feature rounds and free-spin style sequences are general game mechanics described in each title’s paytable — not platform promotions. Reading that paytable before you play is the fastest way to understand symbols and triggers. Most titles also suit mobile sessions because rounds are brief and easy to pause.",
+          points: [
+            "Themes vary widely; mechanics sit in the paytable, not the artwork.",
+            "Paylines and ways-to-win are conceptual structures — check the title you open.",
+            "Features and free-spin style rounds are game rules, separate from offer campaigns.",
+            "Mobile-friendly for short, interruptible sessions.",
+          ],
+          href: "/games/slots/",
+          cta: "Read the slots guide",
+        },
+        {
+          id: "live-casino",
+          title: "Live Casino",
+          summary:
+            "Live casino streams a human dealer in real time, so the round runs on the table’s clock rather than yours. Familiar formats such as baccarat, roulette and blackjack appear as general table concepts — rules, side bets and limits are listed on the table panel before you join. A stable connection matters more here than in static categories, and landscape phone browsing often makes layouts clearer.",
+          points: [
+            "Real-time dealer stream; betting windows set the pace.",
+            "Baccarat, roulette and blackjack as common table concepts where available.",
+            "Read the table panel for rules, side bets and limits before joining.",
+            "Prefer a steady connection; mobile works when the stream stays smooth.",
+          ],
+          href: "/games/live-casino/",
+          cta: "Read the live casino guide",
+        },
+        {
+          id: "sports",
+          title: "Sports",
+          summary:
+            "Sports entertainment is organised around real fixtures. Pre-match markets give you time to review selections; in-play markets update while an event is underway and may suspend at key moments. Football, basketball and tennis are common reference sports, though coverage depends on the live desk. Markets, your bet slip and settlement records are the practical tools for confirming what you placed and when it resolved — odds themselves stay on the platform.",
+          points: [
+            "Pre-match for considered picks; in-play for live movement.",
+            "Football, basketball and tennis as frequent examples where offered.",
+            "Use markets, bet slip and settlement concepts to track selections.",
+            "Confirm odds and rules on the live sports desk, not on summary pages.",
+          ],
+          href: "/games/sports/",
+          cta: "Read the sports guide",
+        },
+        {
+          id: "fishing",
+          title: "Fishing",
+          summary:
+            "Fishing games use arcade-style targeting: you aim, fire and chase on-screen objectives rather than waiting on a spin cycle. Styles differ by interface and shot controls, and adjustable intensity usually changes how quickly a session moves. Touch controls make the category a natural fit on mobile, but continuous play means responsible pacing — set a time limit before you start, not after the room has pulled you in.",
+          points: [
+            "Arcade-style aiming and continuous action, not round-based spins.",
+            "Styles and shot levels change how fast the session feels.",
+            "Touch-friendly on mobile when the title is available.",
+            "Set a session length early — continuous play can run longer than planned.",
+          ],
+          href: "/games/fishing/",
+          cta: "Read the fishing guide",
+        },
+        {
+          id: "lottery",
+          title: "Lottery",
+          summary:
+            "Lottery and 4D-style play centres on a draw concept: you choose numbers, entries close, and results follow a published schedule. 4D-style formats are number-led participation rather than continuous interaction. The pace is intentionally calm — there is no live stream or arcade loop to manage — which makes it easier to keep involvement brief and budget-aware. Always confirm the current draw rules and schedules inside the official platform.",
+          points: [
+            "Draw-based: select, wait for the published result time.",
+            "4D-style play is a general number-led format concept.",
+            "Calmest pace among the main categories.",
+            "Confirm schedules and rules on the live platform before entering.",
+          ],
+          href: "/games/lottery/",
+          cta: "Read the lottery guide",
+        },
+      ],
+    },
+    discovery: {
+      eyebrow: "Choosing well",
+      title: "How to discover and choose games",
+      description:
+        "A practical approach to browsing before you open the lobby — so the first titles you try match the session you actually have time for.",
+      points: [
+        {
+          title: "Start from pace, not artwork",
+          body: "Ask how long you can stay involved and whether you want self-paced rounds, dealer timing, a live fixture or a scheduled draw. That answer usually points to the right category faster than a theme does.",
+        },
+        {
+          title: "Use information panels",
+          body: "Inside the lobby, each title or table typically carries its own rules, paytable or limits panel. Reading it once before you join prevents most early surprises.",
+        },
+        {
+          title: "Notice the studio",
+          body: "When several titles share a provider, interfaces and feature habits often feel familiar. Using that pattern can make browsing less random once you know what you like.",
+        },
+        {
+          title: "Begin small",
+          body: "First sessions are for learning controls and rhythm. Keep stakes and duration modest until the format feels clear — especially in continuous categories such as fishing or in-play sports.",
         },
       ],
     },
@@ -493,6 +616,32 @@ export const hubsEn = {
         vipLinkLabel: "VIP",
         paymentLinkLabel: "Payment",
       },
+    },
+    responsible: {
+      eyebrow: "Responsible play",
+      title: "Keep games recreational",
+      description:
+        "Category choice is only useful when sessions stay within limits you set in advance. These habits apply across slots, live tables, sports, fishing and lottery.",
+      points: [
+        {
+          title: "Decide limits before the lobby",
+          body: "Set time and spending boundaries while you are still reading guides — not after a session has already started.",
+        },
+        {
+          title: "Match category to attention",
+          body: "Continuous formats ask for more ongoing focus. If you only have a short window, prefer self-paced or draw-based options.",
+        },
+        {
+          title: "Do not chase a session",
+          body: "Ending while behind is a normal outcome. Extending play only to recover losses turns entertainment into pressure.",
+        },
+        {
+          title: "Use platform tools when available",
+          body: "Where the official platform offers limits or break tools, use them inside your account. This partner site explains the idea; the controls live there.",
+        },
+      ],
+      cta: "Responsible gaming guidance",
+      href: "/responsible-gaming/",
     },
     faq: {
       eyebrow: "FAQ",
@@ -534,6 +683,18 @@ export const hubsEn = {
           question: "Why can’t I see every category on my account?",
           answer:
             "Availability depends on region, account status and platform updates, so the lobby you see is filtered to what applies to you. If something expected is missing, check again after login rather than assuming it has been withdrawn.",
+        },
+        {
+          id: "g7",
+          question: "What should I check before joining a live table or sports market?",
+          answer:
+            "For live tables, open the table panel for rules, side bets and limits, and confirm your connection is stable. For sports, review the market description and settlement notes for that selection, then confirm the stake on your bet slip before you submit.",
+        },
+        {
+          id: "g8",
+          question: "How do category guides relate to the live lobby?",
+          answer:
+            "Guides explain how a category plays and what to prepare for. They are not a live catalogue. Titles, tables and markets available to you appear only after you continue into the official lobby.",
         },
       ],
       links: [

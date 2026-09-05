@@ -43,7 +43,7 @@ export const pageMetaZh: Record<PageId, PageMeta> = {
       "通过合作伙伴入口了解 YES2WIN 彩票游戏——简单的开奖玩法与便捷的手机使用体验。",
   },
   promotions: {
-    title: "YES2WIN 优惠活动｜最新活动与优惠",
+    title: "YES2WIN 优惠活动｜最新活动与活动指南",
     description:
       "了解 YES2WIN 的优惠类型——迎新礼遇、存款活动、每周优惠、返水概念与 VIP 相关活动，再到官方平台查看最新条款。",
   },

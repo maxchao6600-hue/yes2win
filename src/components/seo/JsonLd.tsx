@@ -76,11 +76,14 @@ export function WebPageJsonLd({
   name,
   description,
   path,
+  locale = defaultLocale,
 }: {
   name: string;
   description: string;
   path: string;
+  locale?: Locale;
 }) {
+  const site = getSiteCopy(locale);
   return (
     <JsonLd
       data={{
@@ -89,10 +92,11 @@ export function WebPageJsonLd({
         name,
         description,
         url: absoluteUrl(path),
+        inLanguage: localeHtmlLang[locale],
         isPartOf: {
           "@type": "WebSite",
-          name: siteConfig.identity,
-          url: absoluteUrl("/"),
+          name: site.identity,
+          url: absoluteUrl(localizePath("/", locale)),
         },
       }}
     />

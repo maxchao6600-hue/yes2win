@@ -29,7 +29,7 @@ export default async function ResponsibleGamingPage() {
 
   return (
     <>
-      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={pagePath} />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={pagePath} locale={locale} />
       <BreadcrumbJsonLd
         items={[
           { name: ui.breadcrumb.home, path: homePath },

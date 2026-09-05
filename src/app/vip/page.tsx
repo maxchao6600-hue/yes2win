@@ -34,7 +34,7 @@ export default async function VipPage() {
 
   return (
     <>
-      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={vipPath} />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={vipPath} locale={locale} />
       <BreadcrumbJsonLd
         items={[
           { name: ui.breadcrumb.home, path: homePath },

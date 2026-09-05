@@ -36,7 +36,7 @@ export default async function AboutPage() {
 
   return (
     <>
-      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={aboutPath} />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={aboutPath} locale={locale} />
       <BreadcrumbJsonLd
         items={[
           { name: ui.breadcrumb.home, path: homePath },
@@ -312,9 +312,6 @@ export default async function AboutPage() {
               </Card>
             ))}
           </div>
-          <p className="mt-10 rounded-2xl border border-line bg-white p-4 text-sm text-ink-muted">
-            {site.disclaimer}
-          </p>
         </Container>
       </Section>
 

@@ -26,7 +26,7 @@ export default async function FaqPage() {
 
   return (
     <>
-      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={faqPath} />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={faqPath} locale={locale} />
       <BreadcrumbJsonLd
         items={[
           { name: ui.breadcrumb.home, path: homePath },

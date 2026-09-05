@@ -34,7 +34,7 @@ export default async function PartnerPage() {
 
   return (
     <>
-      <WebPageJsonLd name={copy.jsonLdName} description={partnerContent.intro} path={partnerPath} />
+      <WebPageJsonLd name={copy.jsonLdName} description={partnerContent.intro} path={partnerPath} locale={locale} />
       <BreadcrumbJsonLd
         items={[
           { name: ui.breadcrumb.home, path: homePath },

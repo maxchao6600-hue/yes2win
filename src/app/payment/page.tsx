@@ -106,7 +106,7 @@ export default async function PaymentPage() {
 
   return (
     <>
-      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={paymentPath} />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={paymentPath} locale={locale} />
       <BreadcrumbJsonLd
         items={[
           { name: ui.breadcrumb.home, path: homePath },

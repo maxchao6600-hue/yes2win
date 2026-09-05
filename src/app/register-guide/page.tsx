@@ -29,7 +29,7 @@ export default async function RegisterGuidePage() {
 
   return (
     <>
-      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={guidePath} />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={guidePath} locale={locale} />
       <BreadcrumbJsonLd
         items={[
           { name: ui.breadcrumb.home, path: homePath },

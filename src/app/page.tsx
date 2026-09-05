@@ -41,7 +41,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <WebPageJsonLd name={site.identity} description={site.description} path={localizePath("/", locale)} />
+      <WebPageJsonLd name={site.identity} description={site.description} path={localizePath("/", locale)} locale={locale} />
       <Hero />
       <TrustStrip />
       <Intro />

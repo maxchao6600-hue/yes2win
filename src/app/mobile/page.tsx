@@ -34,7 +34,7 @@ export default async function MobilePage() {
 
   return (
     <>
-      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={mobilePath} />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={mobilePath} locale={locale} />
       <BreadcrumbJsonLd
         items={[
           { name: ui.breadcrumb.home, path: homePath },

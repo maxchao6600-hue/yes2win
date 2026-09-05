@@ -49,7 +49,7 @@ export default async function GamesPage() {
 
   return (
     <>
-      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={gamesPath} />
+      <WebPageJsonLd name={copy.jsonLdName} description={copy.jsonLdDescription} path={gamesPath} locale={locale} />
       <BreadcrumbJsonLd
         items={[
           { name: ui.breadcrumb.home, path: homePath },
@@ -185,6 +185,73 @@ export default async function GamesPage() {
       </Section>
 
       <Section>
+        <Container>
+          <SectionHeading
+            eyebrow={copy.ecosystem.eyebrow}
+            title={copy.ecosystem.title}
+            description={copy.ecosystem.description}
+          />
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {copy.ecosystem.points.map((point) => (
+              <Card key={point.title}>
+                <h2 className="text-lg font-bold text-ink">{point.title}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{point.body}</p>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="white">
+        <Container>
+          <SectionHeading
+            eyebrow={copy.categoryGuides.eyebrow}
+            title={copy.categoryGuides.title}
+            description={copy.categoryGuides.description}
+          />
+          <div className="mt-8 grid gap-5">
+            {copy.categoryGuides.items.map((item) => (
+              <Card key={item.id} id={item.id} className="scroll-mt-28">
+                <h2 className="text-2xl font-bold text-ink">{item.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-ink-muted sm:text-base">{item.summary}</p>
+                <ul className="mt-4 space-y-2 text-sm text-ink-muted">
+                  {item.points.map((point) => (
+                    <li key={point} className="flex gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-5">
+                  <CtaLink href={localizePath(item.href, locale)} variant="secondary" size="sm">
+                    {item.cta}
+                  </CtaLink>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="green">
+        <Container>
+          <SectionHeading
+            eyebrow={copy.discovery.eyebrow}
+            title={copy.discovery.title}
+            description={copy.discovery.description}
+          />
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {copy.discovery.points.map((point) => (
+              <Card key={point.title}>
+                <h2 className="text-lg font-bold text-ink">{point.title}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{point.body}</p>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
         <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line">
             <Image
@@ -250,6 +317,29 @@ export default async function GamesPage() {
       </Section>
 
       <Section tone="white">
+        <Container>
+          <SectionHeading
+            eyebrow={copy.responsible.eyebrow}
+            title={copy.responsible.title}
+            description={copy.responsible.description}
+          />
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {copy.responsible.points.map((point) => (
+              <Card key={point.title}>
+                <h2 className="text-lg font-bold text-ink">{point.title}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{point.body}</p>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-6">
+            <CtaLink href={localizePath(copy.responsible.href, locale)} variant="secondary">
+              {copy.responsible.cta}
+            </CtaLink>
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
         <Container className="grid gap-8 lg:grid-cols-2">
           <SectionHeading eyebrow={copy.faq.eyebrow} title={copy.faq.title} description={copy.faq.description} />
           <Accordion items={copy.faq.items} />
