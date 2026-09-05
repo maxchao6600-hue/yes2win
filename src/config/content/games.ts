@@ -41,7 +41,7 @@ export const gameCategories: GameCategory[] = [
     ],
     seoTitle: "YES2WIN Slots | Slot Games Overview",
     seoDescription:
-      "Explore YES2WIN slot games — themes, features and mobile-friendly play through this official partner gateway.",
+      "Explore YES2WIN slot games — themes, features and mobile-friendly play through this official partner site.",
     ctaLabel: "Explore slots",
   },
   {
@@ -70,7 +70,7 @@ export const gameCategories: GameCategory[] = [
     ],
     seoTitle: "YES2WIN Live Casino | Live Dealer Games",
     seoDescription:
-      "Discover YES2WIN live casino — real-time dealer tables and classic formats through the official partner portal.",
+      "Discover YES2WIN live casino — real-time dealer tables and classic formats via the official partner site.",
     ctaLabel: "View live casino",
   },
   {
@@ -99,7 +99,7 @@ export const gameCategories: GameCategory[] = [
     ],
     seoTitle: "YES2WIN Sports | Sports Betting Overview",
     seoDescription:
-      "Learn about YES2WIN sports betting — popular events, markets and mobile access via the official partner site.",
+      "Learn about YES2WIN sports entertainment — popular events, markets and mobile access via the partner site.",
     ctaLabel: "Browse sports",
   },
   {
@@ -111,7 +111,7 @@ export const gameCategories: GameCategory[] = [
     description:
       "Interactive fishing games that mix skill-style shooting with colourful catch mechanics.",
     intro:
-      "Fishing games appeal to players who like active, visual sessions. You aim, fire and chase higher-value targets in arcade-inspired environments, which makes the category feel noticeably more hands-on than spin- or draw-based play. Rooms often run continuously, so you can watch for a moment before joining, and each title publishes a value table explaining which targets are worth what.",
+      "Fishing games appeal to players who like active, visual sessions. You aim, fire and chase higher-value targets in arcade-inspired environments, which makes the category feel noticeably more hands-on than spin- or draw-based play. Rooms often run continuously, so you can watch for a moment before joining. Where provided, a value table explains which targets are worth what.",
     whatToExpect: [
       "Bright, interactive gameplay built around aiming and firing rather than fixed rounds",
       "Value tables showing which targets carry which rewards in each title",
@@ -157,7 +157,7 @@ export const gameCategories: GameCategory[] = [
     ],
     seoTitle: "YES2WIN Lottery | Lottery Games Overview",
     seoDescription:
-      "Discover YES2WIN lottery games — simple draw formats and easy mobile access through the partner gateway.",
+      "Discover YES2WIN lottery games — simple draw formats and easy mobile access.",
     ctaLabel: "See lottery options",
   },
 ];

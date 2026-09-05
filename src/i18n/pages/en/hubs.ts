@@ -1,3 +1,5 @@
+import { gameCategoryDetailsEn } from "@/i18n/pages/en/game-category-details";
+
 /**
  * Page-level chrome for the hub pages (about, contact, games, promotions, vip,
  * payment, mobile, partner, faq).
@@ -1709,284 +1711,25 @@ export const hubsEn = {
 
   /**
    * Chrome for the individual `/games/<category>/` pages rendered by
-   * `@/components/games/GameCategoryPage`. Category names, intros and
-   * `whatToExpect` bullets keep coming from `getGameCategories`.
+   * `@/components/games/GameCategoryPage`. Category names and intros come from
+   * `getGameCategories`; educational depth lives in game-category-details.
    */
   gameCategory: {
     eyebrow: "YES2WIN Games",
     /** `{category}` is replaced with the category short name. */
     imageAltTemplate: "{category} category artwork",
     allCategoriesCta: "All categories",
-    whatToExpectTitle: "What to expect",
-    suitedTitle: "Who this category suits",
-    access: {
-      title: "How to access",
-      /** `{category}` is replaced with the category short name. */
-      bodyTemplate:
-        "Register or log in through this partner gateway, then open the live YES2WIN lobby to browse {category} content available for your region and account.",
-    },
-    mobileCard: {
-      title: "Mobile access",
-      /** `{category}` is replaced with the category short name. */
-      bodyTemplate:
-        "{category} fits naturally into the wider mobile experience when your browser and connection are ready for it.",
-      linkLabel: "Mobile experience",
-      href: "/mobile/",
-    },
-    supportCard: {
-      title: "Offers & support",
-      body: "Related campaigns and support pathways live across the Promotions, FAQ and Responsible Gaming pages.",
-      links: [
-        { label: "Promotions", href: "/promotions/" },
-        { label: "Games FAQ", href: "/faq/#games" },
-        { label: "Responsible gaming", href: "/responsible-gaming/" },
-        { label: "VIP", href: "/vip/" },
-      ],
-    },
-    questions: {
-      title: "Quick questions",
-      description:
-        "Practical answers before you continue into the official platform for live category details.",
-    },
+    platformCta: "Continue to YES2WIN platform",
     finalCta: {
       /** `{category}` is replaced with the category short name. */
-      titleTemplate: "Ready to try {category}?",
-      description: "Open the official YES2WIN platform to browse the live lobby for this category.",
+      titleTemplate: "Continue to {category} on YES2WIN",
+      description:
+        "Register or log in to browse this category in the live lobby when it is available to your account.",
     },
-    details: {
-      slots: {
-        formatTitle: "Game formats & themes",
-        formatItems: [
-          "Classic, modern and feature-driven slot styles can appear in the live lobby, differing mainly in how much is happening on screen at once.",
-          "Themes often range from simple icons to high-energy fantasy, adventure or character-led visuals — presentation varies far more than the underlying flow.",
-          "Every title publishes its own paytable covering symbols, payline structure and how feature rounds are triggered.",
-          "Feature rounds such as free spins or multipliers are game mechanics set by the provider, not platform promotions.",
-          "Short spin cycles make slots easy to sample in mobile sessions without committing to a long sitting.",
-        ],
-        suitedFor: [
-          "Players who want easy entry and fast browsing without learning a table format first.",
-          "Members looking for variety across themes and pacing rather than one fixed experience.",
-          "Mobile-first players who prefer touch-friendly gameplay in short bursts.",
-          "Anyone who likes reading a paytable and understanding a game before committing to it.",
-        ],
-        relatedTitle: "Related promotions",
-        relatedCopy:
-          "Welcome and deposit-style offers are often the first place members look when exploring slot play, and some campaigns count slot activity differently from other categories. Confirm active terms inside the official promotions area before you opt in, paying particular attention to which categories contribute towards any wagering condition.",
-        faq: [
-          {
-            id: "slots-faq-1",
-            question: "How do I find slot titles on YES2WIN?",
-            answer:
-              "Register or log in, then browse the slot area inside the live YES2WIN lobby to see the titles currently available to your account.",
-          },
-          {
-            id: "slots-faq-2",
-            question: "Can I play slots on mobile?",
-            answer:
-              "Yes. Slot layouts are generally well suited to mobile browsing and touch controls when the title is enabled on your device.",
-          },
-          {
-            id: "slots-faq-3",
-            question: "How do I choose between titles?",
-            answer:
-              "Decide what you want from the session first. Simpler classic-style games are easier to follow, while feature-led titles reward exploring. Open the information panel before playing so you know how each feature behaves.",
-          },
-          {
-            id: "slots-faq-4",
-            question: "How should I manage a slot session?",
-            answer:
-              "Set your time and spending limit before you open the lobby and treat it as fixed. Because rounds resolve quickly, check the clock between spins so a short session does not quietly become a long one.",
-          },
-        ],
-      },
-      "live-casino": {
-        formatTitle: "Live table experience",
-        formatItems: [
-          "Live dealer tables can include familiar formats such as baccarat, roulette and blackjack where available.",
-          "Streaming presentation is designed to recreate table energy with real-time dealing and interface controls.",
-          "Each table publishes its own information panel covering rules, side bets and limits before you take a seat.",
-          "Timed betting windows keep rounds on schedule, so decisions happen at the table’s pace rather than yours.",
-          "Stable connectivity matters more here than for simpler category pages because the experience depends on live video.",
-        ],
-        suitedFor: [
-          "Players who want a more immersive table-game environment than automated rounds provide.",
-          "Members who enjoy real-time pace and are comfortable deciding within a betting window.",
-          "Users comfortable switching between table views and account controls on mobile.",
-          "Anyone happy to watch a few rounds before joining in order to learn a table’s flow.",
-        ],
-        relatedTitle: "Access & etiquette",
-        relatedCopy:
-          "Live casino is best approached with a stable network, clear limits set in advance and enough time to follow each table flow without rushing. A little table etiquette goes a long way too: place decisions inside the betting window so the round is not held up, and keep chat respectful towards the dealer and other players. Because the table sets the pace rather than you, decide how long you will stay before you sit down.",
-        faq: [
-          {
-            id: "live-faq-1",
-            question: "Which live casino games might be available?",
-            answer:
-              "Common YES2WIN references include baccarat, roulette and blackjack where those tables are supported in the live lobby.",
-          },
-          {
-            id: "live-faq-2",
-            question: "Does live casino work on mobile?",
-            answer: "Yes, provided your browser and connection can handle real-time streaming smoothly.",
-          },
-          {
-            id: "live-faq-3",
-            question: "Where do I learn a table’s rules and limits?",
-            answer:
-              "The table information panel shows rules, bet types, side bets and limits before you join. Read it first, since variants differ between studios even when the core game is familiar.",
-          },
-          {
-            id: "live-faq-4",
-            question: "Why does my stream stutter sometimes?",
-            answer:
-              "Live video is more connection-sensitive than static pages. A steady signal matters more than a fast one, so switch networks between rounds rather than mid-hand and close unused browser tabs to free memory.",
-          },
-        ],
-      },
-      sports: {
-        formatTitle: "Sports coverage",
-        formatItems: [
-          "Football, basketball and tennis are core reference categories across sports-oriented YES2WIN content.",
-          "Other supported sports may appear depending on current platform coverage and your region.",
-          "Pre-match markets open before an event, giving you time to review a selection properly.",
-          "In-play markets update during an event and can be suspended around key moments, so prices move quickly.",
-          "Markets, prices and settlement rules are shown on the official platform, not fixed on this partner site.",
-        ],
-        suitedFor: [
-          "Fans who follow major fixtures and want a clear sports navigation flow.",
-          "Members who check markets from their phone during the day rather than sitting in a lobby.",
-          "Users who prefer event-driven entertainment over continuous play.",
-          "Newcomers who want to start with a single simple market in a competition they already know.",
-        ],
-        relatedTitle: "How to follow sports on mobile",
-        relatedCopy:
-          "Sports pages work best when you need quick scans of events, categories and related links, which makes the phone a natural place to keep up during the day. In-play betting is the most connection-sensitive part of the category, so use a stable network when prices are moving. For live market details, settlement rules and your betting history, continue into the official sports area after login — that history is the authoritative record of any selection’s status.",
-        faq: [
-          {
-            id: "sports-faq-1",
-            question: "Which sports are highlighted here?",
-            answer:
-              "Football, basketball and tennis are the primary sports referenced here, with other supported sports depending on the live platform.",
-          },
-          {
-            id: "sports-faq-2",
-            question: "Do you publish odds on this site?",
-            answer: "No. Odds, lines and event availability change live and must be checked on the official platform.",
-          },
-          {
-            id: "sports-faq-3",
-            question: "What is the difference between pre-match and in-play?",
-            answer:
-              "Pre-match markets are available before an event starts and give you time to consider. In-play markets update while the event runs, move faster and can be suspended around key moments, so they suit people already comfortable with the sport.",
-          },
-          {
-            id: "sports-faq-4",
-            question: "When will my selection be settled?",
-            answer:
-              "Settlement follows the official result, so it usually happens shortly after an event ends. Disputed, delayed, postponed or abandoned events follow the rules published with that market, and your betting history shows the current status.",
-          },
-        ],
-      },
-      fishing: {
-        formatTitle: "Fishing gameplay overview",
-        formatItems: [
-          "Fishing titles mix arcade-style shooting with fast target selection and immediate visual feedback.",
-          "Sessions often feel more active than slots because you aim, fire and chase higher-value catches continuously.",
-          "Each title publishes a value table showing which targets carry which rewards.",
-          "Adjustable shot or weapon levels change how quickly a session moves — and how quickly a balance moves with it.",
-          "Bright visuals and touch interaction make the category especially easy to understand on phones.",
-        ],
-        suitedFor: [
-          "Players who prefer a more hands-on pace than spin- or draw-based play.",
-          "Members who enjoy colourful, skill-flavoured interfaces with instant feedback.",
-          "Mobile users looking for short but lively sessions.",
-          "Anyone comfortable watching a room for a moment before joining it.",
-        ],
-        relatedTitle: "How to approach fishing games",
-        relatedCopy:
-          "Use the partner site to understand the category, then browse the live fishing section after login to see which titles and interfaces are available for your account. Two habits make the difference: read the value table before you start so you know what you are aiming at, and keep an eye on your shot level, since play is continuous rather than round-based and higher levels spend noticeably faster. Setting a session limit up front is more effective here than in almost any other category.",
-        faq: [
-          {
-            id: "fishing-faq-1",
-            question: "Are fishing games different from slots?",
-            answer:
-              "Yes. Fishing games are more interactive and often involve targeting, firing and active on-screen decision-making rather than simple spin cycles.",
-          },
-          {
-            id: "fishing-faq-2",
-            question: "Can I access fishing on mobile?",
-            answer: "Yes, when supported, because touch controls translate naturally to fishing-style gameplay.",
-          },
-          {
-            id: "fishing-faq-3",
-            question: "What controls should I expect?",
-            answer:
-              "Most titles combine aiming, firing and a control for shot strength or weapon type, with auto-fire in some games. On a phone you generally tap where you want to shoot. Check the on-screen legend before increasing your shot level.",
-          },
-          {
-            id: "fishing-faq-4",
-            question: "How do I keep a session under control?",
-            answer:
-              "Because play is continuous rather than round-based, set a session limit before you start, avoid leaving auto-fire running unattended, and take breaks at fixed intervals so you check your balance deliberately.",
-          },
-        ],
-      },
-      lottery: {
-        formatTitle: "Lottery / 4D overview",
-        formatItems: [
-          "Lottery is the calmer, number-led side of the YES2WIN ecosystem, with no continuous session to manage.",
-          "4D-style references focus on draw participation and results checking rather than fast interactive play.",
-          "Formats differ in how many digits you select and how a selection resolves, so each publishes its own rules.",
-          "Entries close before the published draw time, which means there is a deadline rather than an open window.",
-          "Current formats and draw information must always be confirmed on the live platform.",
-        ],
-        suitedFor: [
-          "Members who prefer number-based entertainment over interface-driven play.",
-          "Users looking for a simpler participation flow they can complete in a minute.",
-          "Players who want a contrast to live streaming or arcade-style categories.",
-          "Anyone who finds a scheduled draw easier to budget for than a continuous session.",
-        ],
-        relatedTitle: "Current draw information",
-        relatedCopy:
-          "This partner page explains the category structure only. For live lottery / 4D availability, current rules and results views, continue into the official platform after login. Two practical points before your first entry: read the rules for the specific format you choose, since the way a selection wins is not identical across formats, and leave yourself a margin before the closing time rather than entering at the last moment.",
-        faq: [
-          {
-            id: "lottery-faq-1",
-            question: "Do you show live 4D results here?",
-            answer:
-              "No. This site does not publish winning numbers or results. Check the official platform for current draw information.",
-          },
-          {
-            id: "lottery-faq-2",
-            question: "How do I access lottery options?",
-            answer:
-              "Use Register or Login, then open the lottery area inside the YES2WIN platform if the category is available to your account.",
-          },
-          {
-            id: "lottery-faq-3",
-            question: "How do I enter a draw?",
-            answer:
-              "Open the lottery area, choose a format, make your selection, confirm the entry and check that it appears in your account records. Entries close before the draw time published for that format.",
-          },
-          {
-            id: "lottery-faq-4",
-            question: "Why do some members prefer lottery?",
-            answer:
-              "It separates the decision from the outcome — you make a selection, then wait for a scheduled draw. Without a continuous play loop, many people find it calmer and easier to budget for.",
-          },
-        ],
-      },
-    } as Record<string, GameCategoryDetail>,
+    details: gameCategoryDetailsEn,
   },
 };
 
-export type GameCategoryDetail = {
-  formatTitle: string;
-  formatItems: string[];
-  suitedFor: string[];
-  relatedTitle: string;
-  relatedCopy: string;
-  faq: Array<{ id: string; question: string; answer: string }>;
-};
+export type { GameCategoryDetail } from "@/i18n/pages/en/game-category-details";
 
 export type HubsCopy = typeof hubsEn;

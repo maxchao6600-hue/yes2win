@@ -92,7 +92,7 @@ export const partnerContent = {
     {
       title: "Transparent expectations",
       description:
-        "Results vary by audience fit, consistency and timing, and there is no version of this where a fixed number can be promised. This site does not publish guaranteed income or commission figures, and neither should any material you produce.",
+        "Outcomes depend on audience fit, consistency and timing. Do not invent income figures in your materials — confirm any commercial terms through official partner channels only.",
     },
     {
       title: "Responsible framing",
@@ -114,7 +114,7 @@ export const partnerContent = {
     {
       title: "Access pathways",
       description:
-        "Point audiences to Register, Login and Partner entry points provided by this official partner gateway.",
+        "Point audiences to Register, Login and Partner entry points provided on this site.",
     },
   ],
   brandAssets: [

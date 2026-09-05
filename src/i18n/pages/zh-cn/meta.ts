@@ -15,17 +15,17 @@ export const pageMetaZh: Record<PageId, PageMeta> = {
   games: {
     title: "YES2WIN 游戏｜老虎机、真人娱乐、体育等",
     description:
-      "探索 YES2WIN 游戏中心——老虎机、真人娱乐、体育、捕鱼、彩票、合作游戏商与手机访问方式，尽在官方合作伙伴入口。",
+      "探索 YES2WIN 游戏中心——老虎机、真人娱乐、体育、捕鱼、彩票、工作室介绍与手机访问方式。",
   },
   "games-slots": {
     title: "YES2WIN 老虎机 | 老虎机游戏总览",
     description:
-      "通过官方合作伙伴入口了解 YES2WIN 老虎机游戏——丰富主题、特色玩法与手机友好的游戏体验。",
+      "了解 YES2WIN 老虎机——主题、特色玩法与适合手机的游戏体验。",
   },
   "games-live-casino": {
     title: "YES2WIN 真人娱乐 | 真人荷官游戏",
     description:
-      "通过官方合作伙伴入口了解 YES2WIN 真人娱乐——实时荷官桌台与经典桌上玩法。",
+      "了解 YES2WIN 真人娱乐——实时荷官桌台与经典桌上玩法。",
   },
   "games-sports": {
     title: "YES2WIN 体育 | 体育投注总览",
@@ -60,7 +60,7 @@ export const pageMetaZh: Record<PageId, PageMeta> = {
   mobile: {
     title: "YES2WIN 手机端｜移动游戏与账户服务",
     description:
-      "在手机浏览器访问 YES2WIN——自适应导航、游戏、优惠、支付与账户工具，通过官方合作伙伴入口随时开始。",
+      "在手机浏览器访问 YES2WIN——自适应导航、游戏、优惠、支付与账户工具。",
   },
   faq: {
     title: "YES2WIN 常见问题｜账户、游戏、支付与客服",
