@@ -75,9 +75,9 @@ export const pageMetaEn: Record<PageId, PageMeta> = {
       "Understand YES2WIN promotion types — welcome offers, deposit campaigns, weekly promotions, cashback concepts and VIP-linked campaigns — then confirm live terms on the platform.",
   },
   vip: {
-    title: "YES2WIN VIP | Membership & Exclusive Benefits",
+    title: "YES2WIN VIP | Membership Experience",
     description:
-      "Discover the YES2WIN VIP experience — personalised service, priority support and member recognition without guaranteed financial promises.",
+      "Learn how YES2WIN VIP recognition and support are framed — then confirm current eligibility and benefits in your account channels.",
   },
   payment: {
     title: "YES2WIN Payment Methods | Deposit & Withdrawal Guide",
@@ -95,9 +95,9 @@ export const pageMetaEn: Record<PageId, PageMeta> = {
       "Answers about YES2WIN registration, login, games, promotions, payments, mobile access, partner pathways and responsible gaming.",
   },
   partner: {
-    title: "YES2WIN Partner | Official Partner Ecosystem",
+    title: "YES2WIN Partner | Partner Ecosystem",
     description:
-      "Partner with YES2WIN — learn the journey, referral system, marketing resources, brand assets and support pathways without guaranteed income claims.",
+      "Learn how the YES2WIN partner pathway works — onboarding concepts, sharing resources, tracking ideas and support routes for responsible promotion.",
   },
   contact: {
     title: "Contact YES2WIN Official Partner",

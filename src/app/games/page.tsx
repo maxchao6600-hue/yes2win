@@ -77,40 +77,6 @@ export default async function GamesPage() {
 
       <Section tone="white">
         <Container>
-          <SectionHeading
-            eyebrow={copy.featured.eyebrow}
-            title={copy.featured.title}
-            description={copy.featured.description}
-          />
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
-            {categories.map((category) => (
-              <Link
-                key={category.id}
-                href={category.href}
-                className="group overflow-hidden rounded-3xl border border-line bg-white shadow-[0_18px_50px_-34px_rgba(6,78,59,0.45)]"
-              >
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src={imageMap[category.id]}
-                    alt={`${category.shortName} ${copy.featured.imageAltSuffix}`}
-                    fill
-                    sizes="(max-width:640px) 100vw, 25vw"
-                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-                    <h2 className="text-xl font-bold">{category.shortName}</h2>
-                    <p className="mt-1 text-sm text-brand-50/90">{category.highlights[0]}</p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container>
           <SectionHeading title={copy.allCategories.title} description={copy.allCategories.description} />
           <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {categories.map((category) => (
@@ -171,69 +137,6 @@ export default async function GamesPage() {
       </Section>
 
       <Section tone="white">
-        <Container>
-          <SectionHeading title={copy.formats.title} description={copy.formats.description} />
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-            {copy.formats.items.map((item) => (
-              <Card key={item.title}>
-                <h2 className="text-lg font-bold text-ink">{item.title}</h2>
-                <p className="mt-2 text-sm text-ink-muted">{item.body}</p>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container>
-          <SectionHeading
-            eyebrow={copy.ecosystem.eyebrow}
-            title={copy.ecosystem.title}
-            description={copy.ecosystem.description}
-          />
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {copy.ecosystem.points.map((point) => (
-              <Card key={point.title}>
-                <h2 className="text-lg font-bold text-ink">{point.title}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{point.body}</p>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section tone="white">
-        <Container>
-          <SectionHeading
-            eyebrow={copy.categoryGuides.eyebrow}
-            title={copy.categoryGuides.title}
-            description={copy.categoryGuides.description}
-          />
-          <div className="mt-8 grid gap-5">
-            {copy.categoryGuides.items.map((item) => (
-              <Card key={item.id} id={item.id} className="scroll-mt-28">
-                <h2 className="text-2xl font-bold text-ink">{item.title}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-ink-muted sm:text-base">{item.summary}</p>
-                <ul className="mt-4 space-y-2 text-sm text-ink-muted">
-                  {item.points.map((point) => (
-                    <li key={point} className="flex gap-2">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5">
-                  <CtaLink href={localizePath(item.href, locale)} variant="secondary" size="sm">
-                    {item.cta}
-                  </CtaLink>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section tone="green">
         <Container>
           <SectionHeading
             eyebrow={copy.discovery.eyebrow}
@@ -317,6 +220,20 @@ export default async function GamesPage() {
       </Section>
 
       <Section tone="white">
+        <Container className="grid gap-8 lg:grid-cols-2">
+          <SectionHeading eyebrow={copy.faq.eyebrow} title={copy.faq.title} description={copy.faq.description} />
+          <Accordion items={copy.faq.items} />
+          <div className="lg:col-span-2 flex flex-wrap gap-4 text-sm font-semibold text-brand-800">
+            {copy.faq.links.map((link) => (
+              <Link key={link.href} href={localizePath(link.href, locale)}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
         <Container>
           <SectionHeading
             eyebrow={copy.responsible.eyebrow}
@@ -335,20 +252,6 @@ export default async function GamesPage() {
             <CtaLink href={localizePath(copy.responsible.href, locale)} variant="secondary">
               {copy.responsible.cta}
             </CtaLink>
-          </div>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container className="grid gap-8 lg:grid-cols-2">
-          <SectionHeading eyebrow={copy.faq.eyebrow} title={copy.faq.title} description={copy.faq.description} />
-          <Accordion items={copy.faq.items} />
-          <div className="lg:col-span-2 flex flex-wrap gap-4 text-sm font-semibold text-brand-800">
-            {copy.faq.links.map((link) => (
-              <Link key={link.href} href={localizePath(link.href, locale)}>
-                {link.label}
-              </Link>
-            ))}
           </div>
         </Container>
       </Section>

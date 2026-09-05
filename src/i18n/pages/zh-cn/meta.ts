@@ -48,9 +48,9 @@ export const pageMetaZh: Record<PageId, PageMeta> = {
       "了解 YES2WIN 的优惠类型——迎新礼遇、存款活动、每周优惠、返水概念与 VIP 相关活动，再到官方平台查看最新条款。",
   },
   vip: {
-    title: "YES2WIN VIP｜会员权益与专属体验",
+    title: "YES2WIN VIP｜会员体验",
     description:
-      "了解 YES2WIN VIP 体验——个性化服务、优先客服与会员礼遇，不含任何收益承诺。",
+      "了解 YES2WIN VIP 的认可与支持如何呈现——具体资格与礼遇请在账户渠道中确认。",
   },
   payment: {
     title: "YES2WIN 存款与提款｜支付方式指南",
@@ -68,9 +68,9 @@ export const pageMetaZh: Record<PageId, PageMeta> = {
       "关于 YES2WIN 注册、登录、游戏、优惠、支付、手机访问、合作伙伴路径与负责任娱乐的常见问题解答。",
   },
   partner: {
-    title: "YES2WIN 合作伙伴 | 官方合作伙伴生态",
+    title: "YES2WIN 合作伙伴 | 合作生态",
     description:
-      "与 YES2WIN 携手合作——了解合作流程、推荐系统、营销资源、品牌素材与支持渠道，不含任何收入保证。",
+      "了解 YES2WIN 合作路径如何运作——入驻概念、分享资源、追踪思路，以及负责任推广的支持渠道。",
   },
   contact: {
     title: "联系 YES2WIN 官方合作伙伴",
