@@ -173,6 +173,7 @@ export const hubsEn = {
       ],
       quickLinks: [
         { label: "Games", href: "/games/" },
+        { label: "Guides", href: "/guides/" },
         { label: "Promotions", href: "/promotions/" },
         { label: "VIP", href: "/vip/" },
         { label: "Payment", href: "/payment/" },
@@ -345,6 +346,7 @@ export const hubsEn = {
       title: "Questions about this partner website",
       links: [
         { label: "About this site", href: "/about/" },
+        { label: "Guides hub", href: "/guides/" },
         { label: "FAQ hub", href: "/faq/" },
         { label: "Terms of use", href: "/terms/" },
         { label: "Privacy policy", href: "/privacy/" },
@@ -384,14 +386,14 @@ export const hubsEn = {
           href: "/games/",
         },
         {
+          title: "Guides",
+          body: "Open the curated map of account, payment, VIP and category guides.",
+          href: "/guides/",
+        },
+        {
           title: "Promotions",
           body: "Understand offer types before confirming live terms.",
           href: "/promotions/",
-        },
-        {
-          title: "VIP",
-          body: "Learn how recognition and premium service are framed.",
-          href: "/vip/",
         },
         {
           title: "Mobile",
@@ -430,7 +432,7 @@ export const hubsEn = {
       description:
         "Every major YES2WIN entertainment path with a short guide and a next step. If you are undecided, the quickest way to choose is by pace: slots and fishing keep you actively involved, live tables run on a dealer’s timing, sports follow real fixtures, and lottery separates your decision from a scheduled draw.",
       imageAltSuffix: "artwork",
-      playNowCta: "Play now",
+      playNowCta: "Register Now",
     },
     providers: {
       eyebrow: "Providers",

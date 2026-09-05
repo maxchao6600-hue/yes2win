@@ -33,7 +33,7 @@ export const guidesEn = {
       {
         step: "02",
         title: "Choose your account details",
-        body: "Create the username and password requested by the form. Exact field labels can change as the platform updates. Choose a password you do not use anywhere else, since the same credentials reused across sites are the most common way accounts are compromised, and note that a username usually cannot be changed later.",
+        body: "Create the username and password requested by the form. Exact field labels can change as the platform updates. Choose a password you do not use anywhere else, since reused credentials are a common way accounts are compromised. Some account details — including usernames — may not be editable later; check current platform settings or support if you need a correction.",
       },
       {
         step: "03",

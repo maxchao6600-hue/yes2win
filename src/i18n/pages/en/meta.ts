@@ -24,6 +24,7 @@ export type PageId =
   | "privacy"
   | "register-guide"
   | "account-guide"
+  | "guides"
   | "not-found";
 
 /** English title/description pairs, mirroring the `buildMetadata` calls in `src/app`. */
@@ -127,6 +128,11 @@ export const pageMetaEn: Record<PageId, PageMeta> = {
     title: "YES2WIN Account Guide | Profile, Records & Security",
     description:
       "Learn how YES2WIN account tools typically work — profile, security, transaction history, betting records, promotion history, verification and referral options.",
+  },
+  guides: {
+    title: "YES2WIN Guides | Games, Account, Payments & More",
+    description:
+      "Browse curated YES2WIN Official Partner guides for games, registration, account tools, payments, VIP, partner pathways and responsible entertainment.",
   },
   "not-found": {
     title: "Page Not Found | YES2WIN Official Partner",

@@ -163,6 +163,7 @@ export const hubsZh: HubsCopy = {
       ],
       quickLinks: [
         { label: "游戏", href: "/games/" },
+        { label: "指南中心", href: "/guides/" },
         { label: "优惠活动", href: "/promotions/" },
         { label: "VIP", href: "/vip/" },
         { label: "支付", href: "/payment/" },
@@ -334,6 +335,7 @@ export const hubsZh: HubsCopy = {
       title: "关于本合作伙伴网站的问题",
       links: [
         { label: "关于本站", href: "/about/" },
+        { label: "指南中心", href: "/guides/" },
         { label: "常见问题中心", href: "/faq/" },
         { label: "使用条款", href: "/terms/" },
         { label: "隐私政策", href: "/privacy/" },
@@ -372,14 +374,14 @@ export const hubsZh: HubsCopy = {
           href: "/games/",
         },
         {
+          title: "指南中心",
+          body: "打开账户、支付、VIP 与类别指南的汇总地图。",
+          href: "/guides/",
+        },
+        {
           title: "优惠活动",
           body: "先了解优惠类型，再确认线上的具体条款。",
           href: "/promotions/",
-        },
-        {
-          title: "VIP",
-          body: "了解会员礼遇与尊享服务的呈现方式。",
-          href: "/vip/",
         },
         {
           title: "手机版",
@@ -418,7 +420,7 @@ export const hubsZh: HubsCopy = {
       description:
         "YES2WIN 每一条主要娱乐路径，均附简要指南与下一步操作。如果一时难以取舍，最快的方法是从节奏入手：老虎机与捕鱼需要你持续参与，真人桌台由荷官掌控节奏，体育跟随真实赛程，而彩票则把你的决定与既定开奖分隔开来。",
       imageAltSuffix: "主视觉",
-      playNowCta: "立即游戏",
+      playNowCta: "立即注册",
     },
     providers: {
       eyebrow: "游戏供应商",
@@ -1853,7 +1855,7 @@ export const hubsZh: HubsCopy = {
           "主题从简约图标到奇幻、冒险或角色主导的高能视觉，跨度很大——呈现方式的差异，远大于底层流程的差异。",
           "每款游戏都会提供自己的赔付表，说明图标、赔付线结构以及特色回合的触发方式。",
           "免费旋转、倍数等特色回合属于供应商设定的游戏机制，而非平台优惠活动。",
-          "较短的旋转节奏，让老虎机很适合在手机上短时间试玩，无需一坐就是很久。",
+          "较短的旋转节奏，让老虎机很适合在手机上短时间体验，无需一坐就是很久。",
         ],
         suitedFor: [
           "希望轻松上手、无需先学会桌台规则就能快速浏览的玩家。",

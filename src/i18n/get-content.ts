@@ -27,6 +27,8 @@ import { hubsEn } from "@/i18n/pages/en/hubs";
 import { hubsZh } from "@/i18n/pages/zh-cn/hubs";
 import { guidesEn } from "@/i18n/pages/en/guides";
 import { guidesZh } from "@/i18n/pages/zh-cn/guides";
+import { guidesIndexEn } from "@/i18n/pages/en/guides-index";
+import { guidesIndexZh } from "@/i18n/pages/zh-cn/guides-index";
 import { legalEn } from "@/i18n/pages/en/legal";
 import { legalZh } from "@/i18n/pages/zh-cn/legal";
 import { pageMetaEn, type PageId } from "@/i18n/pages/en/meta";
@@ -136,6 +138,10 @@ export function getHubsCopy(locale: Locale) {
 
 export function getGuidesCopy(locale: Locale) {
   return locale === "zh-cn" ? guidesZh : guidesEn;
+}
+
+export function getGuidesIndexCopy(locale: Locale) {
+  return locale === "zh-cn" ? guidesIndexZh : guidesIndexEn;
 }
 
 export function getLegalCopy(locale: Locale) {

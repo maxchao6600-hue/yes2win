@@ -102,6 +102,11 @@ export const pageMetaZh: Record<PageId, PageMeta> = {
     description:
       "了解 YES2WIN 账户工具的常见用法——个人资料、安全设置、交易记录、投注记录、优惠记录、身份验证与推荐功能。",
   },
+  guides: {
+    title: "YES2WIN 指南｜游戏、账户、支付等",
+    description:
+      "浏览 YES2WIN 官方合作伙伴精选指南，涵盖游戏、注册、账户工具、支付、VIP、合作伙伴路径与负责任娱乐。",
+  },
   "not-found": {
     title: "页面未找到 | YES2WIN 官方合作伙伴",
     description:

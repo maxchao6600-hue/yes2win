@@ -57,7 +57,7 @@ export const uiEn = {
     exploreSlots: "Explore slots",
     exploreLiveCasino: "Explore live casino",
     exploreSports: "Browse sports",
-    exploreFishing: "Try fishing games",
+    exploreFishing: "Explore fishing games",
     exploreLottery: "See lottery options",
     viewPromotions: "View Promotions",
     viewVipExperience: "Explore VIP",

@@ -14,6 +14,7 @@ export const primaryNavZh: NavItem[] = [
 ];
 
 export const moreNavZh: NavItem[] = [
+  { label: "指南中心", href: "/guides/" },
   { label: "注册指南", href: "/register-guide/" },
   { label: "账户指南", href: "/account-guide/" },
   { label: "负责任娱乐", href: "/responsible-gaming/" },
@@ -25,6 +26,7 @@ export const footerNavZh = {
     { label: "游戏", href: "/games/" },
     { label: "优惠活动", href: "/promotions/" },
     { label: "VIP", href: "/vip/" },
+    { label: "指南中心", href: "/guides/" },
   ],
   access: [
     { label: "手机版", href: "/mobile/" },

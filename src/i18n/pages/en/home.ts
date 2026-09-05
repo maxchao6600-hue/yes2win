@@ -80,6 +80,7 @@ export const homeEn = {
     links: [
       { label: "About this partner site", href: "/about/" },
       { label: "Games hub", href: "/games/" },
+      { label: "Guides hub", href: "/guides/" },
       { label: "Frequently asked questions", href: "/faq/" },
       { label: "Responsible gaming", href: "/responsible-gaming/" },
     ],
@@ -235,7 +236,7 @@ export const homeEn = {
         name: "Fishing Games",
         description:
           "Interactive catch-style play with vivid underwater energy and direct hands-on control. Your aiming and timing shape the session, which makes it the most active category here.",
-        cta: "Try fishing games",
+        cta: "Explore fishing games",
       },
       {
         id: "lottery",

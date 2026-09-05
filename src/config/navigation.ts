@@ -17,6 +17,7 @@ export const primaryNav: NavItem[] = [
 ];
 
 export const moreNav: NavItem[] = [
+  { label: "Guides", href: "/guides/" },
   { label: "Register Guide", href: "/register-guide/" },
   { label: "Account Guide", href: "/account-guide/" },
   { label: "Responsible Gaming", href: "/responsible-gaming/" },
@@ -28,6 +29,7 @@ export const footerNav = {
     { label: "Games", href: "/games/" },
     { label: "Promotions", href: "/promotions/" },
     { label: "VIP", href: "/vip/" },
+    { label: "Guides", href: "/guides/" },
   ],
   access: [
     { label: "Mobile", href: "/mobile/" },

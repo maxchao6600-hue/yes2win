@@ -129,7 +129,7 @@ export const gameCategories: GameCategory[] = [
     seoTitle: "YES2WIN Fishing Games | Interactive Fishing",
     seoDescription:
       "Explore YES2WIN fishing games — interactive catch-style play and mobile-ready entertainment.",
-    ctaLabel: "Try fishing games",
+    ctaLabel: "Explore fishing games",
   },
   {
     id: "lottery",

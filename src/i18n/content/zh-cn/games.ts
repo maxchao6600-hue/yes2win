@@ -99,7 +99,7 @@ export const gameCategoriesZh: GameCategory[] = [
     seoTitle: "YES2WIN 捕鱼游戏 | 互动捕鱼娱乐",
     seoDescription:
       "了解 YES2WIN 捕鱼游戏 —— 互动捕获玩法与适合手机的娱乐体验。",
-    ctaLabel: "试玩捕鱼游戏",
+    ctaLabel: "查看捕鱼游戏",
   },
   {
     id: "lottery",

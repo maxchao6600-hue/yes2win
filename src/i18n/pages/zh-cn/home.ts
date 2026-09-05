@@ -78,6 +78,7 @@ export const homeZh: HomeCopy = {
     links: [
       { label: "了解本合作伙伴网站", href: "/about/" },
       { label: "游戏中心", href: "/games/" },
+      { label: "指南中心", href: "/guides/" },
       { label: "常见问题", href: "/faq/" },
       { label: "负责任娱乐", href: "/responsible-gaming/" },
     ],
@@ -233,7 +234,7 @@ export const homeZh: HomeCopy = {
         name: "捕鱼游戏",
         description:
           "互动捕获玩法，海底世界活力十足，且完全由你亲手操作。瞄准与时机决定了整局走向，因此这是本站类别中最「动手」的一类。",
-        cta: "试玩捕鱼游戏",
+        cta: "查看捕鱼游戏",
       },
       {
         id: "lottery",
