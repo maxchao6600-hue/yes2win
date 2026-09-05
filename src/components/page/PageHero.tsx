@@ -29,7 +29,7 @@ export function PageHero({
   return (
     <div
       className={cn(
-        "relative overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16",
+        "relative overflow-hidden pt-12 pb-12 sm:pt-16 sm:pb-16",
         !image && (tone === "dark" ? "surface-dark" : "surface-green"),
         image && "min-h-[420px] text-white sm:min-h-[480px]",
       )}

@@ -13,7 +13,7 @@ export async function Hero() {
   const ui = getDictionary(locale);
 
   return (
-    <section className="relative overflow-hidden pb-16 pt-28 text-white sm:pt-32 lg:min-h-[92vh] lg:pb-24">
+    <section className="relative overflow-hidden pb-16 pt-14 text-white sm:pt-16 lg:min-h-[calc(100vh-4.5rem)] lg:pb-24">
       <div className="absolute inset-0">
         <Image
           src={media.homeHero}

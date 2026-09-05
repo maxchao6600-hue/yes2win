@@ -22,8 +22,6 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const langMenuId = useId();
-  const isHome = pathname === "/" || pathname === "/zh-cn" || pathname === "/zh-cn/";
-  const solid = scrolled || open || !isHome;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -62,10 +60,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition duration-300",
-        solid
-          ? "border-b border-line bg-white/95 shadow-[0_10px_30px_-20px_rgba(6,78,59,0.55)] backdrop-blur"
-          : "bg-transparent",
+        "sticky top-0 z-50 border-b border-line bg-white transition-shadow duration-300",
+        scrolled || open
+          ? "shadow-[0_8px_24px_-18px_rgba(6,78,59,0.45)]"
+          : "shadow-none",
       )}
     >
       <div className="mx-auto grid h-16 w-[min(100%-1.5rem,86rem)] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-5 sm:gap-x-6 lg:h-[4.5rem] xl:gap-x-8 2xl:gap-x-10">
@@ -79,16 +77,11 @@ export function Header() {
             alt={ui.brand.logoAlt}
             width={140}
             height={42}
-            className={cn("h-9 w-auto shrink-0", !solid && "brightness-0 invert")}
+            className="h-9 w-auto shrink-0"
             priority
             fetchPriority="high"
           />
-          <span
-            className={cn(
-              "hidden whitespace-nowrap text-[0.68rem] font-semibold uppercase tracking-[0.12em] sm:inline",
-              solid ? "text-brand-700" : "text-brand-100",
-            )}
-          >
+          <span className="hidden whitespace-nowrap text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-brand-700 sm:inline">
             {ui.officialPartner}
           </span>
         </LocaleLink>
@@ -104,13 +97,9 @@ export function Header() {
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     "shrink-0 whitespace-nowrap rounded-lg px-1.5 py-2 text-sm font-medium transition 2xl:px-2.5",
-                    solid
-                      ? active
-                        ? "bg-brand-50 text-brand-800"
-                        : "text-ink/80 hover:bg-brand-50 hover:text-brand-800"
-                      : active
-                        ? "bg-white/15 text-white"
-                        : "text-white/90 hover:bg-white/10 hover:text-white",
+                    active
+                      ? "bg-brand-50 text-brand-800"
+                      : "text-ink/80 hover:bg-brand-50 hover:text-brand-800",
                   )}
                 >
                   {item.label}
@@ -120,12 +109,7 @@ export function Header() {
             <div className="group relative shrink-0">
               <button
                 type="button"
-                className={cn(
-                  "whitespace-nowrap rounded-lg px-1.5 py-2 text-sm font-medium transition 2xl:px-2.5",
-                  solid
-                    ? "text-ink/80 hover:bg-brand-50 hover:text-brand-800"
-                    : "text-white/90 hover:bg-white/10 hover:text-white",
-                )}
+                className="whitespace-nowrap rounded-lg px-1.5 py-2 text-sm font-medium text-ink/80 transition hover:bg-brand-50 hover:text-brand-800 2xl:px-2.5"
                 aria-haspopup="menu"
               >
                 {ui.more}
@@ -149,18 +133,12 @@ export function Header() {
           <LanguageSwitcher
             locale={locale}
             pathname={pathname}
-            solid={solid}
             open={langOpen}
             setOpen={setLangOpen}
             menuId={langMenuId}
             label={ui.selectLanguage}
           />
-          <CtaLink
-            cta="login"
-            variant={solid ? "secondary" : "outline"}
-            size="sm"
-            className="hidden sm:inline-flex"
-          >
+          <CtaLink cta="login" variant="secondary" size="sm" className="hidden sm:inline-flex">
             {ui.login}
           </CtaLink>
           <CtaLink cta="register" size="sm" className="hidden sm:inline-flex">
@@ -168,12 +146,7 @@ export function Header() {
           </CtaLink>
           <button
             type="button"
-            className={cn(
-              "inline-flex h-11 w-11 items-center justify-center rounded-xl xl:hidden",
-              solid
-                ? "border border-line bg-white/80 text-ink"
-                : "border border-white/25 bg-white/10 text-white",
-            )}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white text-ink xl:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? ui.nav.closeMenu : ui.nav.openMenu}
@@ -192,7 +165,7 @@ export function Header() {
       <div
         id="mobile-nav"
         className={cn(
-          "fixed inset-x-0 top-16 bottom-0 overflow-y-auto bg-white px-4 pb-28 pt-4 xl:hidden",
+          "fixed inset-x-0 top-16 bottom-0 overflow-y-auto border-t border-line bg-white px-4 pb-28 pt-4 lg:top-[4.5rem] xl:hidden",
           open ? "block" : "hidden",
         )}
       >
@@ -249,7 +222,6 @@ export function Header() {
 function LanguageSwitcher({
   locale,
   pathname,
-  solid,
   open,
   setOpen,
   menuId,
@@ -257,7 +229,6 @@ function LanguageSwitcher({
 }: {
   locale: Locale;
   pathname: string;
-  solid: boolean;
   open: boolean;
   setOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
   menuId: string;
@@ -267,12 +238,7 @@ function LanguageSwitcher({
     <div className="relative hidden md:block">
       <button
         type="button"
-        className={cn(
-          "inline-flex h-9 items-center gap-1.5 rounded-lg border px-2.5 text-xs font-semibold uppercase tracking-wide",
-          solid
-            ? "border-line bg-white text-ink-muted hover:text-brand-800"
-            : "border-white/25 bg-white/10 text-white hover:bg-white/15",
-        )}
+        className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-line bg-white px-2.5 text-xs font-semibold uppercase tracking-wide text-ink-muted hover:text-brand-800"
         aria-label={label}
         aria-haspopup="listbox"
         aria-expanded={open}
