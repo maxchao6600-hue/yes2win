@@ -7,7 +7,7 @@ import { useEffect, useId, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { LocaleLink } from "@/components/i18n/LocaleLink";
-import { cn } from "@/lib/utils";
+import { cn, externalRel } from "@/lib/utils";
 import { getLocaleFromPathname, localeLabels, type Locale } from "@/i18n/config";
 import { localizePath, switchLocalePath } from "@/i18n/paths";
 import { getMoreNav, getPrimaryNav, getDictionary } from "@/i18n/get-content";
@@ -130,6 +130,22 @@ export function Header() {
         </div>
 
         <div className="flex shrink-0 items-center justify-end gap-2">
+          <a
+            href={siteConfig.customerService.telegram}
+            target="_blank"
+            rel={externalRel("default")}
+            className="hidden whitespace-nowrap rounded-lg px-1.5 py-2 text-sm font-medium text-ink/80 transition hover:bg-brand-50 hover:text-brand-800 lg:inline-flex"
+          >
+            {ui.cta.telegram}
+          </a>
+          <a
+            href={siteConfig.customerService.whatsapp}
+            target="_blank"
+            rel={externalRel("default")}
+            className="hidden whitespace-nowrap rounded-lg px-1.5 py-2 text-sm font-medium text-ink/80 transition hover:bg-brand-50 hover:text-brand-800 lg:inline-flex"
+          >
+            {ui.cta.whatsapp}
+          </a>
           <LanguageSwitcher
             locale={locale}
             pathname={pathname}
@@ -207,6 +223,24 @@ export function Header() {
               </Link>
             ))}
           </div>
+          <a
+            href={siteConfig.customerService.telegram}
+            target="_blank"
+            rel={externalRel("default")}
+            className="block rounded-xl border border-line px-4 py-3 text-center text-base font-semibold text-ink hover:bg-brand-50"
+            onClick={() => setOpen(false)}
+          >
+            {ui.cta.telegramSupport}
+          </a>
+          <a
+            href={siteConfig.customerService.whatsapp}
+            target="_blank"
+            rel={externalRel("default")}
+            className="block rounded-xl border border-line px-4 py-3 text-center text-base font-semibold text-ink hover:bg-brand-50"
+            onClick={() => setOpen(false)}
+          >
+            {ui.cta.whatsappSupport}
+          </a>
           <CtaLink cta="login" variant="secondary" size="lg" className="w-full">
             {ui.login}
           </CtaLink>

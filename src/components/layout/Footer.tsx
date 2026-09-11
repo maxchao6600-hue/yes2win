@@ -78,7 +78,14 @@ export async function Footer() {
               ...nav.access,
             ]}
           />
-          <FooterColumn title={columns.support} items={nav.support} />
+          <FooterColumn
+            title={columns.support}
+            items={[
+              { label: ui.cta.telegram, href: siteConfig.customerService.telegram, external: true },
+              { label: ui.cta.whatsapp, href: siteConfig.customerService.whatsapp, external: true },
+              ...nav.support,
+            ]}
+          />
           <FooterColumn title={columns.partner} items={nav.partner} />
           <FooterColumn title={columns.legal} items={nav.legal} />
         </div>
@@ -92,6 +99,12 @@ export async function Footer() {
           </CtaLink>
           <CtaLink cta="partner" variant="outline" size="sm">
             {ui.cta.becomePartner}
+          </CtaLink>
+          <CtaLink href={siteConfig.customerService.telegram} variant="outline" size="sm" externalKind="default">
+            {ui.cta.telegram}
+          </CtaLink>
+          <CtaLink href={siteConfig.customerService.whatsapp} variant="outline" size="sm" externalKind="default">
+            {ui.cta.whatsapp}
           </CtaLink>
         </div>
 

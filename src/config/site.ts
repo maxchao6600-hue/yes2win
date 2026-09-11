@@ -1,3 +1,8 @@
+const telegramSupportUrl =
+  process.env.NEXT_PUBLIC_TELEGRAM_SUPPORT_URL ?? "http://t.me/Customerservice3179";
+const whatsappSupportUrl =
+  process.env.NEXT_PUBLIC_WHATSAPP_SUPPORT_URL ?? "https://yes2wincs1.wasap.my";
+
 export const siteConfig = {
   name: "YES2WIN",
   identity: "YES2WIN Official Partner",
@@ -9,7 +14,12 @@ export const siteConfig = {
   registerUrl: process.env.NEXT_PUBLIC_REGISTER_URL ?? "https://m-yes2win.com/signup/",
   loginUrl: process.env.NEXT_PUBLIC_LOGIN_URL ?? "https://m-yes2win.com/login/",
   partnerUrl: process.env.NEXT_PUBLIC_PARTNER_URL ?? "https://m-yes2win.com/agent/",
-  supportUrl: process.env.NEXT_PUBLIC_SUPPORT_URL ?? "",
+  supportUrl: process.env.NEXT_PUBLIC_SUPPORT_URL ?? telegramSupportUrl,
+  /** Official YES2WIN customer-service chat channels */
+  customerService: {
+    telegram: telegramSupportUrl,
+    whatsapp: whatsappSupportUrl,
+  },
   logo: {
     src: "/images/logo.png",
     alt: "YES2WIN logo",
@@ -20,10 +30,10 @@ export const siteConfig = {
     customerSupport: {
       label: "Customer Support",
       description:
-        "Help with account access, games, deposits, withdrawals and day-to-day platform questions.",
-      value: process.env.NEXT_PUBLIC_SUPPORT_CONTACT ?? "",
+        "Help with account access, games, deposits, withdrawals and day-to-day platform questions via Telegram or WhatsApp.",
+      value: process.env.NEXT_PUBLIC_SUPPORT_CONTACT ?? telegramSupportUrl,
       fallback:
-        "Support channels are provided through the official YES2WIN platform after you register or log in.",
+        "Reach YES2WIN customer support on Telegram or WhatsApp using the official links on this page.",
     },
     partnerSupport: {
       label: "Partner Support",
@@ -42,7 +52,10 @@ export const siteConfig = {
         "For general questions, start with the FAQ or continue through Register and Login on the official platform.",
     },
   },
-  social: {} as Record<string, string>,
+  social: {
+    telegram: telegramSupportUrl,
+    whatsapp: whatsappSupportUrl,
+  } as Record<string, string>,
   languages: [
     { code: "en", label: "English", locale: "en", enabled: true, href: "/" },
     { code: "zh-cn", label: "中文", locale: "zh-cn", enabled: true, href: "/zh-cn/" },

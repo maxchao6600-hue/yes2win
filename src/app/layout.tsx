@@ -3,6 +3,7 @@ import { Manrope, Outfit } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileStickyCta } from "@/components/layout/MobileStickyCta";
+import { FloatingCustomerService } from "@/components/layout/FloatingCustomerService";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
@@ -95,6 +96,10 @@ export default async function RootLayout({
           {children}
         </main>
         <Footer />
+        <FloatingCustomerService
+          telegramLabel={ui.cta.telegramSupport}
+          whatsappLabel={ui.cta.whatsappSupport}
+        />
         <MobileStickyCta />
       </body>
     </html>

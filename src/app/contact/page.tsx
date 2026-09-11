@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/Card";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { BreadcrumbJsonLd, WebPageJsonLd } from "@/components/seo/JsonLd";
+import { siteConfig } from "@/config/site";
 import { getDictionary, getHubsCopy, getSiteCopy } from "@/i18n/get-content";
 import { getLocale } from "@/i18n/locale";
 import { localizePath } from "@/i18n/paths";
@@ -27,13 +28,53 @@ function ContactValue({
     const href = value.includes("://") || value.startsWith("mailto:") ? value : `mailto:${value}`;
     const label = value.replace(/^mailto:/i, "").replace(/^https?:\/\//i, "");
     return (
-      <a href={href} className="font-semibold text-brand-800 break-all">
+      <a
+        href={href}
+        target={href.startsWith("http") ? "_blank" : undefined}
+        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+        className="font-semibold text-brand-800 break-all"
+      >
         {label}
       </a>
     );
   }
 
   return <p className="leading-relaxed text-ink-muted">{fallback}</p>;
+}
+
+function CustomerServiceChannels({
+  telegramLabel,
+  whatsappLabel,
+  telegramHref,
+  whatsappHref,
+}: {
+  telegramLabel: string;
+  whatsappLabel: string;
+  telegramHref: string;
+  whatsappHref: string;
+}) {
+  const channels = [
+    { label: telegramLabel, href: telegramHref },
+    { label: whatsappLabel, href: whatsappHref },
+  ];
+
+  return (
+    <ul className="space-y-3">
+      {channels.map((channel) => (
+        <li key={channel.href}>
+          <a
+            href={channel.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col gap-1 rounded-xl border border-brand-200 bg-white px-4 py-3 transition hover:border-brand-400"
+          >
+            <span className="text-sm font-semibold text-ink">{channel.label}</span>
+            <span className="break-all text-sm text-brand-800">{channel.href}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default async function ContactPage() {
@@ -83,15 +124,35 @@ export default async function ContactPage() {
           />
           <Card className="mt-8 max-w-3xl">
             <h2 className="text-xl font-bold text-ink">{customerSupport.label}</h2>
-            <div className="mt-5 rounded-xl border border-brand-200 bg-brand-50/70 p-4 text-sm">
-              <ContactValue value={customerSupport.value} fallback={customerSupport.fallback} />
+            <div className="mt-5">
+              <CustomerServiceChannels
+                telegramLabel={ui.cta.telegramSupport}
+                whatsappLabel={ui.cta.whatsappSupport}
+                telegramHref={siteConfig.customerService.telegram}
+                whatsappHref={siteConfig.customerService.whatsapp}
+              />
             </div>
             <p className="mt-4 text-sm leading-relaxed text-ink-muted">{copy.customerSupport.note}</p>
             <div className="mt-5 flex flex-wrap gap-3">
-              <CtaLink cta="register" size="sm">
+              <CtaLink
+                href={siteConfig.customerService.telegram}
+                size="sm"
+                externalKind="default"
+              >
+                {ui.cta.telegram}
+              </CtaLink>
+              <CtaLink
+                href={siteConfig.customerService.whatsapp}
+                variant="secondary"
+                size="sm"
+                externalKind="default"
+              >
+                {ui.cta.whatsapp}
+              </CtaLink>
+              <CtaLink cta="register" variant="outline" size="sm">
                 {copy.customerSupport.registerCta}
               </CtaLink>
-              <CtaLink cta="login" variant="secondary" size="sm">
+              <CtaLink cta="login" variant="outline" size="sm">
                 {copy.customerSupport.loginCta}
               </CtaLink>
             </div>

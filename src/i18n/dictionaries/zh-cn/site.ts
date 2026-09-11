@@ -18,10 +18,9 @@ export const siteZh = {
     customerSupport: {
       label: "客户服务",
       description:
-        "协助处理账户登录、游戏、存款、提款以及日常平台使用相关问题。",
+        "协助处理账户登录、游戏、存款、提款以及日常平台使用相关问题，可通过 Telegram 或 WhatsApp 联系。",
       value: siteConfig.contact.customerSupport.value,
-      fallback:
-        "客服渠道将在您完成注册或登录后，通过 YES2WIN 官方平台提供。",
+      fallback: "请通过本页的 Telegram 或 WhatsApp 官方客服链接联系 YES2WIN 客户服务。",
     },
     partnerSupport: {
       label: "合作伙伴支持",

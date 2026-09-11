@@ -225,7 +225,7 @@ export const hubsZh: HubsCopy = {
     customerSupport: {
       eyebrow: "客户支持",
       title: "日常平台使用协助",
-      note: "涉及具体账户的游戏、存款、提款与平台工具问题，请通过注册或登录继续，以便在 YES2WIN 官方环境中获得相应的客服支持。",
+      note: "涉及具体账户的游戏、存款、提款与平台工具问题，可通过下方 Telegram 或 WhatsApp 官方客服联系；也可通过注册或登录，在 YES2WIN 官方环境中获取相应支持。",
       registerCta: "注册",
       loginCta: "登录",
     },

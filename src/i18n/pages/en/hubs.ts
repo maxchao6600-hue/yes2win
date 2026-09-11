@@ -237,7 +237,7 @@ export const hubsEn = {
     customerSupport: {
       eyebrow: "Customer support",
       title: "Day-to-day platform help",
-      note: "For account-specific games, deposits, withdrawals and platform tools, continue through Register or Login so support can be reached inside the official YES2WIN environment when available.",
+      note: "For account-specific games, deposits, withdrawals and platform tools, contact YES2WIN customer support on Telegram or WhatsApp below, or continue through Register / Login for in-platform help when available.",
       registerCta: "Register",
       loginCta: "Login",
     },
