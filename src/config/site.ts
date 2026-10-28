@@ -11,7 +11,7 @@ export const siteConfig = {
     "An official partner information and access gateway connected to the YES2WIN ecosystem — games, promotions, VIP and more.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://yes2winpartner.com",
   locale: "en",
-  registerUrl: process.env.NEXT_PUBLIC_REGISTER_URL ?? "https://m-yes2win.com/signup/",
+  registerUrl: process.env.NEXT_PUBLIC_REGISTER_URL ?? "https://www.yes2win.fun/Signup/UA68YPISG",
   loginUrl: process.env.NEXT_PUBLIC_LOGIN_URL ?? "https://m-yes2win.com/login/",
   partnerUrl: process.env.NEXT_PUBLIC_PARTNER_URL ?? "https://m-yes2win.com/agent/",
   supportUrl: process.env.NEXT_PUBLIC_SUPPORT_URL ?? telegramSupportUrl,
